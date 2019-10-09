@@ -4,5 +4,5 @@ class Booking {
         this.userId = userId;
         this.screeningId = screeningId;
     }
-    function = updateSeatsAvailable(){};
+    function updateSeatsAvailable(){}
 }

@@ -6,6 +6,6 @@ class Screening {
         this.Price = Price;
     }
     // her tilføjer jeg metoderne til klassen
-    function = hasCinemaHall(){};
-    function = hasMovie(){};
+    function hasCinemaHall(){}
+    function hasMovie(){}
 }
