@@ -9,7 +9,7 @@ class film {
 }
 
 function ageCheck () {
-
+    console.log ("hej");
     }
 
 }
