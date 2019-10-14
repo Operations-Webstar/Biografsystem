@@ -10,6 +10,7 @@ body {
 #div1{
     width:80%;
     margin: 0% auto;
+    align-content: center;
 }
 /*Sætter baggrund farve*/
 header {
@@ -34,22 +35,24 @@ header::after {
 /*får den til at floate til venstre, og padding til bund og top til 10px */
 nav{
     float: left;
-    padding: 0% 0%;
+    padding: 0%;
 }
 /*Gør at den ul, mister margin oppe ved toppen, så den ikke har tomt rum der oppe, og padding til 0,
- så listen står tæt på hinanden. og list-style til none, så vi mister de runde punkter*/
+ så listen står tæt på hinanden. og list-style til none, så vi mister de runde punkter. Whitespace er sådan den ikke
+ breaker line*/
 nav ul {
     margin: 0%;
     padding: 0%;
     list-style: none;
+    white-space: nowrap;
 }
 /*så fikser vi selve listen, så den er inline og bliver inde i block, derefter så margin-left, så kan vi lave mellemrum
  mellem de forskellige list items, også padding top, i forhold til hvor langt de skal være fra toppen,
  også position relativ, så det ikke bliver påvirket af andre blocks, hver li får en block-position*/
 nav li {
     display: inline-block;
-    margin-left: ;
-    padding-top: 0%;
+    margin-left: 15%;
+    padding-top: 3%;
     position: relative;
 }
 /*sætter farven på teksten, ingen decoration, så mister vi default decoration og transformere teksten til uppercase
@@ -58,7 +61,8 @@ nav a{
     color: #444444;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 100%;
+    font-size: 135%;
+    position: relative;
 }
 /*At når man hover over nogle af Anchors, så bliver de sorte*/
 nav a:hover {
@@ -68,12 +72,12 @@ nav a:hover {
 nav a::before {
     content: '';
     display: block;
-    height: 0%;
+    height: 10%;
     background-color: #444;
 /*sætter position til absolute, så den bliver over vores anchor. og width til 0 så man ikke kan se den
 og top til 0, så den ligger i toppen  */
     position: absolute;
-    top: 0;
+    top: -2%;
     width: 0%;
 /*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
 en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
