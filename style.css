@@ -1,0 +1,79 @@
+/* Giver div1, en width, så vi får side koloner*/
+body {
+    margin: 0;
+}
+/*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
+#div1{
+    width:80%;
+    margin: 0 auto;
+}
+/*Sætter baggrund farve*/
+header {
+    background: #5555dd;
+}
+/*bruger after funktionen, så den insetter headeren igen efter elementerne, så farven kommer frem */
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+/*laver nogle values, så logoet passer med teksten, derefter sætter positionen til relativ, så den passer i div*/
+#logo{
+    height: 5%;
+    width: 5%;
+    float: left;
+    position: relative;
+}
+/*får den til at floate til venstre, og padding til bund og top til 10px */
+nav{
+    float: left;
+    padding: 10px 0;
+}
+/*Gør at den ul, mister margin oppe ved toppen, så den ikke har tomt rum der oppe, og padding til 0,
+ så listen står tæt på hinanden. og list-style til none, så vi mister de runde punkter*/
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/*så fikser vi selve listen, så den er inline og bliver inde i block, derefter så margin-left, så kan vi lave mellemrum
+ mellem de forskellige list items, også padding top, i forhold til hvor langt de skal være fra toppen,
+ også position relativ, så det ikke bliver påvirket af andre blocks, hver li får en block-position*/
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 15px;
+    position: relative;
+}
+/*sætter farven på teksten, ingen decoration, så mister vi default decoration og transformere teksten til uppercase
+og sætter font-size til 25px*/
+nav a{
+    color: #444444;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+/*At når man hover over nogle af Anchors, så bliver de sorte*/
+nav a:hover {
+    color: #000;
+}
+/*laver en bar over de forskellige links, som kommer ind og ud*/
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #444;
+/*sætter position til absolute, så den bliver over vores anchor. og width til 0 så man ikke kan se den
+og top til 0, så den ligger i toppen  */
+    position: absolute;
+    top: 0;
+    width: 0%;
+/*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
+en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
+    transition: all ease-in-out 250ms;
+}
+/*Den gør at når man hover over funktionen, kommer baren frem igen, så når man hover så sætter jeg den lille bar til
+100% width*/
+nav a:hover::before {
+    width: 100%;
+}
