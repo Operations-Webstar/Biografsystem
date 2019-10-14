@@ -1,23 +1,26 @@
 /* Giver div1, en width, så vi får side koloner*/
 body {
+    /* bruger en gradient function, til at lave en "gradient" baggrund */
     margin: 0;
-    background: #000000;
-    background: -moz-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
-    background: -webkit-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
-    background: linear-gradient(to right, #000000 0%, #6A0000 50%, #000000 100%);got
+    background: #021634;
+    background: -moz-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
+    background: -webkit-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
+    background: linear-gradient(to right, #021634 0%, #000000 50%, #021634 100%);
 }
+
 /*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
 #div1{
     width:80%;
     margin: 0% auto;
     align-content: center;
+
 }
-/*Sætter baggrund farve*/
+/*Sætter headers farve, så den matcher baggrunden*/
 header {
-    background: #000000;
-    background: -moz-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
-    background: -webkit-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
-    background: linear-gradient(to right, #000000 0%, #6A0000 50%, #000000 100%);gotgi
+    background: #021634;
+    background: -moz-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
+    background: -webkit-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
+    background: linear-gradient(to right, #021634 0%, #000000 50%, #021634 100%);
 }
 /*bruger after funktionen, så den insetter headeren igen efter elementerne, så farven kommer frem */
 header::after {
