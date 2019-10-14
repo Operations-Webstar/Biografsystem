@@ -1,5 +1,12 @@
+
+
 /* Giver div1, en width, så vi får side koloner*/
 body {
+    background: #000000;
+    background: -moz-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
+    background: -webkit-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
+    background: linear-gradient(to right, #000000 0%, #6A0000 50%, #000000 100%);
+
     margin: 0;
 }
 /*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
@@ -16,6 +23,7 @@ header::after {
     content: '';
     display: table;
     clear: both;
+
 }
 /*laver nogle values, så logoet passer med teksten, derefter sætter positionen til relativ, så den passer i div*/
 #logo{
@@ -28,6 +36,7 @@ header::after {
 nav{
     float: left;
     padding: 10px 0;
+
 }
 /*Gør at den ul, mister margin oppe ved toppen, så den ikke har tomt rum der oppe, og padding til 0,
  så listen står tæt på hinanden. og list-style til none, så vi mister de runde punkter*/
