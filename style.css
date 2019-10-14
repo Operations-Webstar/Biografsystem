@@ -2,7 +2,7 @@
 body {
     /* bruger en gradient function, til at lave en "gradient" baggrund */
     margin: 0;
-    background: #021633;
+    background: #021634;
     background: -moz-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: -webkit-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: linear-gradient(to right, #021634 0%, #000000 50%, #021634 100%);
@@ -17,7 +17,7 @@ body {
 }
 /*Sætter headers farve, så den matcher baggrunden*/
 header {
-    background: #021633;
+    background: #021634;
     background: -moz-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: -webkit-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: linear-gradient(to right, #021634 0%, #000000 50%, #021634 100%);
