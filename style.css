@@ -35,14 +35,14 @@ header::after {
 /*får den til at floate til venstre, og padding til bund og top til 10px */
 nav{
     float: left;
-    padding: 0%;
+    padding: 0;
 }
 /*Gør at den ul, mister margin oppe ved toppen, så den ikke har tomt rum der oppe, og padding til 0,
  så listen står tæt på hinanden. og list-style til none, så vi mister de runde punkter. Whitespace er sådan den ikke
  breaker line*/
 nav ul {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
     list-style: none;
     white-space: nowrap;
 }
@@ -78,7 +78,7 @@ nav a::before {
 og top til 0, så den ligger i toppen  */
     position: absolute;
     top: -2%;
-    width: 0%;
+    width: 0;
 /*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
 en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
     transition: all ease-in-out 250ms;
