@@ -5,7 +5,7 @@ body {
     background: #000000;
     background: -moz-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
     background: -webkit-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
-    background: linear-gradient(to right, #000000 0%, #6A0000 50%, #000000 100%);
+    background: linear-gradient(to right, #000000 0%, #6A0000 50%, #000000 100%);got
 
     margin: 0;
 }
@@ -16,7 +16,10 @@ body {
 }
 /*Sætter baggrund farve*/
 header {
-    background: #5555dd;
+    background: #000000;
+    background: -moz-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
+    background: -webkit-linear-gradient(left, #000000 0%, #6A0000 50%, #000000 100%);
+    background: linear-gradient(to right, #000000 0%, #6A0000 50%, #000000 100%);got
 }
 /*bruger after funktionen, så den insetter headeren igen efter elementerne, så farven kommer frem */
 header::after {
