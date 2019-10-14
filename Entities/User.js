@@ -1,12 +1,11 @@
 //det her er klassen, som vi skal bruge i vores user, med de tilsvarende funktioner
 class user {
-    constructor(username, password, name, tlfNumber, dateOfBirth, userID) {
-        this.username = username;
+    constructor(password, name, tlfNumber, dateOfBirth, userID) {
         this.password = password;
         this.name = name;
         this.tlfNumber = tlfNumber;
-        this.dateOfBirth = age;
-        this.userID = number;
+        this.dateOfBirth = dateOfBirth;
+        this.userID = userID;
     }
     function bookSeat(){};
     function cancelSeat(){};
