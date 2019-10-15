@@ -7,19 +7,11 @@ class user {
         this.dateOfBirth = dateOfBirth;
         this.userID = userID;
     }
-    function bookSeat(){
-
-    };
-    function cancelSeat(){
-
-    };
-    function logIn(){
-
-    };
-    function logOut(){
-
-    };
-    function checkMovies(){
-
-    };
+    //function bookSeat(){};
+    //function cancelSeat(){};
+    //function logIn(){};
+    //function logOut(){};
+    //function checkMovies(){};
 }
+var Thomas = new user('Thomas', 'Thomas', 1, '1996-02-19', 1)
+module.exports = user
