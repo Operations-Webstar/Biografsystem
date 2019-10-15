@@ -7,9 +7,19 @@ class user {
         this.dateOfBirth = dateOfBirth;
         this.userID = userID;
     }
-    function bookSeat(){};
-    function cancelSeat(){};
-    function logIn(){};
-    function logOut(){};
-    function checkMovies(){};
+    function bookSeat(){
+
+    };
+    function cancelSeat(){
+
+    };
+    function logIn(){
+
+    };
+    function logOut(){
+
+    };
+    function checkMovies(){
+
+    };
 }

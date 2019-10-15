@@ -30,8 +30,8 @@ header::after {
 }
 /*laver nogle values, så logoet passer med teksten, derefter sætter positionen til relativ, så den passer i div*/
 #logo{
-    height: 5%;
-    width: 5%;
+    height: 4%;
+    width: 4%;
     float: left;
     position: relative;
 }
@@ -59,7 +59,7 @@ nav li {
     position: relative;
 }
 /*sætter farven på teksten, ingen decoration, så mister vi default decoration og transformere teksten til uppercase
-og sætter font-size til 25px*/
+og sætter font-size til 135%*/
 nav a{
     color: #444444;
     text-decoration: none;

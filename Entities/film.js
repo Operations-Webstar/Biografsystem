@@ -1,15 +1,13 @@
 class film {
     constructor(filmName, filmId, genre, threeD, ageRestriction) {
-        this.filmName = firstName;
+        this.filmName = filmName;
         this.filmId = filmId;
         this.genre = genre;
         this.threeD = threeD;
-        this.ageRestriction;
-
+        this.ageRestriction = ageRestriction;
 }
-
-function ageCheck () {
-    console.log ("hej");
+ageCheck(){
+        var today=
+        var age = document.getElementById();
     }
-
 }
