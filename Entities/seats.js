@@ -1,9 +1,9 @@
 // Her laves klassen seats med de korrekte attributer og metoder
-class Seats {
+class seats {
     constructor(Id, hallId) {
         this.Id = Id;
         this.hallId = hallId;
     }
-    function findSeat(){}
-    function isAvailable(){}
+    findSeat(){}
+    isAvailable(){}
 }
