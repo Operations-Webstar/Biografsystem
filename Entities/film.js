@@ -42,3 +42,11 @@ ageCheck(film, user){
 let Thomas = new user(1, 'Thomas',1,'2005-02-19', 1);
 let joker = new film('joker', 2 , 'horror', true, 18);
 console.log(new film().ageCheck(joker, Thomas));
+
+var joker = new film ("Joker", 2, "krimi, thriller",false, 15)
+
+var onceInHollywood = new film ("Once Upon a Time... in Hollywood", 3, "komedie, drama", false, 15)
+
+var  it2 = new film ( "IT 2", 4, "gyser", false, 15)
+
+var avengers = new film ( "Avengers Endgame", 5,"action, adventure", true, 11)
