@@ -1,3 +1,10 @@
+.column {
+    float: left;
+    width: 17%;
+    padding: 15px;
+    position: left;
+}
+
 /* Giver div1, en width, så vi får side koloner*/
 body {
     /* bruger en gradient function, til at lave en "gradient" baggrund */
@@ -77,13 +84,13 @@ nav a::before {
     display: block;
     height: 10%;
     background-color: #444;
-/*sætter position til absolute, så den bliver over vores anchor. og width til 0 så man ikke kan se den
-og top til 0, så den ligger i toppen  */
+    /*sætter position til absolute, så den bliver over vores anchor. og width til 0 så man ikke kan se den
+    og top til 0, så den ligger i toppen  */
     position: absolute;
     top: -2%;
     width: 0;
-/*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
-en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
+    /*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
+    en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
     transition: all ease-in-out 250ms;
 }
 /*Den gør at når man hover over funktionen, kommer baren frem igen, så når man hover så sætter jeg den lille bar til
