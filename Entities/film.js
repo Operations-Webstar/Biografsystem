@@ -9,7 +9,7 @@ class film {
     getAge(dateOfBirth){
         //finder både idags dato, og finder userindsat date her
         let today = new Date();
-        let birthDate = new Date(dateOfBirth);
+        let birthDate = new user().dateOfBirth;
         //sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
         var age = today.getFullYear() - birthDate.getFullYear();
         //sætter m lig med nuværende måned - fødselsdags måned
@@ -24,6 +24,7 @@ class film {
     }
 
 ageCheck(ageRestriction){
+    var ageRestriction = new film().ageRestriction
     if(ageRestriction <= new film().getAge("1996-02-19")) {
         return true
     } else {
@@ -31,5 +32,6 @@ ageCheck(ageRestriction){
     }
 }
 }
-console.log(new film().ageCheck(13))
 
+new user(12, 'Thomas', 12, 1996-02-19, 12 )
+new film()
