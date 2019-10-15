@@ -1,19 +1,19 @@
 /* Giver div1, en width, så vi får side koloner*/
 body {
     /* bruger en gradient function, til at lave en "gradient" baggrund */
-    font: 15px/1.5 Arial;
     margin: 0;
-    padding: 0;
-    background-color: #021634;
+    background: #021634;
     background: -moz-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: -webkit-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: linear-gradient(to right, #021634 0%, #000000 50%, #021634 100%);
 }
 
-/*Sætter div1 = 80% i width og sætter margin til auto, så den går ind i midten*/
-.div1{
+/*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
+#div1{
     width:80%;
-    margin: auto;
+    margin: 0% auto;
+    align-content: center;
+
 }
 /*Sætter headers farve, så den matcher baggrunden*/
 header {
@@ -21,9 +21,6 @@ header {
     background: -moz-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: -webkit-linear-gradient(left, #021634 0%, #000000 50%, #021634 100%);
     background: linear-gradient(to right, #021634 0%, #000000 50%, #021634 100%);
-    color: aliceblue;
-    padding-top: 15px;
-    min-height: 10%;
 }
 /*bruger after funktionen, så den insetter headeren igen efter elementerne, så farven kommer frem */
 header::after {
@@ -80,13 +77,13 @@ nav a::before {
     display: block;
     height: 10%;
     background-color: #444;
-/*sætter position til absolute, så den bliver over vores anchor. og width til 0 så man ikke kan se den
-og top til 0, så den ligger i toppen  */
+    /*sætter position til absolute, så den bliver over vores anchor. og width til 0 så man ikke kan se den
+    og top til 0, så den ligger i toppen  */
     position: absolute;
     top: -2%;
     width: 0;
-/*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
-en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
+    /*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
+    en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
     transition: all ease-in-out 250ms;
 }
 /*Den gør at når man hover over funktionen, kommer baren frem igen, så når man hover så sætter jeg den lille bar til
@@ -94,4 +91,3 @@ en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effe
 nav a:hover::before {
     width: 100%;
 }
-
