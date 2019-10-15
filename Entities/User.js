@@ -13,5 +13,10 @@ class user {
     //function logOut(){};
     //function checkMovies(){};
 }
-var Thomas = new user('Thomas', 'Thomas', 1, '1996-02-19', 1)
+
+let Thomas = new user('Thomas', 'Thomas', 1, '1996-02-19', 1);
+
+
 module.exports = user
+
+
