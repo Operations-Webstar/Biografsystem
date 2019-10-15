@@ -12,9 +12,6 @@ class film {
     }
 }
 
-let Eventyr = new Film(`Eventyr`){
-    filmName = Felix På Eventyr;
-    filmId = Eventyr
-    genre = Børnefilm
-    threeD =
+let Eventyr = new Film(`felix`, '1', 'kids', 'false', '8'){
+
 }
