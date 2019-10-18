@@ -1,13 +1,12 @@
 /* Giver div1, en width, så vi får side koloner*/
 body {
     /* bruger en gradient function, til at lave en "gradient" baggrund */
-    margin: 0;
+    margin: auto;
     background: #FFFFFF;
 }
 
 /*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
 .container{
-    width:80%;
     margin: auto;
     align-content: center;
     padding-top: 20px;
@@ -100,6 +99,8 @@ nav a:hover::before {
 
 section{
     background: #444444;
+    width: 80%;
+
 }
 
 h1{

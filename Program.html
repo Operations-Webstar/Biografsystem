@@ -27,6 +27,36 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu luctus ipsum, rhoncus semper magna. Nulla nec magna sit amet sem interdum condimentum.</p>
     </div>
 </section>
+<!-- Laver en autoplayer der viser fire billeder med HTML og java -->
+<img name="slide" width="400" height="200" />
+<script> var i = 0; 			// Laver variabel i med værdi 0 / startpointen for min array, som vi looper igennem
+var images = [];	// Laver en tom array
+var time = 2000;	// Laver en variabel der bestemmer tiden i mikrosekunder mellem hvert billede
 
+// Udfylder arrayen, med online billeder
+images[0] = "https://o.aolcdn.com/images/dims?quality=85&image_uri=https%3A%2F%2Fo.aolcdn.com%2Fimages%2Fdims%3Fcrop%3D2800%252C1680%252C0%252C0%26quality%3D85%26format%3Djpg%26resize%3D1600%252C960%26image_uri%3Dhttp%253A%252F%252Fo.aolcdn.com%252Fhss%252Fstorage%252Fmidas%252Fec099838a88c189b8e19a4bb6e884708%252F205944339%252Ftheater-hall-with-red-seat-and-wide-blank-white-screen-picture-id665294144%26client%3Da1acac3e1b3290917d92%26signature%3Dde8e1e9cc228854ed73f16bfaca4863d2cfbc0e6&client=amp-blogside-v2&signature=fc8e6decbc764bdc6e061a8c9653fefaa6e73ce4";
+images[1] = "https://gamespot1.cbsistatic.com/uploads/original/1557/15576725/3574194-joker.jpg";
+images[2] = "https://bloody-disgusting.com/wp-content/uploads/2019/06/once-upon.png";
+images[3] = "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fbennyhareven%2Ffiles%2F2019%2F02%2FDolby-Cinema-Pic-1200x798.jpg";
+
+// Laver en funktion med et dokument der henviser tilbage til HTML attributen "slide"
+function changeImg(){
+    document.slide.src = images[i];
+
+
+    if(i < images.length - 1){
+
+        i++;
+    } else {
+        // Gør at den starter forfra når listen er kørt igennem
+        i = 0;
+    }
+
+    // Kører funktionen alt efter hvilken værdi time har
+    setTimeout("changeImg()", time);
+}
+
+// Kører funktionen når siden loader
+window.onload=changeImg;</script>
 </body>
 </html>
