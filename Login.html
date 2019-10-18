@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Din biobooker</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <img src="Billeder/Logo.png" alt="logo" id="logo">
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="Program.html">Program</a></li>
+                <li><a href="Film.html">Film</a></li>
+                <li><a href="Mine_bookninger.html">Mine bookninger</a></li>
+                <li><a href="Om.html">Om</a></li>
+                <li><a class="log" href="Login.html">Login</a></li>
+                <li><a class="log" href="Opret_bruger.html">Sign up</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<section class="midt">
+    <div class="container">
+        <h1>Log in</h1>
+        <form id="logIn">
+            <input type="text" id="enteredFirstName" value="" placeholder="Your name"/>
+            <input type="text" id="enteredPassword" value="" placeholder="password"/>
+            <input type="submit" id="login_button" value="login" onclick="checkLogin">
+        </form>
+    </div>
+</section>
+<script type="text/javascript" src="Entities/Login.js"></script>
+</body>
+</html>
