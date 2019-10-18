@@ -3,8 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+    <img src="Billeder/Logo.png" alt="logo" id="logo">
+    <div id="div1">
+        <nav>
+            <ul>
+                <li><a href="Program.html">Program</a></li>
+                <li><a href="Film.html">Film</a></li>
+                <li><a href="Mine_bookninger.html">Mine bookninger</a></li>
+                <li><a href="Om.html">Om</a></li>
+                <li><a class="log" href="Login.html">Login</a></li>
+                <li><a class="log" href="Opret_bruger.html">Sign up</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
+<form name="userCreation" onsubmit="return createUser()" method="get">
+<br/>
+Fornavn:
+<br/>
+<input type="text" id="firstName" value="" placeholder="Your first name"/>
+<br/>
+<br/>
+Efternavn:
+<br/>
+<input type="text" id="lastName" value="" placeholder="Your last name"/>
+<br/>
+<br/>
+Telefonnummer:
+<br/>
+<input type="text" id="phoneNumber" value="" placeholder="Phone number"/>
+<br/>
+<br/>
+Fødselsdag:
+<br/>
+<input type="date" id="bday" value="" placeholder="Your name"/>
+<br/>
+<br/>
+Password:
+<br/>
+<input type="text" id="password" value="" placeholder="Your password"/>
+<br/>
+<br/>
+<button type="submit" >Create User</button>
+    </form>
+    <script type="text/javascript" src="Entities/User.js"></script>
 </body>
 </html>

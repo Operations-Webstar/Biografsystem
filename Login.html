@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Din biobooker</title>
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
     <img src="Billeder/Logo.png" alt="logo" id="logo">
-    <div id="container">
+    <div class="container">
         <nav>
             <ul>
                 <li><a href="Program.html">Program</a></li>
@@ -23,10 +23,16 @@
 </header>
 <section class="midt">
     <div class="container">
-        <h1>Velkommen til din Biobooker</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu luctus ipsum, rhoncus semper magna. Nulla nec magna sit amet sem interdum condimentum.</p>
+        <h1>Log in</h1>
+        <form id="logIn">
+            <input type="text" id="enteredFirstName" value="" placeholder="Your name"/>
+            <input type="text" id="enteredPassword" value="" placeholder="password"/>
+            <input type="submit" id="login_button" value="login" onclick="checkLogin()">
+            <input type="button" id="sign_out" value="sign out" onclick="signOut()">
+        </form>
+
     </div>
 </section>
-
+<script type="text/javascript" src="Entities/Login.js"></script>
 </body>
 </html>
