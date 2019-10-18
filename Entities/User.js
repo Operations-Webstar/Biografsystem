@@ -65,7 +65,7 @@ class user {
      if (form_valid == false) {
          alert(validation_message);
      } else {
-
+         storeLogin()
          alert("Hi " + name
              + "\nRating: " + userRating
              + "\nOrganization: " + org
@@ -76,7 +76,17 @@ class user {
  }
 
 
+function storeLogin()
+{
+    localStorage.setItem('firstName', firstName.value);
+    localStorage.setItem('lastName', lastName.value);
+    localStorage.setItem('password', password.value);
+    localStorage.setItem('tlfNumber', tlfNumber.value);
+    localStorage.setItem('dateOfBirth', dateOfbirth.value);
+    localStorage.setItem('password', password.value);
 
+    window.location(index.html)
+}
 
 
 let Thomas = new user('Thomas', 'Thomas', 1, '1996-02-19', 1);
