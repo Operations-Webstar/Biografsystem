@@ -18,4 +18,3 @@ function checkLogin()
 function signOut() {
     localStorage.setItem('logInStatus', 'false')
 }
-
