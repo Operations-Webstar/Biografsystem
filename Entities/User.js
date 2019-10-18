@@ -14,12 +14,12 @@ class user {
     //function logOut(){};
     //function checkMovies(){};
 }
-
 var firstName = document.getElementById('firstName').value;
 var lastName = document.getElementById('lastName').value;
 var phone = document.getElementById('phoneNumber').value;
 var birthday = new Date(document.getElementById('bday').value);
 var password = document.getElementById('password').value;
+
  function createUser() {
      let form_valid =true;
      let validation_message ="";
@@ -82,8 +82,8 @@ function storeLogin()
     localStorage.setItem('firstName', firstName.value);
     localStorage.setItem('lastName', lastName.value);
     localStorage.setItem('password', password.value);
-    localStorage.setItem('tlfNumber', tlfNumber.value);
-    localStorage.setItem('dateOfBirth', dateOfbirth.value);
+    localStorage.setItem('tlfNumber', phone.value);
+    localStorage.setItem('dateOfBirth', birthday.value);
     localStorage.setItem('password', password.value);
 
     window.location(index.html)
