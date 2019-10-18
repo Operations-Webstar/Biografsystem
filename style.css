@@ -8,9 +8,9 @@ body {
 /*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
 .container{
     width:80%;
-    margin: 0 auto;
+    margin: auto;
     align-content: center;
-
+    padding-top: 20px;
 }
 /*Sætter headers farve, så den matcher baggrunden*/
 header {
@@ -100,4 +100,9 @@ nav a:hover::before {
 
 section{
     background: #444444;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
 }
