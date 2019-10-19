@@ -14,16 +14,15 @@ class user {
     //function logOut(){};
     //function checkMovies(){};
 }
-var firstName = document.getElementById('firstName').value;
-var lastName = document.getElementById('lastName').value;
-var phone = document.getElementById('phoneNumber').value;
-var birthday = new Date(document.getElementById('bday').value);
-var password = document.getElementById('password').value;
 
  function createUser() {
      let form_valid =true;
      let validation_message ="";
-
+     let firstName = document.getElementById('firstName').value;
+     let lastName = document.getElementById('lastName').value;
+     let phone = document.getElementById('phoneNumber').value;
+     let birthday = new Date(document.getElementById('bday').value);
+     let password = document.getElementById('password').value;
 
      if (firstName == null || firstName=="") {
          validation_message += "First name must be filled in! \n";
@@ -52,7 +51,6 @@ var password = document.getElementById('password').value;
      console.log(birthday);
      console.log(birthday==new Date());
      if(birthday == 'Invalid Date') {
-
          validation_message += "insert a real date\n"
          form_valid = false;
      }
@@ -66,19 +64,27 @@ var password = document.getElementById('password').value;
      if (form_valid == false) {
          alert(validation_message);
      } else {
-         storeLogin()
          alert("Hi " + name
              + "\nRating: " + userRating
              + "\nOrganization: " + org
              + "\nPhone: " + phone
              + "\nEmail: " + email
              + "\nYour Comment: " + addCom
-             + "\nYour requested date to be contacted: " + fullDate); }
+             + "\nYour requested date to be contacted: " + fullDate);
+         storeLogin()
+     }
  }
 
 
 function storeLogin()
 {
+
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
+    let phone = document.getElementById('phoneNumber').value;
+    let birthday = new Date(document.getElementById('bday').value);
+    let password = document.getElementById('password').value;
+
     localStorage.setItem('firstName', firstName.value);
     localStorage.setItem('lastName', lastName.value);
     localStorage.setItem('password', password.value);
@@ -86,7 +92,7 @@ function storeLogin()
     localStorage.setItem('dateOfBirth', birthday.value);
     localStorage.setItem('password', password.value);
 
-    window.location.href = "index.html"
+    window.location.href = "index.html";
 }
 
 

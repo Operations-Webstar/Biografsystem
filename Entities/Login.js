@@ -8,8 +8,8 @@ function checkLogin()
     let enteredPassword = document.getElementById('enteredPassword');
 
     if (enteredName.value === storedName && enteredPassword.value === storedPassword) {
-        localStorage.setItem('logInStatus', 'true')
-        window.location.href = "index.html"
+        localStorage.setItem('logInStatus', 'true');
+        window.location.href = "index.html";
     } else {
         alert('wrong pass or user')
     }
