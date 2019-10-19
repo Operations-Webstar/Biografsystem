@@ -86,7 +86,7 @@ function storeLogin()
     localStorage.setItem('dateOfBirth', birthday.value);
     localStorage.setItem('password', password.value);
 
-    window.location(index.html)
+    window.location.href = "index.html"
 }
 
 

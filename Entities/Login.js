@@ -9,7 +9,7 @@ function checkLogin()
 
     if (enteredName.value === storedName && enteredPassword.value === storedPassword) {
         localStorage.setItem('logInStatus', 'true')
-        window.location.href (index.html)
+        window.location.href = "index.html"
     } else {
         alert('wrong pass or user')
     }
