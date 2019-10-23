@@ -16,16 +16,8 @@ class user {
     //function logOut(){};
     //function checkMovies(){};
 }
-let storedUsers = [];
-if(localStorage.getItem("users") == null) {
-    storedUsers.push(new user ('Thomas', 'Lindskov', 23423223, '01-01-1994', 'hejsa'))
 
-} else {
-    storedUsers = JSON.parse(localStorage.getItem('users'))
-}
-console.log(storedUsers)
 
-debugger
 
 function createUser() {
     let form_valid =true;
@@ -82,14 +74,23 @@ function createUser() {
 
 function storeLogin(){
 
+    let storedUsers = [];
+    if(localStorage.getItem("users") == null) {
+        storedUsers.push(new user ('Thomas', 'Lindskov', 23423223, '01-01-1994', 'hejsa'))
+
+    } else {
+        storedUsers = JSON.parse(localStorage.getItem('users'))
+    }
+
     storedUsers.push(new user(document.getElementById('firstName').value,
         document.getElementById('lastName').value,
         document.getElementById('phoneNumber').value,
         new Date(document.getElementById('bday').value),
         document.getElementById('password').value));
     console.log(storedUsers)
-    debugger
+  debugger
     localStorage.setItem('users', JSON.stringify(storedUsers))
+
 
 }
 
