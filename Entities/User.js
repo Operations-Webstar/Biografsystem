@@ -88,7 +88,6 @@ function storeLogin(){
         new Date(document.getElementById('bday').value),
         document.getElementById('password').value));
     console.log(storedUsers)
-  debugger
     localStorage.setItem('users', JSON.stringify(storedUsers))
 
 
