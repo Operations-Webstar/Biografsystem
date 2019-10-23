@@ -1,5 +1,7 @@
 //det her er klassen, som vi skal bruge i vores user, med de tilsvarende funktioner
 /*eslint-env browser*/
+
+
 class user {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password) {
         this.firstName = firstName;
@@ -14,6 +16,16 @@ class user {
     //function logOut(){};
     //function checkMovies(){};
 }
+let storedUsers = [];
+if (localStorage.getItem("users") == null) {
+    storedUsers.push(new user ('Thomas', 'Lindskov', 23423223, '01-01-1994', 'hejsa'))
+
+} else {
+    storedUsers = JSON.parse(localStorage.getItem('users'))
+}
+console.log(storedUsers)
+
+debugger
 
  function createUser() {
      let form_valid =true;
@@ -68,24 +80,20 @@ class user {
  }
 
 
-function storeLogin()
-{
-    let firstName = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let phone = document.getElementById('phoneNumber').value;
-    let birthday = new Date(document.getElementById('bday').value);
-    let password = document.getElementById('password').value;
+function storeLogin(){
 
-    localStorage.setItem('firstName', firstName);
-    localStorage.setItem('lastName', lastName);
-    localStorage.setItem('password', password);
-    localStorage.setItem('tlfNumber', phone);
-    localStorage.setItem('dateOfBirth', birthday.value);
+    storedUsers.push(new user(document.getElementById('firstName').value,
+        document.getElementById('lastName').value,
+        document.getElementById('phoneNumber').value,
+        new Date(document.getElementById('bday').value),
+        document.getElementById('password').value));
+    console.log(storedUsers)
+debugger
+    localStorage.setItem('users', JSON.stringify(storedUsers))
 
 }
 
 
-let Thomas = new user('Thomas', 'Thomas', 1, '1996-02-19', 1);
 
 
 
