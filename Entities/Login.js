@@ -9,12 +9,15 @@ function checkLogin()
 
     if (enteredName.value === storedName && enteredPassword.value === storedPassword) {
         localStorage.setItem('logInStatus', 'true');
-        window.location.href = "index.html";
+        console.log(1)
+        window.location.href = 'index.html';
+        console.log(2)
     } else {
-        alert('wrong pass or user')
+        alert('wrong pass or user');
     }
 }
 
 function signOut() {
-    localStorage.setItem('logInStatus', 'false')
+    localStorage.setItem('logInStatus', 'false');
+    localStorage.clear()
 }
