@@ -13,15 +13,23 @@ console.log(seatCheckbox.length)
 
 reserveSeatsButton.onclick = function(){
 
-    for(i=0; i < seatCheckbox.length; i++){
-        if(seatCheckbox[i].checked == true){
-            document.location.href = 'Kurv.html'
-            alert(seatCheckbox[i].id)
-           // document.location.href = 'Kurv.html'
+    // Her tjekker den om der er er nogen af check-boksene der er cheked
+
+
+            for(i=0; i < seatCheckbox.length; i++){
+                if(seatCheckbox[i].checked == true){
+                    document.location.href = 'Mine_bookninger.html'
+                    alert("Du har nu reserveret: "+ seatCheckbox[i].id)
+
+                    /*else if {
+                        alert("Hov! Du mangler at angive hvilke sæder du ønsker at reservere")     */
+
+                    }
+
+
         }
     }
 
-}
 
 
 /*
