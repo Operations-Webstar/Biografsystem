@@ -76,7 +76,7 @@ function storeLogin(){
 
     let storedUsers = [];
     if(localStorage.getItem("users") == null) {
-        storedUsers.push(new user ('Thomas', 'Lindskov', 23423223, '01-01-1994', 'hejsa'))
+        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '01-01-1994', 'hejsa'))
 
     } else {
         storedUsers = JSON.parse(localStorage.getItem('users'))
