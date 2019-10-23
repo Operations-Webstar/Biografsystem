@@ -17,7 +17,7 @@ class user {
     //function checkMovies(){};
 }
 let storedUsers = [];
-if (localStorage.getItem("users") == null) {
+if(localStorage.getItem("users") == null) {
     storedUsers.push(new user ('Thomas', 'Lindskov', 23423223, '01-01-1994', 'hejsa'))
 
 } else {
@@ -27,57 +27,57 @@ console.log(storedUsers)
 
 debugger
 
- function createUser() {
-     let form_valid =true;
-     let validation_message ="";
-     let firstName = document.getElementById('firstName').value;
-     let lastName = document.getElementById('lastName').value;
-     let phone = document.getElementById('phoneNumber').value;
-     let birthday = new Date(document.getElementById('bday').value);
-     let password = document.getElementById('password').value;
+function createUser() {
+    let form_valid =true;
+    let validation_message ="";
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
+    let phone = document.getElementById('phoneNumber').value;
+    let birthday = new Date(document.getElementById('bday').value);
+    let password = document.getElementById('password').value;
 
-     if (firstName == null || firstName=="") {
-         validation_message += "First name must be filled in! \n";
-         form_valid = false;
-     }
+    if (firstName == null || firstName=="") {
+        validation_message += "First name must be filled in! \n";
+        form_valid = false;
+    }
 
-     if (lastName == null || lastName=="") {
-         validation_message += "Last name must be filled in! \n";
-         form_valid = false;
-     }
-
-
-
-     if (phone == ""){
-         validation_message += "Please enter a phone number \n"
-         form_valid = false;
-     } else if (isNaN(phone) ) {
-         validation_message += "Phone numbers can only contain numbers! \n"
-         form_valid = false
-     } else if (phone.length!=8){
-         validation_message += "Phone numbers can only have a length of 8 \n"
-         form_valid = false;
-     }
+    if (lastName == null || lastName=="") {
+        validation_message += "Last name must be filled in! \n";
+        form_valid = false;
+    }
 
 
-     console.log(birthday);
-     console.log(birthday==new Date());
-     if(birthday == 'Invalid Date') {
-         validation_message += "insert a real date\n"
-         form_valid = false;
-     }
 
-     if ((password == null || password=="") && password.length < 3) {
-         validation_message += "your password must be longer than 3 characters \n";
-         form_valid = false;
-     }
+    if (phone == ""){
+        validation_message += "Please enter a phone number \n"
+        form_valid = false;
+    } else if (isNaN(phone) ) {
+        validation_message += "Phone numbers can only contain numbers! \n"
+        form_valid = false
+    } else if (phone.length!=8){
+        validation_message += "Phone numbers can only have a length of 8 \n"
+        form_valid = false;
+    }
 
-     if (form_valid === false) {
-         alert(validation_message);
-     } else {
-         storeLogin()
-     }
- }
+
+    console.log(birthday);
+    console.log(birthday==new Date());
+    if(birthday == 'Invalid Date') {
+        validation_message += "insert a real date\n"
+        form_valid = false;
+    }
+
+    if ((password == null || password=="") && password.length < 3) {
+        validation_message += "your password must be longer than 3 characters \n";
+        form_valid = false;
+    }
+
+    if (form_valid === false) {
+        alert(validation_message);
+    } else {
+        storeLogin()
+    }
+}
 
 
 function storeLogin(){
@@ -88,11 +88,10 @@ function storeLogin(){
         new Date(document.getElementById('bday').value),
         document.getElementById('password').value));
     console.log(storedUsers)
-debugger
+    debugger
     localStorage.setItem('users', JSON.stringify(storedUsers))
 
 }
-
 
 
 
