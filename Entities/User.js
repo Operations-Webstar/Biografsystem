@@ -54,23 +54,15 @@ class user {
          validation_message += "insert a real date\n"
          form_valid = false;
      }
-     debugger
 
      if ((password == null || password=="") && password.length < 3) {
          validation_message += "your password must be longer than 3 characters \n";
          form_valid = false;
      }
 
-     if (form_valid == false) {
+     if (form_valid === false) {
          alert(validation_message);
      } else {
-         alert("Hi " + name
-             + "\nRating: " + userRating
-             + "\nOrganization: " + org
-             + "\nPhone: " + phone
-             + "\nEmail: " + email
-             + "\nYour Comment: " + addCom
-             + "\nYour requested date to be contacted: " + fullDate);
          storeLogin()
      }
  }
@@ -78,21 +70,18 @@ class user {
 
 function storeLogin()
 {
-
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let phone = document.getElementById('phoneNumber').value;
     let birthday = new Date(document.getElementById('bday').value);
     let password = document.getElementById('password').value;
 
-    localStorage.setItem('firstName', firstName.value);
-    localStorage.setItem('lastName', lastName.value);
-    localStorage.setItem('password', password.value);
-    localStorage.setItem('tlfNumber', phone.value);
+    localStorage.setItem('firstName', firstName);
+    localStorage.setItem('lastName', lastName);
+    localStorage.setItem('password', password);
+    localStorage.setItem('tlfNumber', phone);
     localStorage.setItem('dateOfBirth', birthday.value);
-    localStorage.setItem('password', password.value);
 
-    window.location.href = "index.html";
 }
 
 
