@@ -1,7 +1,9 @@
+// til login pagen
+/*eslint-env browser*/
 
 function checkLogin()
 {
-    let logInStatus = false
+    let logInStatus = false;
     let enteredName = document.getElementById('enteredFirstName').value.toString();
     let enteredPassword = document.getElementById('enteredPassword').value;
     let storedUsers = JSON.parse(localStorage.getItem('users'));
@@ -21,5 +23,18 @@ function checkLogin()
 
 
 function signOut() {
-    localStorage.clear();
+    localStorage.setItem('logInStatus', 'false');
+}
+
+function clearStorage(){
+    localStorage.clear()
+}
+// til når man er logget ind
+console.log(localStorage.getItem('logInStatus'))
+if(localStorage.getItem('logInStatus') == 'true'){
+
+    document.getElementById("log").style.display = "none";
+    document.getElementById("log1").style.display = "none";
+} else if(localStorage.getItem('logInStatus') == 'false'){
+    document.getElementById('log2').style.display  = "none";
 }
