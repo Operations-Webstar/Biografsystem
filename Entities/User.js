@@ -27,6 +27,13 @@ function createUser() {
     let phone = document.getElementById('phoneNumber').value;
     let birthday = new Date(document.getElementById('bday').value);
     let password = document.getElementById('password').value;
+    let storedUsers = [];
+
+    if(localStorage.getItem("users") == null) {
+        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '01-01-1994', 'hejsa'))
+    } else {
+        storedUsers = JSON.parse(localStorage.getItem('users'))
+    }
 
     if (firstName == null || firstName=="") {
         validation_message += "First name must be filled in! \n";
@@ -37,7 +44,6 @@ function createUser() {
         validation_message += "Last name must be filled in! \n";
         form_valid = false;
     }
-
 
 
     if (phone == ""){
@@ -52,8 +58,6 @@ function createUser() {
     }
 
 
-    console.log(birthday);
-    console.log(birthday==new Date());
     if(birthday == 'Invalid Date') {
         validation_message += "insert a real date\n"
         form_valid = false;
@@ -64,33 +68,13 @@ function createUser() {
         form_valid = false;
     }
 
-    if (form_valid === false) {
+    if (form_valid === true) {
+        storedUsers.push(new user(firstName, lastName, phone, birthday, password));
+        localStorage.setItem('users', JSON.stringify(storedUsers));
+        localStorage.setItem('logInStatus', 'false')
+    } else {
         alert(validation_message);
-    } else {
-        storeLogin()
     }
-}
-
-
-function storeLogin(){
-
-    let storedUsers = [];
-    if(localStorage.getItem("users") == null) {
-        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '01-01-1994', 'hejsa'))
-
-    } else {
-        storedUsers = JSON.parse(localStorage.getItem('users'))
-    }
-
-    storedUsers.push(new user(document.getElementById('firstName').value,
-        document.getElementById('lastName').value,
-        document.getElementById('phoneNumber').value,
-        new Date(document.getElementById('bday').value),
-        document.getElementById('password').value));
-    console.log(storedUsers)
-    localStorage.setItem('users', JSON.stringify(storedUsers))
-
-
 }
 
 

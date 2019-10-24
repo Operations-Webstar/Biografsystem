@@ -1,8 +1,7 @@
 // til login pagen
 /*eslint-env browser*/
 
-function checkLogin()
-{
+function checkLogin() {
     let logInStatus = false;
     let enteredName = document.getElementById('enteredFirstName').value.toString();
     let enteredPassword = document.getElementById('enteredPassword').value;
@@ -19,9 +18,6 @@ function checkLogin()
         alert('wrong user or pass')
     }
 }
-
-
-
 function signOut() {
     localStorage.setItem('logInStatus', 'false');
 }
