@@ -31,6 +31,6 @@ if(localStorage.getItem('logInStatus') == 'true'){
 
     document.getElementById("log").style.display = "none";
     document.getElementById("log1").style.display = "none";
-} else if(localStorage.getItem('logInStatus') == 'false'){
+} else if(localStorage.getItem('logInStatus') == 'false'|| localStorage.getItem('logInStatus') == null){
     document.getElementById('log2').style.display  = "none";
 }
