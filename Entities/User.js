@@ -29,11 +29,6 @@ function createUser() {
     let password = document.getElementById('password').value;
     let storedUsers = [];
 
-    if(localStorage.getItem("users") == null) {
-        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '19-02-1996', 'hejsa'))
-    } else {
-        storedUsers = JSON.parse(localStorage.getItem('users'))
-    }
 
     if (firstName == null || firstName=="") {
         validation_message += "First name must be filled in! \n";
@@ -67,6 +62,12 @@ function createUser() {
     if ((password == null || password=="") && password.length < 3) {
         validation_message += "your password must be longer than 3 characters \n";
         form_valid = false;
+    }
+
+    if(localStorage.getItem("users") == null) {
+        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '19-02-1996', 'hejsa'))
+    } else {
+        storedUsers = JSON.parse(localStorage.getItem('users'))
     }
 
     if (form_valid === true) {
