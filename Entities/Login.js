@@ -1,4 +1,4 @@
-
+let logInStatus = false
 function checkLogin()
 {
     let enteredName = document.getElementById('enteredFirstName').value.toString();
@@ -8,12 +8,16 @@ function checkLogin()
         if (enteredName == storedUsers[i].tlfNumber && enteredPassword == storedUsers[i].password){
             localStorage.setItem('logInStatus', 'true');
             window.location.href = 'index.html';
-        }
-         else {
-            alert('wrong pass or user');
+            logInStatus = true;
+            break;
         }
     }
+    if(logInStatus == false){
+        alert('wrong user or pass')
+    }
 }
+
+
 
 function signOut() {
     localStorage.clear();
