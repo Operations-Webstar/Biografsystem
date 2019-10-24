@@ -1,6 +1,7 @@
-let logInStatus = false
+
 function checkLogin()
 {
+    let logInStatus = false
     let enteredName = document.getElementById('enteredFirstName').value.toString();
     let enteredPassword = document.getElementById('enteredPassword').value;
     let storedUsers = JSON.parse(localStorage.getItem('users'));
