@@ -30,7 +30,7 @@ function createUser() {
     let storedUsers = [];
 
     if(localStorage.getItem("users") == null) {
-        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '01-01-1994', 'hejsa'))
+        storedUsers.push(new user ('Thomas', 'Lindskov', 30110976, '19-02-1996', 'hejsa'))
     } else {
         storedUsers = JSON.parse(localStorage.getItem('users'))
     }
@@ -47,17 +47,18 @@ function createUser() {
 
 
     if (phone == ""){
-        validation_message += "Please enter a phone number \n"
+        validation_message += "Please enter a phone number \n";
         form_valid = false;
     } else if (isNaN(phone) ) {
-        validation_message += "Phone numbers can only contain numbers! \n"
+        validation_message += "Phone numbers can only contain numbers! \n";
         form_valid = false
     } else if (phone.length!=8){
-        validation_message += "Phone numbers can only have a length of 8 \n"
+        validation_message += "Phone numbers can only have a length of 8 \n";
         form_valid = false;
     }
 
-
+    console.log(birthday);
+    console.log(birthday==new Date());
     if(birthday == 'Invalid Date') {
         validation_message += "insert a real date\n"
         form_valid = false;
