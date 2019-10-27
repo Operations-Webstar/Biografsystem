@@ -1,7 +1,6 @@
 //det her er klassen, som vi skal bruge i vores user, med de tilsvarende funktioner
 /*eslint-env browser*/
 
-
 class user {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password) {
         this.firstName = firstName;
@@ -77,6 +76,7 @@ function createUser() {
     if (form_valid === true) {
         storedUsers.push(new user(firstName, lastName, phone, birthday, password));
         localStorage.setItem('users', JSON.stringify(storedUsers));
+        window.location.href='Login.html'
     } else {
         alert(validation_message);
     }

@@ -23,7 +23,7 @@
     </div>
 </header>
 
-<form name="userCreation" onsubmit="return createUser()" method="get">
+<form name="userCreation" method="get">
 <br/>
 Fornavn:
 <br/>
@@ -50,7 +50,7 @@ Password:
 <input type="text" id="password" value="" placeholder="Your password"/>
 <br/>
 <br/>
-<button type="submit">Create User</button>
+<button type="reset" onclick="createUser()">Create User</button>
     </form>
     <script type="text/javascript" src="Entities/User.js"></script>
 <script type="text/javascript" src="Entities/Login.js"></script>
