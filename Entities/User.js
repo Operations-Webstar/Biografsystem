@@ -3,7 +3,7 @@
 if (localStorage.getItem('activeUser') !== 'none') {
     document.getElementById("log").style.display = "none";
     document.getElementById("log1").style.display = "none";
-} else if (localStorage.getItem('activeUser') == 'none' || localStorage.getItem('userLoggedIn') == null) {
+} else if (localStorage.getItem('activeUser') === 'none' || localStorage.getItem('userLoggedIn') == null) {
     document.getElementById('log2').style.display = "none";
 }
 
@@ -53,36 +53,36 @@ class User {
 
 
 //tjekker om firstname har en værdi eller er tom, hvis ja, så bliver form_valid = false
-        if (this.firstName == null || this.firstName == "") {
+        if (this.firstName == null || this.firstName === "") {
             validation_message += "First name must be filled in! \n";
             form_valid = false;
         }
 //tjekker om lastName har en værdi eller er tom, hvis ja, så bliver form_valid = false
-        if (this.lastName == null || this.lastName == "") {
+        if (this.lastName == null || this.lastName === "") {
             validation_message += "Last name must be filled in! \n";
             form_valid = false;
         }
 
 //tjekker om phone er tom, om det ikke er et nummmer og om længden ikke er 8, hvis ja, så bliver form_valid = false
-        if (this.tlfNumber == "") {
+        if (this.tlfNumber === "") {
             validation_message += "Please enter a phone number \n";
             form_valid = false;
         } else if (isNaN(this.tlfNumber)) {
             validation_message += "Phone numbers can only contain numbers! \n";
             form_valid = false
-        } else if (this.tlfNumber.length != 8) {
+        } else if (this.tlfNumber.length !== 8) {
             validation_message += "Phone numbers can only have a length of 8 \n";
             form_valid = false;
         }
 
         //tjekker om birthday kommer ud som invalid date, hvis den gør, så bliver form_valid = false
-        if (this.dateOfBirth == 'Invalid Date') {
-            validation_message += "insert a real date\n"
+        if (this.dateOfBirth === 'Invalid Date') {
+            validation_message += "insert a real date\n";
             form_valid = false;
         }
 
         //tjekker om password er tom, lig null eller ikke længere end 3 karakter, hvis ja, så bliver form_valid = false
-        if ((this.password == null || this.password == "") && this.password.length < 3) {
+        if ((this.password == null || this.password === "") && this.password.length < 3) {
             validation_message += "your password must be longer than 3 characters \n";
             form_valid = false;
         }
@@ -117,7 +117,7 @@ class User {
         // sætter også javascript variablen til true, så næste if kan virke korrekt.
 
         for (let i = 0; i < storedUsers.length; i++) {
-            if (enteredName == storedUsers[i]._tlfNumber && enteredPassword == storedUsers[i]._password) {
+            if (enteredName === storedUsers[i]._tlfNumber && enteredPassword === storedUsers[i]._password) {
                 let logIn = JSON.stringify(storedUsers[i]);
                 localStorage.setItem('activeUser', logIn);
                 window.location.href = 'index.html';
@@ -142,11 +142,11 @@ class User {
    static clearStorage(){
        localStorage.clear();
        localStorage.setItem('activeUser', 'none');
-   }
+   };
 
 }
 
-document.getElementById('log2').addEventListener('click', User.signOut)
+document.getElementById('log2').addEventListener('click', User.signOut);
 
 
 
