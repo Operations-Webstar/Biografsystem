@@ -24,8 +24,12 @@
 </header>
 <section class="midt">
     <div class="container">
-        <h1>Velkommen til din Biobooker</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu luctus ipsum, rhoncus semper magna. Nulla nec magna sit amet sem interdum condimentum.</p>
+        <input type="text" id="tlfNumber" value="" placeholder="User number"/>
+        <input type="submit" id="showUser" value="Show User" onclick="Admin.showUser()"/>
+        <input type="reset" id="makeAdmin" value="Make admin" onclick= 'Admin.getUser()'/>
+        <input type="submit" id="deleteUser" value="Delete user" onclick="Admin.deleteUser()"/>
+        <br/>
+        <p>Navn: <span id="navn"></span> <br/> Telefonnummer: <span id="number"></span> </p>
     </div>
 </section>
 <script type="text/javascript" src="Entities/User.js"></script>

@@ -1,10 +1,10 @@
 //det her er klassen, som vi skal bruge i vores user, med de tilsvarende funktioner
 /*eslint-env browser*/
 if (localStorage.getItem('activeUser') !== 'none') {
-    document.getElementById("log").style.display = "none";
-    document.getElementById("log1").style.display = "none";
+    document.getElementById("logIn").style.display = "none";
+    document.getElementById("signIn").style.display = "none";
 } else if (localStorage.getItem('activeUser') === 'none' || localStorage.getItem('userLoggedIn') == null) {
-    document.getElementById('log2').style.display = "none";
+    document.getElementById('logOut').style.display = "none";
 }
 
 class User {
@@ -52,18 +52,18 @@ class User {
         this.password = document.getElementById('password').value;
 
 
-//tjekker om firstname har en værdi eller er tom, hvis ja, så bliver form_valid = false
+//tjekker om firstname har en værdi eller er tom, hvis ja, så bliver form_valid = false, Rasmus
         if (this.firstName == null || this.firstName === "") {
             validation_message += "First name must be filled in! \n";
             form_valid = false;
         }
-//tjekker om lastName har en værdi eller er tom, hvis ja, så bliver form_valid = false
+//tjekker om lastName har en værdi eller er tom, hvis ja, så bliver form_valid = false, Rasmus
         if (this.lastName == null || this.lastName === "") {
             validation_message += "Last name must be filled in! \n";
             form_valid = false;
         }
 
-//tjekker om phone er tom, om det ikke er et nummmer og om længden ikke er 8, hvis ja, så bliver form_valid = false
+//tjekker om phone er tom, om det ikke er et nummmer og om længden ikke er 8, hvis ja, så bliver form_valid = false, Rasmus
         if (this.tlfNumber === "") {
             validation_message += "Please enter a phone number \n";
             form_valid = false;
@@ -75,28 +75,28 @@ class User {
             form_valid = false;
         }
 
-        //tjekker om birthday kommer ud som invalid date, hvis den gør, så bliver form_valid = false
+        //tjekker om birthday kommer ud som invalid date, hvis den gør, så bliver form_valid = false, Rasmus
         if (this.dateOfBirth === 'Invalid Date') {
             validation_message += "insert a real date\n";
             form_valid = false;
         }
 
-        //tjekker om password er tom, lig null eller ikke længere end 3 karakter, hvis ja, så bliver form_valid = false
+        //tjekker om password er tom, lig null eller ikke længere end 3 karakter, hvis ja, så bliver form_valid = false, Rasmus
         if ((this.password == null || this.password === "") && this.password.length < 3) {
             validation_message += "your password must be longer than 3 characters \n";
             form_valid = false;
         }
 
         //Hvis users i localStorage er lig nul, så pusher man en new user(Thomas) ind i arrayet
-        //ellers så henter man localstorage ned, også laver den til javascript array med objekter.
+        //ellers så henter man localstorage ned, også laver den til javascript array med objekter. Rasmus
         if (localStorage.getItem("users") == null) {
-            storedUsers.push(new User('Thomas', 'Lindskov', 30110976, '19-02-1996', 'hejsa'))
+            storedUsers.push(new Admin('Thomas', 'Lindskov', 30110976, '19-02-1996', 'hejsa', 'true'))
         } else {
             storedUsers = JSON.parse(localStorage.getItem('users'))
         }
 
         //hvis form_valid == true dvs. at alle krav til sign in funktionen er blevet udfyldt, så sætter man storedUsers
-        // arrayet ind i localstorage via stringify. ellers så alert den (validation_message) med tilhørende strings.
+        // arrayet ind i localstorage via stringify. ellers så alert den (validation_message) med tilhørende strings. Thomas
         if (form_valid === true) {
             storedUsers.push(new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password));
             localStorage.setItem('users', JSON.stringify(storedUsers));
@@ -105,7 +105,7 @@ class User {
             alert(validation_message);
         }
     }
-
+    //Thomas
     static logIn() {
         //laver de forskellige variabler(som hentes fra HTML), som skal bruges i forbundelse med funktionen
         let enteredName = document.getElementById('enteredFirstName').value.toString();
@@ -134,11 +134,11 @@ class User {
             alert('wrong user or pass')
         }
     };
-
+   //Thomas
    static signOut(){
        localStorage.setItem('activeUser', 'none');
    };
-
+   //Thomas
    static clearStorage(){
        localStorage.clear();
        localStorage.setItem('activeUser', 'none');
@@ -146,10 +146,45 @@ class User {
 
 }
 
+//Thomas
 document.getElementById('log2').addEventListener('click', User.signOut);
 
 
-class Admin extends User {}
+//Thomas:
+class Admin extends User {
+    constructor(firstName, lastName, tlfNumber, dateOfBirth, password, adminStatus){
+        super(firstName, lastName, tlfNumber, dateOfBirth, password);
+        this._adminRights = adminStatus
+    }
+    get adminRights(){
+        return this._adminRights
+    }
+    set adminRights(x){
+    this._adminRights = x;
+    }
+
+    static getUser() {
+        let U = JSON.parse(localStorage.getItem('users'));
+        let enteredNumber = document.getElementById('tlfNumber').value.toString();
+        for (let i = 0; i < U.length; i++) {
+            if (enteredNumber === U[i]._tlfNumber) {
+                let findUser = U[i];
+                return findUser
+                break;
+            }
+        }
+        }
+
+       static showUser(){
+        let findUser = this.getUser()
+      document.getElementById('navn').innerHTML = findUser._firstName + ' ' + findUser._lastName
+           document.getElementById('number').innerHTML = findUser._tlfNumber
+}
+
+
+    }
+
+
 
 
 

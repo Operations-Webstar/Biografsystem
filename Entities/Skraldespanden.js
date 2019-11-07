@@ -43,8 +43,8 @@ if(logInStatus == false){
 
 // En if statement, der viser de rigtige knapper, i forhold til logInStatusen som er under lokalStorage
         /*if (localStorage.getItem('activeUser') != 'none') {
-            document.getElementById("log").style.display = "none";
-            document.getElementById("log1").style.display = "none";
+            document.getElementById("logIn").style.display = "none";
+            document.getElementById("signIn").style.display = "none";
         } else if (localStorage.getItem('activeUser') == 'none' || localStorage.getItem('userLoggedIn') == null) {
             document.getElementById('log2').style.display = "none";
         }*/
