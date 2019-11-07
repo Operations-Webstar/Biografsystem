@@ -5,6 +5,7 @@
     <title>Program</title>
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
+<body>
 <header>
     <img src="Billeder/Logo.png" alt="logo" id="logo">
     <div id="container">
@@ -14,6 +15,8 @@
                 <li><a href="Film.html">Film</a></li>
                 <li><a href="Mine_bookninger.html">Mine bookninger</a></li>
                 <li><a href="Om.html">Om</a></li>
+                <li><a class="log" href="Login.html">Login</a></li>
+                <li><a class="log" href="Opret_bruger.html">Sign up</a></li>
                 <li><a id="logIn" href="Login.html">Login</a></li>
                 <li><a id="signIn" href="Opret_bruger.html">Sign up</a></li>
                 <li><a id= "logOut" href="Login.html">Log ud</a></li>
@@ -27,10 +30,10 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu luctus ipsum, rhoncus semper magna. Nulla nec magna sit amet sem interdum condimentum.</p>
     </div>
 </section>
-<!-- Laver en autoplayer der viser fire billeder med HTML og java -->
+<!-- Laver en autoplayer der viser fire billeder med HTML og java
 
 <img id="slide" name="slide" width="100" height="300" />
-<script> var i = 0; 			// Laver variabel i med værdi 0 / startpointen for min array, som vi looper igennem
+    <script> var i = 0; 			// Laver variabel i med værdi 0 / startpointen for min array, som vi looper igennem
 var images = [];	// Laver en tom array
 var time = 3000;	// Laver en variabel der bestemmer tiden i mikrosekunder mellem hvert billede
 
@@ -58,59 +61,35 @@ function changeImg(){
 }
 // Kører funktionen når siden loader
 window.onload=changeImg;
-</script>
-<h2>Spiller nu</h2>
+</script>--!>
 
-<button onclick="one()">I dag</button>
-<button onclick="two()">Imorgen</button>
-<div id class="row">
-    <div class="column">
-        <button id="testButtonEt" class="testButtonEt"><img src="https://images-na.ssl-images-amazon.com/images/I/31UiPirP4GL.jpg"  alt="">Book nu(Virker)</button>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
-        <br> <br>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
-        <button class="testButton1"><img src="https://via.placeholder.com/150x250"  alt="">Book nu</button>
+
+<h2 id="spillerNu">Spiller nu</h2>
+
+<div id class="row"> </div>
+<div class="column">
+    <button id="buttonEt" class="Knap" ><img class="vinduebillede" src="https://images-na.ssl-images-amazon.com/images/I/31UiPirP4GL.jpg"  alt="">Book nu</button>
+    <button id="buttonTo" class="Knap"><img class="vinduebillede" src="https://via.placeholder.com/233x350"  alt="">Book nu</button>
+    <button id="buttonTre" class="Knap"><img class="vinduebillede" src="https://via.placeholder.com/233x350"  alt="">Book nu</button>
+</div>
+
+<div id="bookup">
+
+    <!-- Indeholdet i popuppen -->
+    <div class="bookupIndhold">
+        <h2 id="filmName"></h2>
+        <p id="description">"</p>
+        <p id="genre"></p>
+        <p id="filmLength"></p>
+        <p id="ageRestriction"></p>
+        <button id="Book" onclick="window.location.href='Seats.html'">Book nu!</button>
+        <button id="Fortryd" >Fortryd</button>
     </div>
-    <!-- Booking Popup -->
-    <div id="bookPopup" class="bookup">
 
-        <!-- Indeholdet i popuppen -->
-        <div class="bookupContent">
-            <h2>Book Iron Man nu</h2>
-            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-            <button id="Book" onclick="window.location.href='Seats.html'">Book nu!</button>
-            <button id="Fortryd" >Fortryd</button>
-            <img id="BookupEtImg" src="https://images-na.ssl-images-amazon.com/images/I/31UiPirP4GL.jpg">
-        </div>
+</div>
 
-    </div>
-    <script>
-        // Henter bookPopup i en variabel
-        var bookup = document.getElementById("bookPopup");
+<script src = "Entities/film.js" ></script>
 
-        // Henter knappen i en variabel
-        var testButtonEt = document.getElementById("testButtonEt");
 
-        //  Gør at knappen åbner vinduet
-        testButtonEt.onclick = function() {
-            bookup.style.display = "block";
-        }
-
-        // Fortryd knap
-        Fortryd.onclick = function() {
-            bookup.style.display = "none";
-        }
-
-        // Hvis man clicker andre steder end popuppen, lukker den
-        window.onclick = function(event) {
-            if (event.target == bookup) {
-                bookup.style.display = "none";
-            }
-        }
-    </script>
-    <script type="text/javascript" src="Entities/User.js"></script>
+<script type="text/javascript" src="Entities/User.js"></script>
 </html>

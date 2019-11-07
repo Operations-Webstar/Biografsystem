@@ -1,21 +1,20 @@
-let user = require('./User.js');
-class film {
-    constructor(filmName, filmId, genre, threeD, ageRestriction) {
+class Film {
+    constructor(filmName, genre, filmLength, ageRestriction, description) {
         this.filmName = filmName;
-        this.filmId = filmId;
         this.genre = genre;
-        this.threeD = threeD;
+        this.filmLength = filmLength;
         this.ageRestriction = ageRestriction;
-}
-    getAge(user){
+        this.description = description;
+    }
+    getAge(User){
         //finder både idags dato, og finder userindsat date her
         let today = new Date();
         //Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
-        let dateOfBirth = new Date(user.dateOfBirth);
+        let dateOfBirth = new Date(User.dateOfBirth);
         if(typeof dateOfBirth === "undefined"){
             console.log('no date of birth');
         } else {
-           dateOfBirth = new Date(user.dateOfBirth)
+            dateOfBirth = new Date(User.dateOfBirth)
         }
         //sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
         var age = today.getFullYear() - dateOfBirth.getFullYear();
@@ -25,28 +24,71 @@ class film {
         //Dog hvis m === 0 eller at idag's dag ikke er større end fødselsdags dagen, så minusser man age med 1
         // da personen ikke har nået at have haft fødselsdag
         if (m < 0 || (m === 0 && today.getDate() < dateOfBirth.getDate())) {
+            age -1
         }
         return age
     }
 
-ageCheck(film, user){
-    var filmRes = film.ageRestriction;
-    var userAge = film.getAge(user);
-    if(filmRes <= userAge) {
-        return true
-    } else {
-        return false
+    ageCheck(Film, User){
+        var filmRes = Film.ageRestriction;
+        var userAge = Film.getAge(User);
+        if(filmRes <= userAge) {
+            return true
+        } else {
+            return false
+        }
     }
 }
+var filmEt = new Film(
+    "Joker",
+    "Thriller",
+    "120",
+    "16",
+    "Denne film handler om skurke"
+);
+
+var filmTo = new Film(
+    "Avengers",
+    "Action Thriller",
+    "150",
+    "12",
+    "Denne film handler om superhelte"
+);
+var filmTre = new Film(
+    "The Dark Knight",
+    "Action",
+    "100",
+    "16",
+    "Denne film handler om Batman"
+);
+function lavFilm(filmNummer){
+    document.getElementById("filmName").innerHTML = filmNummer.filmName;
+    document.getElementById("description").innerHTML = filmNummer.description;
+    document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
+    document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
+    document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
+    document.getElementById("description").innerHTML = filmNummer.description;
+    bookup.style.display ="block";
 }
-let Thomas = new user(1, 'Thomas',1,'2005-02-19', 1);
-let joker = new film('joker', 2 , 'horror', true, 18);
-console.log(new film().ageCheck(joker, Thomas));
+buttonEt.onclick = function(){
+    lavFilm(filmEt)
+};
 
-var joker = new film ("Joker", 2, "krimi, thriller",false, 15)
+buttonTo.onclick = function(){
+    lavFilm(filmTo)
+};
 
-var onceInHollywood = new film ("Once Upon a Time... in Hollywood", 3, "komedie, drama", false, 15)
+buttonTre.onclick = function(){
+    lavFilm(filmTre)
+};
+// Fortryd knap
+Fortryd.onclick = function() {
+    bookup.style.display = "none";
+};
 
-var  it2 = new film ( "IT 2", 4, "gyser", false, 15)
-
-var avengers = new film ( "Avengers Endgame", 5,"action, adventure", true, 11)
+// Hvis man clicker andre steder end popuppen, lukker den
+window.onclick = function(event) {
+    if (event.target === bookup) {
+        bookup.style.display = "none";
+    }
+}
