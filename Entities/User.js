@@ -90,7 +90,7 @@ class User {
         //Hvis users i localStorage er lig nul, så pusher man en new user(Thomas) ind i arrayet
         //ellers så henter man localstorage ned, også laver den til javascript array med objekter. Rasmus
         if (localStorage.getItem("users") == null) {
-            storedUsers.push(new Admin('Thomas', 'Lindskov', 30110976, '19-02-1996', 'hejsa', 'true'))
+            storedUsers.push(new Admin('Thomas', 'Lindskov', '30110976', '19-02-1996', 'hejsa', 'true'))
         } else {
             storedUsers = JSON.parse(localStorage.getItem('users'))
         }
@@ -147,14 +147,14 @@ class User {
 }
 
 //Thomas
-document.getElementById('log2').addEventListener('click', User.signOut);
+document.getElementById('logOut').addEventListener('click', User.signOut);
 
 
 //Thomas:
 class Admin extends User {
-    constructor(firstName, lastName, tlfNumber, dateOfBirth, password, adminStatus){
+    constructor(firstName, lastName, tlfNumber, dateOfBirth, password, adminRights){
         super(firstName, lastName, tlfNumber, dateOfBirth, password);
-        this._adminRights = adminStatus
+        this._adminRights = adminRights
     }
     get adminRights(){
         return this._adminRights
@@ -163,7 +163,7 @@ class Admin extends User {
     this._adminRights = x;
     }
 
-    static getUser() {
+   static getUser() {
         let U = JSON.parse(localStorage.getItem('users'));
         let enteredNumber = document.getElementById('tlfNumber').value.toString();
         for (let i = 0; i < U.length; i++) {
@@ -174,15 +174,40 @@ class Admin extends User {
             }
         }
         }
+    static getUserIndex() {
+        let users = JSON.parse(localStorage.getItem('users'));
+        let enteredNumber = document.getElementById('tlfNumber').value.toString();
+        for (let i = 0; i < users.length; i++) {
+            if (enteredNumber === users[i]._tlfNumber) {
+                return i;
+                break;
+            }
+        }
+    }
 
        static showUser(){
-        let findUser = this.getUser()
-      document.getElementById('navn').innerHTML = findUser._firstName + ' ' + findUser._lastName
-           document.getElementById('number').innerHTML = findUser._tlfNumber
+        let target = this.getUser;
+      document.getElementById('navn').innerHTML = target._firstName + ' ' + target._lastName
+           document.getElementById('number').innerHTML = target._tlfNumber
+    }
+    static deleteUser(){
+        let userIndex = this.getUserIndex();
+            let storedU = JSON.parse(localStorage.getItem('users'));
+            storedU.splice(userIndex, 1)
+            localStorage.setItem('users', JSON.stringify(storedU))
+    }
+static makeAdmin(){
+        let target = this.getUser();
+        let index = this.getUserIndex();
+        let storedU = JSON.parse(localStorage.getItem('users'));
+        target._adminRights = 'true';
+        storedU[index] = target
+    localStorage.setItem('users', JSON.stringify(storedU))
+}
+
 }
 
 
-    }
 
 
 
