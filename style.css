@@ -163,3 +163,14 @@ width: 100%;
     position: relative;
     float: inside;
 }
+
+.divSeatCheckbox {
+    text-align: center;
+    padding: 70px;
+    position: relative;
+}
+
+s1r1.bigCheckbox {
+    width: 70px;
+    height: 70px;
+}
