@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <link type="text/css" rel="stylesheet" href="CalendarStyle.css">
+
+</head>
+<body>
+<div class="Calendar-div">
+    <div>
+        <h3 id="monthAndYear"></h3>
+        <form class="MonthYearPicker">
+            <label  for="month">Jump To: </label>
+            <select  name="month" id="month" onchange="jump()">
+                <option value=0>Januar</option>
+                <option value=1>Februar</option>
+                <option value=2>Marts</option>
+                <option value=3>April</option>
+                <option value=4>Maj</option>
+                <option value=5>Juni</option>
+                <option value=6>Juli</option>
+                <option value=7>August</option>
+                <option value=8>September</option>
+                <option value=9>Oktober</option>
+                <option value=10>November</option>
+                <option value=11>December</option>
+            </select>
+
+
+            <label for="year"></label><select  name="year" id="year" onchange="jump()">
+            <option value=2019>2019</option>
+            <option value=2020>2020</option>
+            <option value=2021>2021</option>
+        </select></form>
+        <table  id="calendar">
+            <thead>
+            <tr class="day">
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+            </tr>
+            </thead>
+
+            <tbody id="calendar-body" class="number">
+
+            </tbody>
+        </table>
+
+        <div class="prevNextButtons" >
+
+            <button id="previous" onclick="previous()">Previous</button>
+
+            <button id="next" onclick="next()">Next</button>
+        </div>
+        <br/>
+
+    </div>
+</div>
+<script src="testcalendar.js"></script>
+</body>
+</html>
