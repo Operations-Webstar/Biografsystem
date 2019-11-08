@@ -8,19 +8,19 @@
     //Henter localstorage med JSON.parse, så jeg får objekterne ned i mit Script igen
     let storedUsers = JSON.parse(localStorage.getItem('users'));
     // sætter et for loop igang, som kører igennem storedUsers arrayet, indtil den finder et match
-    // når den finder match så sætter den login status til true, og sender en til index.html
+    // når den finder match så sætter den login status til true, og sender en til index1.html
     // sætter også javascript variablen til true, så næste if kan virke korrekt.
 
     for (let i = 0; i < storedUsers.length; i++) {
         if (enteredName == storedUsers[i]._tlfNumber && enteredPassword == storedUsers[i]._password) {
             let logIn = JSON.stringify(storedUsers[i]);
             localStorage.setItem('userLoggedIn', logIn);
-            window.location.href = 'index.html';
+            window.location.href = 'index1.html';
             break;
         }
     }
         localStorage.setItem('logInStatus', 'true');
-        window.location.href = 'index.html';
+        window.location.href = 'index1.html';
         var logOn = JSON.stringify(storedUsers[i])
         break;
     }
