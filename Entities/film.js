@@ -7,9 +7,13 @@ class Film {
         this.description = description;
     }
     getAge(User){
+
         //finder både idags dato, og finder userindsat date her
+
         let today = new Date();
+
         //Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
+
         let dateOfBirth = new Date(User.dateOfBirth);
         if(typeof dateOfBirth === "undefined"){
             console.log('no date of birth');
@@ -17,12 +21,17 @@ class Film {
             dateOfBirth = new Date(User.dateOfBirth)
         }
         //sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
+
         var age = today.getFullYear() - dateOfBirth.getFullYear();
+
         //sætter m lig med nuværende måned - fødselsdags måned
+
         let m = today.getMonth() - dateOfBirth.getMonth();
+
         //Hvis 0 er større end M, har personen allerede haft fødselsdag, så behøves der ikke trækkes 1 fra.
         //Dog hvis m === 0 eller at idag's dag ikke er større end fødselsdags dagen, så minusser man age med 1
         // da personen ikke har nået at have haft fødselsdag
+
         if (m < 0 || (m === 0 && today.getDate() < dateOfBirth.getDate())) {
             age -1
         }
@@ -69,6 +78,7 @@ function lavFilm(filmNummer){
     document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
     document.getElementById("description").innerHTML = filmNummer.description;
     bookup.style.display ="block";
+
 }
 buttonEt.onclick = function(){
     lavFilm(filmEt)

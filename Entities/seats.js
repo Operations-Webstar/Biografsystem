@@ -16,14 +16,21 @@ reserveSeatsButton.onclick = function(){
 
             var counter = 0
             var finalMessage = "Du har nu reserveret: "
+            var seatsArray = []
+
 
             for(i=0; i < seatCheckbox.length; i++){
                 if(seatCheckbox[i].checked == true){
                     finalMessage +=  seatCheckbox[i].id + ", "
                     counter++
+                    seatsArray.push(seatCheckbox[i].id)
         }
     }
-// Er en eller flere checkbokse vinget af, vil følgende alert poppe op:
+
+    localStorage.setItem('seatsChosen', JSON.stringify(seatsArray))
+
+
+// Er en eller flere checkbokse vinget af, vil finalMessage poppe op:
 
             if (counter>0) {
                 alert(finalMessage)
@@ -36,13 +43,5 @@ reserveSeatsButton.onclick = function(){
                 alert("Hov! Du mangler at markere de ønskede sæder.")
             }
 }
-
-
-
-
-
-
-
-
 
 
