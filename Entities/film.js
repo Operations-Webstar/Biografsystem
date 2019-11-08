@@ -102,3 +102,11 @@ window.onclick = function(event) {
         bookup.style.display = "none";
     }
 }
+
+var startDato = new Date("Nov 8, 2019 12:00:00");
+var slutDato = new Date("Nov 30, 2019 12:00:00");
+var november = [];
+
+for (var i=0; startDato <= slutDato; i++) {
+    november.push(new Date(startDato.setDate(startDato.getDate() + 1)));
+}
