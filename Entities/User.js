@@ -163,6 +163,11 @@ class Admin extends User {
     this._adminRights = x;
     }
 
+    static getAllUsers(){
+        let storedU = JSON.parse(localStorage.getItem('users'))
+        return storedU
+    }
+
    static getUser() {
         let U = JSON.parse(localStorage.getItem('users'));
         let enteredNumber = document.getElementById('tlfNumber').value.toString();
@@ -175,7 +180,7 @@ class Admin extends User {
         }
         }
     static getUserIndex() {
-        let users = JSON.parse(localStorage.getItem('users'));
+        let users = this.getAllUsers()
         let enteredNumber = document.getElementById('tlfNumber').value.toString();
         for (let i = 0; i < users.length; i++) {
             if (enteredNumber === users[i]._tlfNumber) {
@@ -187,15 +192,17 @@ class Admin extends User {
 
        static showUser(){
         let target = this.getUser;
-      document.getElementById('navn').innerHTML = target._firstName + ' ' + target._lastName
-           document.getElementById('number').innerHTML = target._tlfNumber
+      document.getElementById('navn').innerHTML = target()._firstName + ' ' + target()._lastName
+           document.getElementById('number').innerHTML = target()._tlfNumber
     }
+
     static deleteUser(){
         let userIndex = this.getUserIndex();
-            let storedU = JSON.parse(localStorage.getItem('users'));
+            let storedU = this.getAllUsers()
             storedU.splice(userIndex, 1)
             localStorage.setItem('users', JSON.stringify(storedU))
     }
+
 static makeAdmin(){
         let target = this.getUser();
         let index = this.getUserIndex();
@@ -204,6 +211,7 @@ static makeAdmin(){
         storedU[index] = target
     localStorage.setItem('users', JSON.stringify(storedU))
 }
+
 
 }
 
