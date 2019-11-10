@@ -22,7 +22,7 @@ class Film {
         }
         //sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
 
-        var age = today.getFullYear() - dateOfBirth.getFullYear();
+        let age = today.getFullYear() - dateOfBirth.getFullYear();
 
         //sætter m lig med nuværende måned - fødselsdags måned
 
@@ -41,11 +41,7 @@ class Film {
     ageCheck(Film, User){
         var filmRes = Film.ageRestriction;
         var userAge = Film.getAge(User);
-        if(filmRes <= userAge) {
-            return true
-        } else {
-            return false
-        }
+        return filmRes <= userAge;
     }
 }
 var filmEt = new Film(
@@ -101,7 +97,7 @@ window.onclick = function(event) {
     if (event.target === bookup) {
         bookup.style.display = "none";
     }
-}
+};
 
 var startDato = new Date("Nov 8, 2019 12:00:00");
 var slutDato = new Date("Nov 30, 2019 12:00:00");

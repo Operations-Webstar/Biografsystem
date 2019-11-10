@@ -5,7 +5,7 @@
     <title>Title</title>
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id ="adminPage">
 <header>
     <img src="Billeder/Logo.png" alt="logo" id="logo">
     <div id="div1">
@@ -16,17 +16,18 @@
             <li><a id="logIn" href="Login.html">Login</a></li>
             <li><a id="signIn" href="Opret_bruger.html">Sign up</a></li>
             <li><a id= "logOut" href="Login.html">Log ud</a></li>
+            <li><a id= "Admin" href="Adminpage.html">Admin</a></li>
         </ul>
         </nav>
     </div>
 </header>
 <section class="midt">
     <div class="container">
-        <input type="text" id="tlfNumber" value="" placeholder="User number"/>
-        <input type="submit" id="showUser" value="Show User" onclick="Admin.showUser()"/>
-        <input type="reset" id="makeAdmin" value="Make admin" onclick= 'Admin.makeAdmin()'/>
-        <input type="submit" id="deleteUser" value="Delete user" onclick="Admin.deleteUser()"/>
-        <input type="submit" id="showAllUser" value="Show all user" onclick="Admin.showAllUsers()"/>
+        <input type="text" id="enteredNumber" value="" placeholder="User number"/>
+        <input type="submit" id="showUser" value="Show User" onclick="activeUser.showUser()"/>
+        <input type="reset" id="makeAdmin" value="Make admin" onclick= 'activeUser.makeAdmin()'/>
+        <input type="submit" id="deleteUser" value="Delete user" onclick="activeUser.deleteUser()"/>
+        <input type="submit" id="showAllUser" value="Clear all" onclick="activeUser.clearStorage()"/>
         <br/>
         <p>Navn: <span id="navn"></span> <br/> Telefonnummer: <span id="number"></span> <br/> Alle Brugere <span id="allUsers"></span> </p>
     </div>

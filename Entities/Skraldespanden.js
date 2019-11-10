@@ -113,3 +113,11 @@ if(logInStatus == false){
         alert(validation_message);
     }
 }*/
+
+//en tidligere ide, som ikke blev til noget, da vi ændrede lokal storage til at være en variabel som er aktiv.
+/*localStorage.setItem('logInStatus', 'true');
+   window.location.href = 'index1.html';
+   var logOn = JSON.stringify(storedUsers[i])
+   break;
+}
+}*/
