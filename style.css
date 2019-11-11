@@ -6,7 +6,6 @@ body {
 }
 
 
-
 /*Sætter div1 = 80% i width og sætter margin til 0 op og nede, og auto til venstre og højre*/
 .container{
     margin: auto;
@@ -203,13 +202,15 @@ s1r1.bigCheckbox {
 }
 .vinduebillede {
     position: relative;
+padding: 20px;
     width: 70%;
 }
 #spillerNu{
     margin-left: 10px;
 }
 .Knap {
-
+background-color: dimgrey;
+    border-color: black;
     position: center;
     margin-left: 90px;
 }

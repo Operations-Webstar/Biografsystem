@@ -44,6 +44,7 @@ class Film {
         return filmRes <= userAge;
     }
 }
+// Laver 3 objekter udfra klassen Film -Daniel
 var filmEt = new Film(
     "Joker",
     "Thriller",
@@ -66,14 +67,17 @@ var filmTre = new Film(
     "16",
     "Denne film handler om Batman"
 );
-function lavFilm(filmNummer){
+// Laver en funktion, hvor man bare sætter filmen ind i funktionen og derefter laver den et film objekt -Daniel
+function lavFilm(filmNummer) {
     document.getElementById("filmName").innerHTML = filmNummer.filmName;
     document.getElementById("description").innerHTML = filmNummer.description;
     document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
     document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
     document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
     document.getElementById("description").innerHTML = filmNummer.description;
-    bookup.style.display ="block";
+    bookup.style.display = "block";
+
+// Laver 3 knapper, for hver film -Daniel
 
 }
 buttonEt.onclick = function(){
@@ -99,10 +103,18 @@ window.onclick = function(event) {
     }
 };
 
+
+var filmArrayEt = [filmEt, filmTo, filmTre];
+var filmArrayTo = [filmTo, filmTre];
+// Laver et array, der skal bruges til kalenderen -Daniel
 var startDato = new Date("Nov 8, 2019 12:00:00");
 var slutDato = new Date("Nov 30, 2019 12:00:00");
 var november = [];
-
+// Laver det gennem et loop, så koden fylder mindre og med dato funktionen -Daniel
 for (var i=0; startDato <= slutDato; i++) {
     november.push(new Date(startDato.setDate(startDato.getDate() + 1)));
 }
+//Laver et alternativt manuelt multidimensiontelt array, da loop array'et ikke kan gøres multidimensionelt
+//
+var datoArray = [[filmArrayEt, filmArrayTo]];
+console.log(datoArray[0][1]);
