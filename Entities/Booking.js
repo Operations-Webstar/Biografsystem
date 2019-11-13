@@ -6,7 +6,7 @@ class Booking {
     }
     // function updateSeatsAvailable(){}
 }
-
+//Malene
 var displaySeats = JSON.parse(localStorage.getItem("seatsChosen"))
 console.log(displaySeats)
 debugger
