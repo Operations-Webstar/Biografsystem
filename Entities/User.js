@@ -1,4 +1,4 @@
-//det her er klassen, som vi skal bruge i vores user, med de tilsvarende funktioner
+
 /*eslint-env browser*/
 //Classes
 class User {
@@ -9,7 +9,7 @@ class User {
         this._dateOfBirth = dateOfBirth;
         this._password = password;
     };
-
+   //Laver en get funktion til alle de forskellige parametre, så de kan bruges længere nede. -Thomas
     get firstName() {
         return this._firstName
     };
@@ -36,7 +36,9 @@ class User {
     //function logOut(){};
     //function checkMovies(){};
 
-    //Utility functions
+    //Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
+    // så vi kan arbejde med dem i andre metoder osv.
+    //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
     static getAllUsers(){
         let storedUsers = [];
         //Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
@@ -49,6 +51,8 @@ class User {
         return storedUsers
     };
 
+    //Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
+    //useren i systemet, baseret på userens telefonnummer, da det er vores ID til useren.
     static getUser() {
         let users = this.getAllUsers();
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -59,6 +63,8 @@ class User {
         }
     };
 
+    //Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
+    //f.eks. hvis man vil slette en specifik user eller gøre dem til admin
     static getUserIndex() {
         let users = this.getAllUsers();
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -69,6 +75,8 @@ class User {
         }
     };
 
+    //Man finder den user, som lige nu er Aktiv, dvs. den user som er logget ind, og om den user
+    //er admin eller user, derved også få tilgang til deres metoder.
     static getActiveUser() {
         let localUser = JSON.parse(localStorage.getItem('activeUser'));
         let activeUser = '';
@@ -82,6 +90,8 @@ class User {
         return activeUser
     };
 
+    //skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
+    //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, men beholder sæderne.
     static getActiveUserIndex() {
         let users = this.getAllUsers();
         let userNumber = this.getActiveUser();
@@ -92,6 +102,7 @@ class User {
         }
     };
 
+    //Endnu en funktion, for a lave en instans af user klassen, som man så kan smide op i local storage
     static createUser() {
         let form_valid = true;
         let validation_message = "";
@@ -149,6 +160,9 @@ class User {
         }
     };
     //Thomas
+    //En utility funktion, der gør en bruger aktiv, så alt info omkring den bruger, bliver smidt over i et array
+    //så kan man nemlig acces den user, og tjekke om den pågældende user er logget ind.
+    //derudover tjekker den også om telefon nummer og kodeord passer sammen.
     static logIn() {
         //laver de forskellige variabler(som hentes fra HTML), som skal bruges i forbundelse med funktionen
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -171,7 +185,8 @@ class User {
                 return logIn;
             }
     };
-   //Thomas
+   //En funktion, der fjerner den nuværende bruger, også smider et none objekt op i localstorage Thomas
+    //grunden til det er et objekt, er at så virker JSON, bedre i andre metoder.
    static signOut(){
        let none = {none:'none'};
        localStorage.setItem('activeUser', JSON.stringify(none));
@@ -179,9 +194,6 @@ class User {
 
 
 }
-
-
-
 
 //Thomas:
 class Admin extends User {
@@ -196,6 +208,7 @@ class Admin extends User {
     this._adminRights = x;
     }
 
+    //en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn.
     showUser(){
         let target = User.getUser();
         if(target === undefined){
@@ -205,21 +218,22 @@ class Admin extends User {
            document.getElementById('number').innerHTML = target._tlfNumber}
     }
 
+    //En metode som fjerner en user fra det gemte array, som ligger i localstorage
     deleteUser(){
-        let userIndex = User.getUserIndex();
             let storedU = User.getAllUsers();
-            storedU.splice(userIndex, 1);
+            storedU.splice(User.getUserIndex(), 1);
             localStorage.setItem('users', JSON.stringify(storedU))
     }
-
+    //En metode som giver en user fra det gemte array, admin rettigheder.
     makeAdmin(){
         let target = User.getUser();
-        let index = User.getUserIndex();
-        let storedU = JSON.parse(localStorage.getItem('users'));
+        let storedU = User.getAllUsers();
         target._adminRights = 'true';
-        storedU[index] = target;
+        storedU[User.getUserIndex()] = target;
     localStorage.setItem('users', JSON.stringify(storedU))
 }
+    //en metoder, der resseter systemet, men stadig lægger en none objekt op i active user
+    //dette gøres kun for synets skyld.
     clearStorage(){
         localStorage.clear();
         let none = {none:'none'};
@@ -229,16 +243,20 @@ class Admin extends User {
 //Global Variable
 let activeUser = User.getActiveUser();
 //Global functions
+//en funktion som hiver den aktive user ud af localstorage, og viser så hvilke knapper som er relevante
+//for useren
 const hideButtons = () => {
-    let act = User.getActiveUser();
-    if (act !== "none") {
+    if (activeUser !== "none") {
         document.getElementById("logIn").style.display = "none";
         document.getElementById("signIn").style.display = "none";
-    } else if (act === "none" || localStorage.getItem('activeUser') == null) {
+    } else if (activeUser === "none" || localStorage.getItem('activeUser') == null) {
         document.getElementById('logOut').style.display = "none";}
-    if (act._adminRights !== "true"){
+    if (activeUser._adminRights !== "true"){
         document.getElementById('Admin').style.display = "none";}
 };
+//gør at funktionen gør på alle loads
 window.onload = hideButtons();
 //Thomas
+//at alle elementer med Id logOut, får en click funktionen
 document.getElementById('logOut').addEventListener('click', User.signOut);
+
