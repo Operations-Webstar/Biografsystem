@@ -27,45 +27,14 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu luctus ipsum, rhoncus semper magna. Nulla nec magna sit amet sem interdum condimentum.</p>
     </div>
 </section>
-<!-- Laver en autoplayer der viser fire billeder med HTML og java
 
-<img id="slide" name="slide" width="100" height="300" />
-    <script> var i = 0; 			// Laver variabel i med værdi 0 / startpointen for min array, som vi looper igennem
-var images = [];	// Laver en tom array
-var time = 3000;	// Laver en variabel der bestemmer tiden i mikrosekunder mellem hvert billede
-
-// Udfylder arrayen, med online billeder
-images[0] = "https://hota.com.au/wp-content/uploads/2018/09/HOTA_Cinema_1600x900px.jpg";
-images[1] = "https://via.placeholder.com/600x400";
-images[2] = "https://hota.com.au/wp-content/uploads/2018/09/HOTA_Cinema_1600x900px.jpg";
-images[3] = "https://via.placeholder.com/600x400";
-
-// Laver en funktion med et dokument der henviser tilbage til HTML attributen "slide"
-function changeImg(){
-    document.slide.src = images[i];
-
-
-    if(i < images.length - 1){
-
-        i++;
-    } else {
-        // Gør at den starter forfra når listen er kørt igennem
-        i = 0;
-    }
-
-    // Kører funktionen alt efter hvilken værdi time har
-    setTimeout("changeImg()", time);
-}
-// Kører funktionen når siden loader
-window.onload=changeImg;
-</script>-->
 
 
 <h2 id="spillerNu">Spiller nu</h2>
 
 <div id class="row"> </div>
 <div class="column">
-    <button id="buttonEt" class="Knap" ><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/media/film/i/ir/iron-man-2/plakat_1.jpg?itok=5e0d3aBl"</button>
+    <button id="buttonEt" class="Knap" ><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/media/film/i/ir/iron-man-2/plakat_1.jpg?itok=5e0d3aBl" onclick="Film.lavFilm(filmEt)"</button>
 </br> <h1>Book nu</h1>
     <button id="buttonTo" class="Knap"><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/avengersposter.jpg?itok=YZHMzUDS"</button>
     </br> <h1>Book nu</h1>
@@ -75,23 +44,21 @@ window.onload=changeImg;
 
 <div id="bookup">
 
-    <!-- Indeholdet i popuppen -->
+    <!-- Indeholdet i popuppen, uden nogen værdi da de bruges i film.js -Daniel --!>
     <div class="bookupIndhold">
         <h2 id="filmName"></h2>
         <p id="description">"</p>
         <p id="genre"></p>
         <p id="filmLength"></p>
         <p id="ageRestriction"></p>
-        <button id="Book" onclick="window.location.href='Seats.html'">Book nu!</button>
+        <button id="Book" value="" onclick="Film.bookNu()">Book nu!</button>
         <button id="Fortryd" >Fortryd</button>
     </div>
 
 </div>
 
-<script type="text/javascript" src="Entities/User.js"></script>
-<script type="text/javascript"  src = "Entities/film.js" ></script>
+<script src = "Entities/film.js" ></script>
 </body>
 
-
-
+<script type="text/javascript" src="Entities/User.js"></script>
 </html>
