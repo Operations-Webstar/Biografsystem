@@ -165,19 +165,25 @@ class User {
     //derudover tjekker den også om telefon nummer og kodeord passer sammen.
     static logIn() {
         //laver de forskellige variabler(som hentes fra HTML), som skal bruges i forbundelse med funktionen
+
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
         let enteredPassword = document.getElementById('enteredPassword').value;
+
         //Henter localstorage med JSON.parse, så jeg får objekterne ned i mit Script igen
+
         let user = this.getUser();
+
         // sætter et for loop igang, som kører igennem storedUsers arrayet, indtil den finder et match
         // når den finder match så sætter den login status til true, og sender en til index1.html
         // sætter også javascript variablen til true, så næste if kan virke korrekt.
+
         if (enteredNumber === '' || enteredPassword === ''){
             alert('Missing information')
         } else if(user === undefined){
           alert('No user with this number')
         } else if (enteredNumber !== user._tlfNumber || enteredPassword !== user._password) {
             alert('Wrong pass')
+
         }  else {
                 let logIn = user;
                 localStorage.setItem('activeUser', JSON.stringify(user));
