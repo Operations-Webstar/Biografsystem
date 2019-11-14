@@ -266,3 +266,4 @@ window.onload = hideButtons();
 //at alle elementer med Id logOut, får en click funktionen
 document.getElementById('logOut').addEventListener('click', User.signOut);
 
+
