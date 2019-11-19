@@ -10,7 +10,7 @@ class Seat {
 // Variablen reserveSeatsButton værdi bliver sat til at være HTML-elementet hvis id er "reserveSeats". Dette findes i DOMMEN via .getElementById.
 // Det samme gøres for variablen seatCheckbox hvis værdi bliver sat til at være alle HTML-elementer der hører under klassen "Seat" via .getElementByClassName
 
-var reserveSeatsButton = document.getElementById("reserveSeats")
+var reserveSeatsButton = document.getElementById("reserveSeats");
 var seatCheckbox = document.getElementsByClassName("Seat");
 
 //Nedenfor laves en funktion som executes når der trykkes på knappen med id'et reserveSeats
@@ -20,9 +20,9 @@ reserveSeatsButton.onclick = function(){
 // Herefter defineres flere variable i et local scope, det betyder de ikke kan tilgås uden for funktionen.
 // De defineres lokalt, da de ikke skal bruges uden for dette scope.
 
-            var counter = 0
-            var finalMessage = "Du har nu reserveret: "
-            var seatsArray = []
+            var counter = 0;
+            var finalMessage = "Du har nu reserveret: ";
+            var seatsArray = [];
 
 // Der laves et for loop med tre statements. I første statement "i = 0" sættes variablen i til at være 0 inden loopet begynder
 // I andet statement "i < seatCheckbox.length" defineres betingelsen for at loopet kører - nemlig at "i" skal være mindre end mængden af sæder
@@ -31,8 +31,8 @@ reserveSeatsButton.onclick = function(){
 
             for(i = 0; i < seatCheckbox.length; i++){
                 if(seatCheckbox[i].checked == true){
-                    finalMessage +=  seatCheckbox[i].id + ", "
-                    counter++
+                    finalMessage +=  seatCheckbox[i].id + ", ";
+                    counter++;
                     seatsArray.push(seatCheckbox[i].id)
         }
     }
@@ -45,14 +45,14 @@ reserveSeatsButton.onclick = function(){
 // som definerer den item vi vil gemme med et navn og en værdi. Værdien sættes til at være vores nu fyldte array??? ved navn "seatsArray".
 // Arrayet laves til en string via JSON.stringify, da local storage kun kan gemme strings.
 
-    localStorage.setItem('seatsChosen', JSON.stringify(seatsArray))
+    localStorage.setItem('seatsChosen', JSON.stringify(seatsArray));
 
 // Et if-statement laves med formålet om at bekræfte kunden om hvilke sæder personen har reserveret i form af en alert.
 // Dette sker kun hvis counteren er større en 0 - altså at minimum 1 sæde er vinget af.
 // Herefter sendes man videre til HTML siden "Mine bookinger".
 
             if (counter>0) {
-                alert(finalMessage)
+                alert(finalMessage);
                 document.location.href = 'Mine_bookninger.html'
             }
 
@@ -63,4 +63,5 @@ reserveSeatsButton.onclick = function(){
             if (counter==0) {
                 alert("Hov! Du mangler at markere de ønskede sæder.")
             }
-}
+};
+
