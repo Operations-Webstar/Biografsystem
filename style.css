@@ -211,7 +211,6 @@ s1r1.bigCheckbox {
 .Knap {
 background-color: dimgrey;
     border-color: black;
-   margin-left: 1%;
-
-
+    position: center;
+    margin-left: 40px;
 }
