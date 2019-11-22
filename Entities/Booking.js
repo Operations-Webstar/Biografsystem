@@ -7,17 +7,17 @@ class Booking {
     // function updateSeatsAvailable(){}
 }
 //d
-
 //Malene
 function checkBooking(){
-    var displayFilms = localStorage.getItem("film");
-    var displaySeats = JSON.parse(localStorage.getItem("seatsChosen"));
+    let displayFilms = localStorage.getItem("film");
+    let displaySeats = JSON.parse(localStorage.getItem("seatsChosen"));
+    let displayDate = localStorage.getItem('choosenDate');
     if(displaySeats === null){
-        document.getElementById('seats123').innerHTML = 'ingen sæder booket';
+        document.getElementById('booking').innerHTML = 'Ingen sæder booket';
     } else {
-        document.getElementById('filmNavn').innerHTML = 'til film ' + displayFilms;
-        document.getElementById('seats123').innerHTML = 'Du har booket' + displaySeats;
+        document.getElementById('booking').innerHTML = `Du har booket ${displaySeats}, til film ${displayFilms}, den ${displayDate}`;
     }
 }
-
 window.onload = checkBooking();
+
+

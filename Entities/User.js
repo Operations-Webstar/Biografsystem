@@ -7,6 +7,7 @@ class User {
         this._tlfNumber = tlfNumber;
         this._dateOfBirth = dateOfBirth;
         this._password = password;
+        this._booking = [];
     };
    //Laver en get funktion til alle de forskellige parametre, så de kan bruges længere nede. -Thomas
     get firstName() {
@@ -28,6 +29,13 @@ class User {
     get password() {
         return this._password
     };
+    get booking(){
+        return this._booking
+    };
+
+
+
+
 
     //function bookSeat(){};
     //function cancelSeat(){};

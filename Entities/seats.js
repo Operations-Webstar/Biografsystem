@@ -53,7 +53,19 @@ reserveSeatsButton.onclick = function(){
 
             if (counter>0) {
                 alert(finalMessage);
-                document.location.href = 'Mine_bookninger.html'
+                let stored = Tools.getAllUsers();
+                let active= Tools.getActiveUser();
+                let act = Tools.getActiveUserIndex();
+                let booking = {
+                    Film: localStorage.getItem("film"),
+                    Seats: JSON.parse(localStorage.getItem("seatsChosen")),
+                    Date: localStorage.getItem('choosenDate'),
+                };
+                active._booking.push(booking);
+                stored[act] = active;
+                localStorage.setItem('activeUser', JSON.stringify(active));
+                localStorage.setItem('users', JSON.stringify(stored));
+                document.location.href = 'Mine_bookninger.html';
             }
 
             // SPG TIL BOYS: HVORDAN VED DEN AT DET ER DEN FULDE FINALMESSAGE DEN SKAL ALERTE??
@@ -64,4 +76,6 @@ reserveSeatsButton.onclick = function(){
                 alert("Hov! Du mangler at markere de ønskede sæder.")
             }
 };
+
+
 

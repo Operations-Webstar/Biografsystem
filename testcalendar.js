@@ -35,7 +35,6 @@ function showCalendar(month, year) {
     if (firstDay === -1) {
         firstDay = 6;
     }
-    console.log(firstDay)
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
     //henter den indre krop af kalanderen
@@ -60,9 +59,9 @@ function showCalendar(month, year) {
         for (let j = 0; j<7; j++){
             //første tal
             if (i === 0 && j < firstDay){
-                let cell = document.createElement("td");
+                let cell = document.createElement("td", );
                 let cellText = document.createTextNode("");
-
+                cell.class = 'cellText';
                 cell.appendChild(cellText);
                 row.appendChild(cell);
 
@@ -76,9 +75,20 @@ function showCalendar(month, year) {
             else {
                 let cell = document.createElement("td");
                 let cellText = document.createTextNode(date.toString());
+                cell.addEventListener('click', function (){
+                    let listM = document.getElementById('month');
+                    let listY = document.getElementById('year');
+                    let listD = cellText.textContent;
+                    //let userChoiceD = listD.id[listD.selectedIndex].innerHTML;
+                    let userChoiceM = listM.options[listM.selectedIndex].innerHTML;
+                    let userChoiceY = listY.options[listY.selectedIndex].innerHTML;
+                    let userChoiceDate = `${listD} ${userChoiceM} ${userChoiceY}`;
+                    localStorage.setItem('choosenDate', userChoiceDate);
+                    window.location = "Seats.html";
+                });
                 // viser dags dato som en anden farve
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    cell.classList.add("bg-info");
+                    //cell.classList.add("bg-info");
                 }
                 //indsætter nu også med row til sidst
                 cell.appendChild(cellText);
@@ -90,3 +100,9 @@ function showCalendar(month, year) {
         }
     }
 }
+
+
+
+
+
+

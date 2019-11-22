@@ -43,12 +43,15 @@ class Tools{
     // i pågældende situation.
     static getActiveUser() {
         let activeUser = JSON.parse(localStorage.getItem('activeUser'));
+        let booking = activeUser._booking
         if(activeUser.none === 'none'){
             activeUser = 'none'
         } else if (activeUser._adminRights === 'true'){
             activeUser = new Admin(activeUser._firstName, activeUser._lastName, activeUser._tlfNumber, activeUser._dateOfBirth, activeUser._password, activeUser._adminRights);
+            activeUser._booking = booking
         } else {
             activeUser = new User(activeUser._firstName, activeUser._lastName, activeUser._tlfNumber, activeUser._dateOfBirth, activeUser._password);
+            activeUser._booking = booking
         }
         return activeUser
     };
@@ -57,7 +60,7 @@ class Tools{
     //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
     static getActiveUserIndex() {
         let users = this.getAllUsers();
-        let userNumber = this.getActiveUser();
+        let userNumber = this.getActiveUser()._tlfNumber;
         for (let i = 0; i < users.length; i++) {
             if (userNumber === users[i]._tlfNumber) {
                 return i;

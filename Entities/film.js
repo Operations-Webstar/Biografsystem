@@ -21,7 +21,7 @@ class Film {
     static bookNu(){
         var bookFilm = document.getElementById("Book");
         localStorage.setItem('film', bookFilm.value)
-        window.location = "Seats.html"
+        window.location = "testcalendar.html"
     }
         getAge(User){
 
