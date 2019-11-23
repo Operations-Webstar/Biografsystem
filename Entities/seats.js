@@ -52,20 +52,24 @@ reserveSeatsButton.onclick = function(){
 // Herefter sendes man videre til HTML siden "Mine bookinger".
 
             if (counter>0) {
-                alert(finalMessage);
                 let stored = Tools.getAllUsers();
                 let active= Tools.getActiveUser();
+
                 let act = Tools.getActiveUserIndex();
                 let booking = {
                     Film: localStorage.getItem("film"),
                     Seats: JSON.parse(localStorage.getItem("seatsChosen")),
                     Date: localStorage.getItem('choosenDate'),
                 };
+                if(active == 'none'){
+                    alert('Du skal være logget ind, for at bruge booke sæder')
+                } else {
                 active._booking.push(booking);
                 stored[act] = active;
                 localStorage.setItem('activeUser', JSON.stringify(active));
                 localStorage.setItem('users', JSON.stringify(stored));
                 document.location.href = 'Mine_bookninger.html';
+                    alert(finalMessage)}
             }
 
             // SPG TIL BOYS: HVORDAN VED DEN AT DET ER DEN FULDE FINALMESSAGE DEN SKAL ALERTE??
@@ -77,5 +81,38 @@ reserveSeatsButton.onclick = function(){
             }
 };
 
+function checkSeats(){
+    let seats = document.getElementsByClassName('Seat');
+    let seatsBooked = [];
+    let storedUsers = Tools.getAllUsers();
+    let DateChosen = localStorage.getItem('choosenDate');
+    let filmChosen = localStorage.getItem('film');
+    for(let j = 0; j < storedUsers.length;j++){
+        for(let i = 0; i < storedUsers[j]._booking.length; i++){
+            if(storedUsers[j]._booking[i].Date == DateChosen && storedUsers[j]._booking[i].Film == filmChosen )
+            for(let e = 0; e < storedUsers[j]._booking[i].Seats.length; e++){
+            seatsBooked.push(storedUsers[j]._booking[i].Seats[e])
+        }
+    }
+    }
+    return seatsBooked
+};
 
+function bookedSeats() {
+    let seats = document.getElementsByClassName('Seat');
+    let seatsBooked = checkSeats();
+    if(seatsBooked[0] == undefined){
+        return
+    } else {
+        for (let l = 0; l < seatsBooked.length; l++) {
+            for (let o = 0; o < seats.length; o++) {
+                if (seats[o].id == seatsBooked[l]) {
+                    document.getElementById(seats[o].id).setAttribute('disabled', 'disabled')
+                }
+            }
 
+        }
+    }
+}
+
+window.onload = bookedSeats();
