@@ -15,17 +15,13 @@ function checkBooking(){
     if(displaySeats === null){
         document.getElementById('booking').innerHTML = 'Ingen sæder booket';
     } else {
-        document.getElementById('booking').innerHTML = `Du har booket ${displaySeats}, til film ${displayFilms}, den ${displayDate}`;
+        document.getElementById('booking').innerHTML = `Kig i tabellen under for at se dine bookinger.`
     }
 }
 window.onload = checkBooking();
 
 
 
-const filmBookingCell = [
-    {spilleFilm: "Joker", spilleTidspunkt: "17. januar", seating: "s2r4"},
-    {spilleFilm: "Batman", spilleTidspunkt: "30. februar", seating: "s1r5"}
-];
 
 
 function buildTable(data) {
@@ -54,4 +50,11 @@ data.forEach(function(object){
 });
 return table;
 }
-document.querySelector("#displayOfMovies").appendChild(buildTable(filmBookingCell));
+const bookingData = Tools.getActiveUser();
+if(bookingData === 'none'){
+} else {
+    let booking = bookingData._booking;
+    document.querySelector("#displayOfMovies").appendChild(buildTable(booking));
+}
+
+

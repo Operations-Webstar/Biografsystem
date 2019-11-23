@@ -120,4 +120,47 @@ if(logInStatus == false){
    var logOn = JSON.stringify(storedUsers[i])
    break;
 }
+
+<!-- </header>
+
+
+fra booking.js, noget start kode.
+<section class="midt">
+    <div class="container">
+        <h1>Log på for at se dine bookinger</h1>
+        <br/>
+
+        Navn:
+        <br/>
+        <input type="text" id="name" value="" placeholder="Your name"/>
+        <br/>
+        <br/>
+        Telefonnummer:
+        <br/>
+        <input type="text" id="telefon" value="" placeholder="Your telephonenumber"/>
+        <br/>
+        <br/>
+        Fødselsdato:
+        <br/>
+        <input type="text" id="birthday" value="" placeholder="Your birthdate"/>
+        <br/>
+        <br/>
+
+
+        <button type="button" id="logIn" >Log in</button>
+        <br/>
+        <br/>
+
+        <h1>Mine bestillinger:</h1>
+        <ul id="køb">
+            <li> køb 1</li>
+            <li> køb 2</li>
+            <li> køb 3</li>
+        </ul>
+        <br/>
+
+    </div>
+</section>
+<br/> -->
 }*/
+

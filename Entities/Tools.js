@@ -43,9 +43,13 @@ class Tools{
     // i pågældende situation.
     static getActiveUser() {
         let activeUser = JSON.parse(localStorage.getItem('activeUser'));
-        let booking = activeUser._booking
-        if(activeUser.none === 'none'){
-            activeUser = 'none'
+        if(activeUser == null){
+            activeUser = 'none';
+            return activeUser
+        }
+        let booking = activeUser._booking;
+        if(activeUser.none === 'none' ){
+            activeUser = 'none';
         } else if (activeUser._adminRights === 'true'){
             activeUser = new Admin(activeUser._firstName, activeUser._lastName, activeUser._tlfNumber, activeUser._dateOfBirth, activeUser._password, activeUser._adminRights);
             activeUser._booking = booking
@@ -75,6 +79,21 @@ class Tools{
             alert('Adgang nægtet')
         }
     }
+    static getBookedSeats(){
+        let seatsBooked = [];
+        let storedUsers = Tools.getAllUsers();
+        let DateChosen = localStorage.getItem('choosenDate');
+        let filmChosen = localStorage.getItem('film');
+        for(let j = 0; j < storedUsers.length;j++){
+            for(let i = 0; i < storedUsers[j]._booking.length; i++){
+                if(storedUsers[j]._booking[i].Date == DateChosen && storedUsers[j]._booking[i].Film == filmChosen )
+                    for(let e = 0; e < storedUsers[j]._booking[i].Seats.length; e++){
+                        seatsBooked.push(storedUsers[j]._booking[i].Seats[e])
+                    }
+            }
+        }
+        return seatsBooked
+    }
 }
 
 //Global Variable
@@ -96,5 +115,4 @@ const hideButtons = () => {
 };
 //gør at funktionen gør på siden når de loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
 window.onload = hideButtons();
-
 

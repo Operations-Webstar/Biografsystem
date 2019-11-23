@@ -30,7 +30,7 @@ reserveSeatsButton.onclick = function(){
 
 
             for(i = 0; i < seatCheckbox.length; i++){
-                if(seatCheckbox[i].checked == true){
+                if(seatCheckbox[i].checked === true){
                     finalMessage +=  seatCheckbox[i].id + ", ";
                     counter++;
                     seatsArray.push(seatCheckbox[i].id)
@@ -54,14 +54,14 @@ reserveSeatsButton.onclick = function(){
             if (counter>0) {
                 let stored = Tools.getAllUsers();
                 let active= Tools.getActiveUser();
-
                 let act = Tools.getActiveUserIndex();
                 let booking = {
+                    Number: active._tlfNumber,
                     Film: localStorage.getItem("film"),
                     Seats: JSON.parse(localStorage.getItem("seatsChosen")),
                     Date: localStorage.getItem('choosenDate'),
                 };
-                if(active == 'none'){
+                if(active === 'none'){
                     alert('Du skal være logget ind, for at bruge booke sæder')
                 } else {
                 active._booking.push(booking);
@@ -76,41 +76,23 @@ reserveSeatsButton.onclick = function(){
 
 // Er ingen af checkboksene tjekket af og counter vil dermed være lig med 0, da vil den alerte som følger:
 
-            if (counter==0) {
+            if (counter===0) {
                 alert("Hov! Du mangler at markere de ønskede sæder.")
             }
 };
 
-function checkSeats(){
-    let seats = document.getElementsByClassName('Seat');
-    let seatsBooked = [];
-    let storedUsers = Tools.getAllUsers();
-    let DateChosen = localStorage.getItem('choosenDate');
-    let filmChosen = localStorage.getItem('film');
-    for(let j = 0; j < storedUsers.length;j++){
-        for(let i = 0; i < storedUsers[j]._booking.length; i++){
-            if(storedUsers[j]._booking[i].Date == DateChosen && storedUsers[j]._booking[i].Film == filmChosen )
-            for(let e = 0; e < storedUsers[j]._booking[i].Seats.length; e++){
-            seatsBooked.push(storedUsers[j]._booking[i].Seats[e])
-        }
-    }
-    }
-    return seatsBooked
-};
-
 function bookedSeats() {
     let seats = document.getElementsByClassName('Seat');
-    let seatsBooked = checkSeats();
-    if(seatsBooked[0] == undefined){
-        return
+    let seatsBooked = Tools.getBookedSeats();
+    if(seatsBooked[0] === undefined){
+
     } else {
         for (let l = 0; l < seatsBooked.length; l++) {
             for (let o = 0; o < seats.length; o++) {
-                if (seats[o].id == seatsBooked[l]) {
+                if (seats[o].id === seatsBooked[l]) {
                     document.getElementById(seats[o].id).setAttribute('disabled', 'disabled')
                 }
             }
-
         }
     }
 }
