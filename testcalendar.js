@@ -83,7 +83,7 @@ function showCalendar(month, year) {
                     let userChoiceM = listM.options[listM.selectedIndex].innerHTML;
                     let userChoiceY = listY.options[listY.selectedIndex].innerHTML;
                     let userChoiceDate = `${listD} ${userChoiceM} ${userChoiceY}`;
-                    localStorage.setItem('choosenDate', userChoiceDate);
+                    sessionStorage.setItem('choosenDate', userChoiceDate);
                     window.location = "Seats.html";
                 });
                 // viser dags dato som en anden farve

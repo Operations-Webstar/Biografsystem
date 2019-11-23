@@ -9,10 +9,8 @@ class Booking {
 //d
 //Malene
 function checkBooking(){
-    let displayFilms = localStorage.getItem("film");
-    let displaySeats = JSON.parse(localStorage.getItem("seatsChosen"));
-    let displayDate = localStorage.getItem('choosenDate');
-    if(displaySeats === null){
+    let displaySeats = JSON.parse(sessionStorage.getItem("seatsChosen"));
+    if(displaySeats === null && JSON.parse(localStorage.getItem('activeUser'))._booking == undefined){
         document.getElementById('booking').innerHTML = 'Ingen sæder booket';
     } else {
         document.getElementById('booking').innerHTML = `Kig i tabellen under for at se dine bookinger.`

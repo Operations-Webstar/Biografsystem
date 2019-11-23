@@ -45,7 +45,7 @@ reserveSeatsButton.onclick = function(){
 // som definerer den item vi vil gemme med et navn og en værdi. Værdien sættes til at være vores nu fyldte array??? ved navn "seatsArray".
 // Arrayet laves til en string via JSON.stringify, da local storage kun kan gemme strings.
 
-    localStorage.setItem('seatsChosen', JSON.stringify(seatsArray));
+    sessionStorage.setItem('seatsChosen', JSON.stringify(seatsArray));
 
 // Et if-statement laves med formålet om at bekræfte kunden om hvilke sæder personen har reserveret i form af en alert.
 // Dette sker kun hvis counteren er større en 0 - altså at minimum 1 sæde er vinget af.
@@ -57,9 +57,9 @@ reserveSeatsButton.onclick = function(){
                 let act = Tools.getActiveUserIndex();
                 let booking = {
                     Number: active._tlfNumber,
-                    Film: localStorage.getItem("film"),
-                    Seats: JSON.parse(localStorage.getItem("seatsChosen")),
-                    Date: localStorage.getItem('choosenDate'),
+                    Film: sessionStorage.getItem("film"),
+                    Seats: JSON.parse(sessionStorage.getItem("seatsChosen")),
+                    Date: sessionStorage.getItem('choosenDate'),
                 };
                 if(active === 'none'){
                     alert('Du skal være logget ind, for at bruge booke sæder')
