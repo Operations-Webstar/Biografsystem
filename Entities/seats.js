@@ -84,6 +84,8 @@ reserveSeatsButton.onclick = function(){
 function bookedSeats() {
     let seats = document.getElementsByClassName('Seat');
     let seatsBooked = Tools.getBookedSeats();
+    console.log(seatsBooked)
+    debugger
     if(seatsBooked[0] === undefined){
 
     } else {
