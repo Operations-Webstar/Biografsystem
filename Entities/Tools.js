@@ -82,8 +82,8 @@ class Tools{
     static getBookedSeats(){
         let seatsBooked = [];
         let storedUsers = Tools.getAllUsers();
-        let DateChosen = localStorage.getItem('choosenDate');
-        let filmChosen = localStorage.getItem('film');
+        let DateChosen = sessionStorage.getItem('choosenDate');
+        let filmChosen = sessionStorage.getItem('film');
         for(let j = 0; j < storedUsers.length;j++){
             for(let i = 0; i < storedUsers[j]._booking.length; i++){
                 if(storedUsers[j]._booking[i].Date == DateChosen && storedUsers[j]._booking[i].Film == filmChosen )
