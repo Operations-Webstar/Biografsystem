@@ -79,6 +79,7 @@ function showCalendar(month, year) {
                     let listM = document.getElementById('month');
                     let listY = document.getElementById('year');
                     let listD = cellText.textContent;
+
                     //let userChoiceD = listD.id[listD.selectedIndex].innerHTML;
                     let userChoiceM = listM.options[listM.selectedIndex].innerHTML;
                     let userChoiceY = listY.options[listY.selectedIndex].innerHTML;

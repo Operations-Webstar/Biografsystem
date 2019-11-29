@@ -24,7 +24,7 @@
 <section class="midt">
     <div class="container">
         <input type="text" id="enteredNumber" value="" placeholder="User number" onmousedown="Tools.checkAdminStatus()"/>
-        <input type="submit" id="showUser" value="Show User" onclick="activeUser.showUser()"/>
+        <input type="submit" id="showUser" value="Show User" onclick="showUser()"/>
         <input type="reset" id="makeAdmin" value="Make admin" onclick= 'activeUser.makeAdmin()'/>
         <input type="submit" id="deleteUser" value="Delete user" onclick="activeUser.deleteUser()"/>
         <input type="submit" id="showAllUser" value="Clear all" onclick="activeUser.clearStorage()" onmousedown="Tools.checkAdminStatus()"/>
@@ -33,6 +33,7 @@
     </div>
 </section>
 <script type="text/javascript" src="Entities/User.js"></script>
-<script type="text/javascript" src="Entities/Tools.js"></script>
+<script type="text/javascript" src="Adminpage.js"></script>
+<script type="text/javascript" src="Tools.js"></script>
 </body>
 </html>

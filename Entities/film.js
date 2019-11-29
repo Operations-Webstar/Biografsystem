@@ -8,56 +8,51 @@ class Film {
         this.dates = dates
 
     }
-    static lavFilm(filmNummer) {
-        document.getElementById("filmName").innerHTML = filmNummer.filmName;
-        document.getElementById("description").innerHTML = filmNummer.description;
-        document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
-        document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
-        document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
-        document.getElementById("description").innerHTML = filmNummer.description;
-        document.getElementById("Book").value = filmNummer.filmName;
-        bookup.style.display = "block";
-    }
-    static bookNu(){
-        var bookFilm = document.getElementById("Book");
-        sessionStorage.setItem('film', bookFilm.value)
-        window.location = "calendar.html"
-    }
-        getAge(User){
+
+
+        static getAge(Birthday){
 
             //finder både idags dato, og finder userindsat date her
 
             let today = new Date();
+            let dateOfBirth = Birthday;
+            console.log(typeof(dateOfBirth));
 
             //Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
 
-            let dateOfBirth = new Date(User.dateOfBirth);
             if (typeof dateOfBirth === "undefined") {
                 console.log('no date of birth');
             } else {
-                dateOfBirth = new Date(User.dateOfBirth)
+                var birthToDate = new Date(dateOfBirth)
+                console.log(birthToDate);
             }
             //sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
 
-            let age = today.getFullYear() - dateOfBirth.getFullYear();
+            let age = today.getFullYear() - birthToDate.getFullYear();
+            console.log(age);
 
             //sætter m lig med nuværende måned - fødselsdags måned
 
-            let m = today.getMonth() - dateOfBirth.getMonth();
+            let m = today.getMonth() - birthToDate.getMonth();
 
             //Hvis 0 er større end M, har personen allerede haft fødselsdag, så behøves der ikke trækkes 1 fra.
             //Dog hvis m === 0 eller at idag's dag ikke er større end fødselsdags dagen, så minusser man age med 1
             // da personen ikke har nået at have haft fødselsdag
 
-            if (m < 0 || (m === 0 && today.getDate() < dateOfBirth.getDate())) {
+            if (m < 0 || (m === 0 && today.getDate() < birthToDate.getDate())) {
                 age - 1
             }
             return age
         }
 
-    ageCheck(Film, User){
-        var filmRes = Film.ageRestrictqion;
-        var userAge = Film.getAge(User);
+
+     static ageCheck(Film, User){
+
+        let filmRes = Film.ageRestriction;
+        console.log(filmRes)
+        let userAge = this.getAge(User);
+        console.log(userAge)
+         console.log(filmRes <= userAge)
         return filmRes <= userAge;
     }
 }
@@ -105,17 +100,17 @@ var filmTre = new Film(
 // Laver 3 knapper, for hver film og sætter filmEt ind -Daniel
 
 document.getElementById('buttonEt').onclick = function(){
-    Film.lavFilm(filmEt)
+    lavFilm(filmEt)
 
 };
 
 
 document.getElementById('buttonTo').onclick = function(){
-    Film.lavFilm(filmTo)
+    lavFilm(filmTo)
 };
 
 document.getElementById('buttonTre').onclick = function(){
-    Film.lavFilm(filmTre)
+    lavFilm(filmTre)
 };
 // Fortryd knap
 Fortryd.onclick = function() {
