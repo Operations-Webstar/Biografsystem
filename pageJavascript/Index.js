@@ -12,8 +12,11 @@ function lavFilm(filmNummer) {
 
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
-    if(Film.ageCheck(chosenFilm, activeUser.dateOfBirth)) {
-    window.location = "testcalendar.html" }
+    if(activeUser === 'none'){
+        alert('Du skal være logget ind for at vælge film')
+    }
+    else if(Film.ageCheck(chosenFilm, activeUser.dateOfBirth)) {
+    window.location = "calendar.html" }
     else {
         alert("Du er ikke gammel nok til at se denne film!")
     }
@@ -44,40 +47,54 @@ var filmTre = new Film(
 );
 // Laver en funktion, hvor man bare sætter filmen ind i funktionen og derefter laver den et film objekt -Daniel
 
-
+bookup = document.getElementById('bookup');
 // Laver 3 knapper, for hver film og sætter filmEt ind -Daniel
 
 document.getElementById('buttonEt').onclick = function(){
-    lavFilm(filmEt)
-
+    lavFilm(filmEt);
+    window.onclick = function(event) {
+        if(event.target === bookup) {
+            bookup.style.display = "none";
+        }
+    }
 };
 
 
 document.getElementById('buttonTo').onclick = function(){
-    lavFilm(filmTo)
+    lavFilm(filmTo);
+    window.onclick = function(event) {
+        if(event.target === bookup) {
+            bookup.style.display = "none";
+        }
+    }
 };
 
 document.getElementById('buttonTre').onclick = function(){
-    lavFilm(filmTre)
+    lavFilm(filmTre);
+    window.onclick = function(event) {
+        if(event.target === bookup) {
+            bookup.style.display = "none";
+        }
+    }
 };
+
 // Fortryd knap
 Fortryd.onclick = function() {
     bookup.style.display = "none";
 };
 
 // Hvis man clicker andre steder end popuppen, lukker den
-window.onclick = function(event) {
-    if (event.target === bookup) {
-        bookup.style.display = "none";
-    }
-};
+
 
 
 
 //Laver et alternativt manuelt multidimensiontelt array, da loop array'et ikke kan gøres multidimensionelt
 // Her er der lavet et 2x2 array
+/*
 var filmArrayEt = [filmEt, filmTo, filmTre];
 var filmArrayTo = [filmTo, filmTre];
 var datoArray = [[filmArrayEt, filmArrayTo]];
 
-console.log(filmEt);
+console.log(filmEt);*/
+
+

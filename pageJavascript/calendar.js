@@ -11,7 +11,7 @@ showCalendar(currentMonth, currentYear);
 
 function next() {
     currentYear = (currentMonth === 11) ? currentYear +1 : currentYear;
-    currentMonth = (currentMonth + 1) % 12
+    currentMonth = (currentMonth + 1) % 12;
     showCalendar(currentMonth,currentYear);
 }
 
@@ -22,7 +22,7 @@ function previous() {
 }
 
 function jump() {
-    currentYear = parseInt(selectedYear.value)
+    currentYear = parseInt(selectedYear.value);
     currentMonth = parseInt(selectedMonth.value)
 }
 
@@ -38,10 +38,10 @@ function showCalendar(month, year) {
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
     //henter den indre krop af kalanderen
-    let table = document.getElementById("calendar-body")
+    let table = document.getElementById("calendar-body");
 
     //clearer table
-    table.innerHTML = ""
+    table.innerHTML = "";
 
     //indsætter år- og månedsinformation igen vha. DOM
     monthAndYear.innerHTML = months[month] + " " + year;

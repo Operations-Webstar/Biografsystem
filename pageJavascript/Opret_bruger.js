@@ -36,7 +36,7 @@ function createUser() {
     }
 
     //tjekker om birthday kommer ud som invalid date, hvis den gør, så bliver form_valid = false, Rasmus
-    if (this.dateOfBirth === 'Invalid Date') {
+    if (this.dateOfBirth == 'Invalid Date') {
         validation_message += "insert a real date\n";
         form_valid = false;
     }
@@ -53,8 +53,8 @@ function createUser() {
     if (form_valid === true) {
         storedUsers.push(new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password));
         localStorage.setItem('users', JSON.stringify(storedUsers));
-        window.location.href = 'Login.html'
+        window.location.href = 'Index.html'
     } else {
         alert(validation_message);
     }
-};
+}

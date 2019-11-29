@@ -1,17 +1,16 @@
-// Her laves klassen Seat med de korrekte attributer og metoder
-class Seat {
+// Klassen bliver ikke brugt endnu, men det kommer det til, vi havde ikke tid til at gøre den klar.
+/*class Seat {
     constructor(seat, row) {
         this.seat = seat;
         this.row = row;
     }
-}
-
+}*/
 // Nedenfor bliver variablen reserveSeatsButton og seatCheckbox defineret i et global scope, hvilket gør dem globalt tilgængelige.
 // Variablen reserveSeatsButton værdi bliver sat til at være HTML-elementet hvis id er "reserveSeats". Dette findes i DOMMEN via .getElementById.
 // Det samme gøres for variablen seatCheckbox hvis værdi bliver sat til at være alle HTML-elementer der hører under klassen "Seat" via .getElementByClassName
 
-var reserveSeatsButton = document.getElementById("reserveSeats");
-var seatCheckbox = document.getElementsByClassName("Seat");
+let reserveSeatsButton = document.getElementById("reserveSeats");
+let seatCheckbox = document.getElementsByClassName("Seat");
 
 //Nedenfor laves en funktion som executes når der trykkes på knappen med id'et reserveSeats
 
@@ -24,12 +23,13 @@ reserveSeatsButton.onclick = function(){
             var finalMessage = "Du har nu reserveret: ";
             var seatsArray = [];
 
+
 // Der laves et for loop med tre statements. I første statement "i = 0" sættes variablen i til at være 0 inden loopet begynder
 // I andet statement "i < seatCheckbox.length" defineres betingelsen for at loopet kører - nemlig at "i" skal være mindre end mængden af sæder
 // I tredje statement "i++" bliver det defineret at hver gang loopet har kørt skal variablen i stige en gang i værdi.
 
 
-            for(i = 0; i < seatCheckbox.length; i++){
+            for(let i = 0; i < seatCheckbox.length; i++){
                 if(seatCheckbox[i].checked === true){
                     finalMessage +=  seatCheckbox[i].id + ", ";
                     counter++;
@@ -55,7 +55,7 @@ reserveSeatsButton.onclick = function(){
                 let stored = Tools.getAllUsers();
                 let active= Tools.getActiveUser();
                 let act = Tools.getActiveUserIndex();
-                let booking = new Booking(sessionStorage.getItem("film"), JSON.parse(sessionStorage.getItem("seatsChosen")),sessionStorage.getItem('choosenDate'));
+                let booking = new Booking(JSON.parse(sessionStorage.getItem("film")).filmName, JSON.parse(sessionStorage.getItem("seatsChosen")),sessionStorage.getItem('choosenDate'));
                 if(active === 'none'){
                     alert('Du skal være logget ind, for at bruge booke sæder')
                 } else {
@@ -78,10 +78,7 @@ reserveSeatsButton.onclick = function(){
 function bookedSeats() {
     let seats = document.getElementsByClassName('Seat');
     let seatsBooked = Tools.getBookedSeats();
-    console.log(seatsBooked);
-    debugger
     if(seatsBooked === undefined){
-
     } else {
         for (let l = 0; l < seatsBooked.length; l++) {
             for (let o = 0; o < seats.length; o++) {

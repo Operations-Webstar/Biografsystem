@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Program</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 <header>
@@ -12,10 +12,10 @@
         <nav>
             <ul>
                 <li><a href="Index.html">Program</a></li>
-                <li><a href="Mine_bookninger.html">Mine bookninger</a></li>
-                <li><a id="logIn" href="Login.html">Login</a></li>
+                <li><a id='mineBookninger' href="Mine_bookninger.html">Mine bookninger</a></li>
+                <li><a id="logIn">Login</a></li>
                 <li><a id="signIn" href="Opret_bruger.html">Sign up</a></li>
-                <li><a id= "logOut" href="Login.html">Log ud</a></li>
+                <li><a id= "logOut" href="Index.html">Log ud</a></li>
                 <li><a id= "Admin" href="Adminpage.html">Admin</a></li>
             </ul>
         </nav>
@@ -32,15 +32,11 @@
 
 
 <h2 id="spillerNu">Spiller nu</h2>
-
 <div id class="row"> </div>
 <div class="column">
-    <button id="buttonEt" class="Knap" ><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/media/film/i/ir/iron-man-2/plakat_1.jpg?itok=5e0d3aBl" onclick="lavFilm(filmEt)"</button>
-</br> <h1>Book nu</h1>
-    <button id="buttonTo" class="Knap"><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/avengersposter.jpg?itok=YZHMzUDS"</button>
-    </br> <h1>Book nu</h1>
-    <button id="buttonTre" class="Knap"><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/dark_knight_plakat.jpg?itok=Bze25Gsm"</button>
-    </br> <h1>Book nu</h1>
+    <button id="buttonEt" class="Knap" ><img alt='IronMan' class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/media/film/i/ir/iron-man-2/plakat_1.jpg?itok=5e0d3aBl" onclick="lavFilm(filmEt)"><h1>Book nu</h1></button>
+    <button id="buttonTo" class="Knap"><img alt='IronMan' class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/avengersposter.jpg?itok=YZHMzUDS"><h1>Book nu</h1></button>
+    <button id="buttonTre" class="Knap"><img alt='IronMan' class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/dark_knight_plakat.jpg?itok=Bze25Gsm"><h1>Book nu</h1></button>
 </div>
 
 <div id="bookup">
@@ -58,10 +54,11 @@
 
 </div>
 
-<script type="text/javascript" src ="Entities/film.js" ></script>
 <script type="text/javascript" src="Entities/User.js"></script>
-<script type="text/javascript" src="Tools.js"></script>
-<script type="text/javascript" src ="index.js" ></script>
+<script type="text/javascript" src="pageJavascript/Tools.js"></script>
+<script type="text/javascript" src ="Entities/film.js" ></script>
+<script type="text/javascript" src ="pageJavascript/Index.js" ></script>
+
 
 </body>
 </html>
