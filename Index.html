@@ -35,7 +35,7 @@
 
 <div id class="row"> </div>
 <div class="column">
-    <button id="buttonEt" class="Knap" ><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/media/film/i/ir/iron-man-2/plakat_1.jpg?itok=5e0d3aBl" onclick="Film.lavFilm(filmEt)"</button>
+    <button id="buttonEt" class="Knap" ><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/media/film/i/ir/iron-man-2/plakat_1.jpg?itok=5e0d3aBl" onclick="lavFilm(filmEt)"</button>
 </br> <h1>Book nu</h1>
     <button id="buttonTo" class="Knap"><img class="vinduebillede" src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/avengersposter.jpg?itok=YZHMzUDS"</button>
     </br> <h1>Book nu</h1>
@@ -52,14 +52,15 @@
         <p id="genre"></p>
         <p id="filmLength"></p>
         <p id="ageRestriction"></p>
-        <button id="Book" value="" onclick="Film.bookNu()">Vælg Film!</button>
+        <button id="Book" value="" onclick="bookNu()">Vælg Film!</button>
         <button id="Fortryd" >Fortryd</button>
     </div>
 
 </div>
-
+<script type="text/javascript" src ="index.js" ></script>
 <script type="text/javascript" src ="Entities/film.js" ></script>
 <script type="text/javascript" src="Entities/User.js"></script>
-<script type="text/javascript" src="Entities/Tools.js"></script>
+<script type="text/javascript" src="Tools.js"></script>
+
 </body>
 </html>
