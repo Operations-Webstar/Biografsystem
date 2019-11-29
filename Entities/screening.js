@@ -1,3 +1,4 @@
+// Denne klasse er ikke implementeret (bruges næste semester)
 // her laves klassen og de forskellige attributer tilføjes med constructor metoden.
 class Screening {
     constructor(Time, Id, Price) {

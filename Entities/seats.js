@@ -55,12 +55,7 @@ reserveSeatsButton.onclick = function(){
                 let stored = Tools.getAllUsers();
                 let active= Tools.getActiveUser();
                 let act = Tools.getActiveUserIndex();
-                let booking = {
-                    Number: active._tlfNumber,
-                    Film: sessionStorage.getItem("film"),
-                    Seats: JSON.parse(sessionStorage.getItem("seatsChosen")),
-                    Date: sessionStorage.getItem('choosenDate'),
-                };
+                let booking = new Booking(sessionStorage.getItem("film"), JSON.parse(sessionStorage.getItem("seatsChosen")),sessionStorage.getItem('choosenDate'));
                 if(active === 'none'){
                     alert('Du skal være logget ind, for at bruge booke sæder')
                 } else {
@@ -84,9 +79,9 @@ reserveSeatsButton.onclick = function(){
 function bookedSeats() {
     let seats = document.getElementsByClassName('Seat');
     let seatsBooked = Tools.getBookedSeats();
-    console.log(seatsBooked)
+    console.log(seatsBooked);
     debugger
-    if(seatsBooked[0] === undefined){
+    if(seatsBooked === undefined){
 
     } else {
         for (let l = 0; l < seatsBooked.length; l++) {

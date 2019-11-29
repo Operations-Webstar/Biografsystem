@@ -21,7 +21,7 @@ class Film {
     static bookNu(){
         var bookFilm = document.getElementById("Book");
         sessionStorage.setItem('film', bookFilm.value)
-        window.location = "testcalendar.html"
+        window.location = "calendar.html"
     }
         getAge(User){
 
@@ -56,7 +56,7 @@ class Film {
         }
 
     ageCheck(Film, User){
-        var filmRes = Film.ageRestriction;
+        var filmRes = Film.ageRestrictqion;
         var userAge = Film.getAge(User);
         return filmRes <= userAge;
     }

@@ -1,8 +1,8 @@
 class Booking {
-    constructor(bookingId, userId, screeningId) {
-        this.bookingId = bookingId;
-        this.userId = userId;
-        this.screeningId = screeningId;
+    constructor(film, seats, date) {
+        this.film = film;
+        this.seats = seats;
+        this.date = date;
     }
     // function updateSeatsAvailable(){}
 }
@@ -16,7 +16,7 @@ function checkBooking(){
         document.getElementById('booking').innerHTML = `Kig i tabellen under for at se dine bookinger.`
     }
 }
-window.onload = checkBooking();
+//window.onload = checkBooking();
 
 
 
