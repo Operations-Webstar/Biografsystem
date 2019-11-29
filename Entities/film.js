@@ -1,12 +1,10 @@
 class Film {
-    constructor(filmName, genre, filmLength, ageRestriction, description, dates) {
+    constructor(filmName, genre, filmLength, ageRestriction, description) {
         this.filmName = filmName;
         this.genre = genre;
         this.filmLength = filmLength;
         this.ageRestriction = ageRestriction;
         this.description = description;
-        this.dates = dates
-
     }
 
 
@@ -17,9 +15,9 @@ class Film {
             let today = new Date();
             let dateOfBirth = Birthday;
             var pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
-            console.log(dateOfBirth.replace(pattern,'$3-$2-$1'))
+            console.log(dateOfBirth.replace(pattern,'$3-$2-$1'));
             var dt = new Date(dateOfBirth.replace(pattern,'$3-$2-$1'));
-            console.log(dt)
+            console.log(dt);
 
             //Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
 
@@ -47,87 +45,13 @@ class Film {
      static ageCheck(Film, User){
 
         let filmRes = Film.ageRestriction;
-        console.log(filmRes)
+        console.log(filmRes);
         let userAge = this.getAge(User);
-        console.log(userAge)
-         console.log(filmRes <= userAge)
+        console.log(userAge);
+         console.log(filmRes <= userAge);
         return filmRes <= userAge;
     }
 }
 
 
-// Laver et array, der skal bruges til kalenderen -Daniel
-var startDato = new Date("Nov, 2019");
-var slutDato = new Date("Nov 30, 2019");
-function novemberEt() {
-    var november = [];
-// Laver det gennem et loop, så koden fylder mindre og med dato funktionen -Daniel
-    for (var i=0; startDato <= slutDato; i++) {
-        november.push(new Date(startDato.setDate(startDato.getDate() +1)));
-    }
-    return november
-}
-// Laver 3 objekter udfra klassen Film -Daniel
-var filmEt = new Film(
-    "Joker",
-    "Thriller",
-    "120",
-    "16",
-    "Denne film handler om skurke",
-    novemberEt(),
-);
 
-var filmTo = new Film(
-    "Avengers",
-    "Action Thriller",
-    "150",
-    "12",
-    "Denne film handler om superhelte",
-    19,
-);
-var filmTre = new Film(
-    "The Dark Knight",
-    "Action",
-    "100",
-    "16",
-    "Denne film handler om Batman",
-);
-// Laver en funktion, hvor man bare sætter filmen ind i funktionen og derefter laver den et film objekt -Daniel
-
-
-// Laver 3 knapper, for hver film og sætter filmEt ind -Daniel
-
-document.getElementById('buttonEt').onclick = function(){
-    lavFilm(filmEt)
-
-};
-
-
-document.getElementById('buttonTo').onclick = function(){
-    lavFilm(filmTo)
-};
-
-document.getElementById('buttonTre').onclick = function(){
-    lavFilm(filmTre)
-};
-// Fortryd knap
-Fortryd.onclick = function() {
-    bookup.style.display = "none";
-};
-
-// Hvis man clicker andre steder end popuppen, lukker den
-window.onclick = function(event) {
-    if (event.target === bookup) {
-        bookup.style.display = "none";
-    }
-};
-
-
-
-//Laver et alternativt manuelt multidimensiontelt array, da loop array'et ikke kan gøres multidimensionelt
-// Her er der lavet et 2x2 array
-var filmArrayEt = [filmEt, filmTo, filmTre];
-var filmArrayTo = [filmTo, filmTre];
-var datoArray = [[filmArrayEt, filmArrayTo]];
-
-console.log(filmEt);

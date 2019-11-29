@@ -162,5 +162,60 @@ fra booking.js, noget start kode.
     </div>
 </section>
 <br/> -->
+}
+// Laver et array, der skal bruges til kalenderen -Daniel
+var startDato = new Date("Nov, 2019");
+var slutDato = new Date("Nov 30, 2019");
+function novemberEt() {
+    var november = [];
+// Laver det gennem et loop, så koden fylder mindre og med dato funktionen -Daniel
+    for (var i=0; startDato <= slutDato; i++) {
+        november.push(new Date(startDato.setDate(startDato.getDate() +1)));
+    }
+    return november
+}
+static login(){
+    let divLogin = document.createElement("div");
+    divLogin.id = 'popup';
+    let divIn = document.createElement("div");
+    divIn.className = 'bookupIndhold';
+    divLogin.innerHTML = 'Hello';
+    document.body.appendChild(divLogin);
+    divLogin.appendChild(divIn);
+    let loginForm =  document.createElement('form');
+    divIn.appendChild(loginForm);
+    let enteredNumber = document.createElement('input');
+    let enteredPassword = document.createElement('input');
+    enteredNumber.value = '';
+    enteredNumber.style.margin = '10px'
+    enteredPassword.value = '';
+    enteredPassword.style.margin = '10px'
+    enteredNumber.placeholder= 'number';
+    enteredNumber.id = 'enteredNumber';
+    enteredPassword.placeholder = 'password';
+    let button = document.createElement('input');
+    button.type = 'button';
+    button.value = 'Log in'
+    loginForm.appendChild(enteredNumber);
+    loginForm.appendChild(enteredPassword);
+    loginForm.appendChild(button);
+    button.addEventListener('click', function () {
+        let user = Tools.getUser();
+        //if statement, der bruges til at tjekke om informationen er korrekt, og giver alerts alt efter hvad fejlen er.
+        if (enteredNumber.value === '' || enteredPassword.value === ''){
+            alert('Missing information')
+        } else if(user === undefined){
+            alert('No user with this number')
+        } else if (enteredNumber.value !== user._tlfNumber || enteredPassword.value !== user._password) {
+            alert('Wrong pass')
+        }  else {
+            //Sætter keyen activeUser til at være lig den user, som lige er logget ind. Så den kan tilgås senere.
+            // activeUser nøglen, vil være lig at en user er logget ind.
+            localStorage.setItem('activeUser', JSON.stringify(user));
+            //Sender en videre til bookingsiden
+            window.location.href = 'index.html';
+        }
+    })
+
 }*/
 
