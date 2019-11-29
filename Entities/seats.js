@@ -72,7 +72,6 @@ reserveSeatsButton.onclick = function(){
                     alert(finalMessage)}
             }
 
-            // SPG TIL BOYS: HVORDAN VED DEN AT DET ER DEN FULDE FINALMESSAGE DEN SKAL ALERTE??
 
 // Er ingen af checkboksene tjekket af og counter vil dermed være lig med 0, da vil den alerte som følger:
 
