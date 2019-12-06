@@ -2,6 +2,10 @@ class Tools{
     //Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
     //så vi kan arbejde med dem i andre metoder osv.
     //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
+    //Variable, som man skal manipulerer med
+    static allUsers = Tools.getAllUsers();
+    static activeUser = Tools.getActiveUser()
+
     static getAllUsers(){
         let storedUsers = [];
         //Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
@@ -14,14 +18,15 @@ class Tools{
         return storedUsers
     };
 
+
+
     //Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
     //useren i systemet, baseret på userens inputtede telefonnummer, da det er vores unikke-ID til useren.
     static getUser() {
-        let users = this.getAllUsers();
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
-        for(let i = 0; i < users.length; i++) {
-            if (enteredNumber === users[i]._tlfNumber) {
-                return users[i];
+        for(let i = 0; i < this.allUsers.length; i++) {
+            if (enteredNumber === this.allUsers[i]._tlfNumber) {
+                return this.allUsers[i];
             }
         }
     };
@@ -29,10 +34,9 @@ class Tools{
     //Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
     //f.eks. hvis man vil slette en specifik user eller gøre dem til admin
     static getUserIndex() {
-        let users = this.getAllUsers();
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
-        for (let i = 0; i < users.length; i++) {
-            if (enteredNumber === users[i]._tlfNumber) {
+        for (let i = 0; i < this.allUsers.length; i++) {
+            if (enteredNumber === this.allUsers[i]._tlfNumber) {
                 return i;
             }
         }
@@ -42,31 +46,31 @@ class Tools{
     //er admin eller user, derved også få tilgang til deres metoder, laver en instants af den klasse, som den aktive er
     // i pågældende situation.
     static getActiveUser() {
-        let activeUser = JSON.parse(localStorage.getItem('activeUser'));
-        if(activeUser == null){
-            activeUser = 'none';
-            return activeUser
+        let active = JSON.parse(localStorage.getItem('activeUser'));
+        if(active == null){
+            active = 'none';
+            return active
         }
-        let booking = activeUser._booking;
-        if(activeUser.none === 'none' ){
-            activeUser = 'none';
-        } else if (activeUser._adminRights === 'true'){
-            activeUser = new Admin(activeUser._firstName, activeUser._lastName, activeUser._tlfNumber, activeUser._dateOfBirth, activeUser._password, activeUser._adminRights);
-            activeUser._booking = booking
+        let booking = active._booking;
+        if(active.none === 'none' ){
+            active = 'none';
+        } else if (active._adminRights === 'true'){
+            active = new Admin(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password, active._adminRights);
+            active._booking = booking
         } else {
-            activeUser = new User(activeUser._firstName, activeUser._lastName, activeUser._tlfNumber, activeUser._dateOfBirth, activeUser._password);
-            activeUser._booking = booking
+            active = new User(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password);
+            active._booking = booking
         }
-        return activeUser
+        return active
     };
 
     //skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
     //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
     static getActiveUserIndex() {
-        let users = this.getAllUsers();
-        let userNumber = this.getActiveUser()._tlfNumber;
-        for (let i = 0; i < users.length; i++) {
-            if (userNumber === users[i]._tlfNumber) {
+        let userNumber = this.activeUser._tlfNumber;
+
+        for (let i = 0; i < this.allUsers.length; i++) {
+            if (userNumber === this.allUsers[i]._tlfNumber) {
                 return i;
             }
         }
@@ -74,21 +78,20 @@ class Tools{
     //Bruges til at tjekke om man er Admin, denne bruges for at en ordinær User, kommer ind på Admin siden, vil de
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
-        if(this.getActiveUser()._adminRights !== 'true'){
+        if(this.activeUser._adminRights !== 'true'){
             window.location.href = 'Index.html';
             alert('Adgang nægtet')
         }
     }
     static getBookedSeats(){
         let seatsBooked = [];
-        let storedUsers = Tools.getAllUsers();
         let DateChosen = sessionStorage.getItem('choosenDate');
         let filmChosen = sessionStorage.getItem('film');
-        for(let j = 0; j < storedUsers.length;j++){
-            for(let i = 0; i < storedUsers[j]._booking.length; i++){
-                if(storedUsers[j]._booking[i].date == DateChosen && storedUsers[j]._booking[i].film == filmChosen )
-                    for(let e = 0; e < storedUsers[j]._booking[i].seats.length; e++){
-                        seatsBooked.push(storedUsers[j]._booking[i].seats[e])
+        for(let j = 0; j < this.allUsers.length;j++){
+            for(let i = 0; i < this.allUsers[j]._booking.length; i++){
+                if(this.allUsers[j]._booking[i].date == DateChosen && this.allUsers[j]._booking[i].film == filmChosen )
+                    for(let e = 0; e < this.allUsers[j]._booking[i].seats.length; e++){
+                        seatsBooked.push(this.allUsers[j]._booking[i].seats[e])
                     }
             }
         }
@@ -124,26 +127,21 @@ class Tools{
         }
         return age
     }
+    static hideButtons(){
+        if (Tools.activeUser !== "none") {
+            document.getElementById("logIn").style.display = "none";
+            document.getElementById("signIn").style.display = "none";
+            //HJÆLP HJÆLP HJÆLP
+            //at alle elementer med Id logOut, får en click funktionen
+            document.getElementById('logOut').addEventListener('click', function(){Tools.activeUser.signOut()});
+        } else if (Tools.activeUser === "none" || localStorage.getItem('activeUser') == null) {
+            document.getElementById('logOut').style.display = "none";}
+        document.getElementById('logIn').addEventListener('click', function () {User.login()});
+        if (Tools.activeUser._adminRights !== "true"){
+            document.getElementById('Admin').style.display = "none";}
+    };
 }
 
-//Global Variable
-let activeUser = Tools.getActiveUser();
-//Global functions
-//en funktion som hiver den aktive user ud af localstorage, og viser så hvilke knapper som er relevante
-//for useren
-const hideButtons = () => {
-    if (activeUser !== "none") {
-        document.getElementById("logIn").style.display = "none";
-        document.getElementById("signIn").style.display = "none";
-        //HJÆLP HJÆLP HJÆLP
-        //at alle elementer med Id logOut, får en click funktionen
-        document.getElementById('logOut').addEventListener('click', function(){activeUser.signOut()});
-    } else if (activeUser === "none" || localStorage.getItem('activeUser') == null) {
-        document.getElementById('logOut').style.display = "none";}
-        document.getElementById('logIn').addEventListener('click', function () {User.login()});
-    if (activeUser._adminRights !== "true"){
-        document.getElementById('Admin').style.display = "none";}
-};
-//gør at funktionen gør på siden når de loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
-window.onload = hideButtons();
 
+//gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
+window.onload = Tools.hideButtons();

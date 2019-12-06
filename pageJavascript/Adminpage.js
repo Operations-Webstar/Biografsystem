@@ -1,4 +1,5 @@
-//en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn.
+
+//en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
 function showUser() {
     let target = Tools.getUser();
     if(target === undefined){
