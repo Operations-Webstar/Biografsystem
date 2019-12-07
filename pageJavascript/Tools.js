@@ -4,7 +4,7 @@ class Tools{
     //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
     //Variable, som man skal manipulerer med
     static allUsers = Tools.getAllUsers();
-    static activeUser = Tools.getActiveUser()
+    static activeUser = Tools.getActiveUser();
 
     static getAllUsers(){
         let storedUsers = [];
@@ -145,3 +145,5 @@ class Tools{
 
 //gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
 window.onload = Tools.hideButtons();
+
+console.log(Tools.activeUser)

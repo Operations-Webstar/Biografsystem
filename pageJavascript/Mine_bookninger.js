@@ -2,7 +2,7 @@
 //Malene
 function checkBooking(){
     let displaySeats = JSON.parse(sessionStorage.getItem("seatsChosen"));
-    if(activeUser == 'none'){
+    if(Tools.activeUser == 'none'){
         document.getElementById('booking').innerHTML = 'Du er ikke logget ind'
     }
     else if(displaySeats === null && JSON.parse(localStorage.getItem('activeUser'))._booking == undefined){
