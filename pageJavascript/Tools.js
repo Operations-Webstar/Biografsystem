@@ -4,8 +4,6 @@ class Tools{
     //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
     //Variable, som man skal manipulerer med
     static allUsers = Tools.getAllUsers();
-    static activeUser = Tools.getActiveUser();
-
     static getAllUsers(){
         let storedUsers = [];
         //Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
@@ -45,24 +43,25 @@ class Tools{
     //Man finder den user, som lige nu er Aktiv, dvs. den user som er logget ind (lægger i activeUser), og om den user
     //er admin eller user, derved også få tilgang til deres metoder, laver en instants af den klasse, som den aktive er
     // i pågældende situation.
-    static getActiveUser() {
-        let active = JSON.parse(localStorage.getItem('activeUser'));
-        if(active == null){
-            active = 'none';
+        static activeUser = Tools.getActiveUser();
+        static getActiveUser() {
+            let active = JSON.parse(localStorage.getItem('activeUser'));
+            if(active == null){
+                active = 'none';
+                return active
+            }
+            let booking = active._booking;
+            if(active.none === 'none' ){
+                active = 'none';
+            } else if (active._adminRights === 'true'){
+                active = new Admin(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password, active._adminRights);
+                active._booking = booking
+            } else {
+                active = new User(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password);
+                active._booking = booking
+            }
             return active
-        }
-        let booking = active._booking;
-        if(active.none === 'none' ){
-            active = 'none';
-        } else if (active._adminRights === 'true'){
-            active = new Admin(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password, active._adminRights);
-            active._booking = booking
-        } else {
-            active = new User(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password);
-            active._booking = booking
-        }
-        return active
-    };
+        };
 
     //skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
     //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
@@ -86,13 +85,15 @@ class Tools{
     static getBookedSeats(){
         let seatsBooked = [];
         let DateChosen = sessionStorage.getItem('choosenDate');
-        let filmChosen = sessionStorage.getItem('film');
-        for(let j = 0; j < this.allUsers.length;j++){
-            for(let i = 0; i < this.allUsers[j]._booking.length; i++){
-                if(this.allUsers[j]._booking[i].date == DateChosen && this.allUsers[j]._booking[i].film == filmChosen )
-                    for(let e = 0; e < this.allUsers[j]._booking[i].seats.length; e++){
-                        seatsBooked.push(this.allUsers[j]._booking[i].seats[e])
+        let filmChosen = JSON.parse(sessionStorage.getItem('film'));
+        for(let j = 0; j < Tools.allUsers.length;j++){
+            for(let i = 0; i < Tools.allUsers[j]._booking.length; i++){
+                if(Tools.allUsers[j]._booking[i].date == DateChosen && Tools.allUsers[j]._booking[i].film == filmChosen.filmName){
+                    for(let e = 0; e < Tools.allUsers[j]._booking[i].seats.length; e++){
+                        debugger
+                        seatsBooked.push(Tools.allUsers[j]._booking[i].seats[e])
                     }
+                }
             }
         }
         return seatsBooked
