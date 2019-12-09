@@ -40,42 +40,48 @@ class User {
     //function checkMovies(){};
 
     static login(){
+        //laver en div, som kommer til at fylde hele siden
         let divLogin = document.createElement("div");
         divLogin.id = 'popup';
 
+        //laver endnu en div, inden i som bliver en boks, som kommer til at ligge i midten af siden
         let divIn = document.createElement("div");
         divIn.className = 'bookupIndhold';
 
+        //laver form elementet i HTML, så jeg kan gøre brug af dets egenskaber
         let loginForm =  document.createElement('form');
 
+        //laver en entered number med input Tag, som tager imod et userinput, og har en style.margin for udseendets skyld
         let enteredNumber = document.createElement('input');
         enteredNumber.value = '';
-        enteredNumber.style.margin = '10px';
         enteredNumber.placeholder= 'number';
         enteredNumber.id = 'enteredNumber';
 
+        //Laver en entered password med input tag, samme ide, som med userinputet
         let enteredPassword = document.createElement('input');
         enteredPassword.value = '';
-        enteredPassword.style.margin = '10px';
         enteredPassword.placeholder = 'password';
 
+        //laver en knap, value Log in
         let logInButton = document.createElement('input');
         logInButton.type = 'button';
         logInButton.value = 'Log in';
-        logInButton.style.margin = '10px';
 
+        //laver en knap, value Annuler
         let cancelButton = document.createElement('input');
         cancelButton.type = 'button';
         cancelButton.value = 'Annuller';
 
-        document.body.appendChild(divLogin);
-        divLogin.appendChild(divIn);
-        divIn.appendChild(loginForm);
-        loginForm.appendChild(enteredNumber);
-        loginForm.appendChild(enteredPassword);
-        loginForm.appendChild(logInButton);
-        loginForm.appendChild(cancelButton);
+        //Sætter det hele ind på siden
+            document.body.appendChild(divLogin);
+            divLogin.appendChild(divIn);
+            divIn.appendChild(loginForm);
+            loginForm.appendChild(enteredNumber);
+            loginForm.appendChild(enteredPassword);
+            loginForm.appendChild(logInButton);
+            loginForm.appendChild(cancelButton);
 
+        //sætter en eventlistener på Login knappen, så den den kan tjekke om en bruger, har rigtige login informationer
         logInButton.addEventListener('click', function () {
             let user = Tools.getUser();
             //if statement, der bruges til at tjekke om informationen er korrekt, og giver alerts alt efter hvad fejlen er.
@@ -93,9 +99,11 @@ class User {
                 window.location.href = 'index.html';
             }
         });
+        //gør at knappen lukker for diven.
         cancelButton.addEventListener('click',function () {
             divLogin.style.display = 'none'
         });
+        //at hvis man trykker på divLogin, så vil den lukke ned.
         window.onclick = function (event) {
             if(event.target === divLogin)
                 divLogin.style.display = 'none'
@@ -111,7 +119,7 @@ class User {
    };
 }
 
-//Thomas:
+//Thomas
 class Admin extends User {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password, adminRights){
         super(firstName, lastName, tlfNumber, dateOfBirth, password);
@@ -127,20 +135,18 @@ class Admin extends User {
 
     //En metode som fjerner en user fra det gemte array, som ligger i localstorage
     deleteUser(){
-            let storedU = Tools.getAllUsers();
-            storedU.splice(Tools.getUserIndex(), 1);
-            localStorage.setItem('users', JSON.stringify(storedU))
+            Tools.allUsers.splice(Tools.getUserIndex(), 1);
+            localStorage.setItem('users', JSON.stringify(Tools.allUsers))
     }
     //En metode som giver en user fra det gemte array, admin rettigheder.
     makeAdmin(){
         let target = Tools.getUser();
-        let storedU = Tools.getAllUsers();
         target._adminRights = 'true';
-        storedU[Tools.getUserIndex()] = target;
-    localStorage.setItem('users', JSON.stringify(storedU))
+        Tools.allUsers[Tools.getUserIndex()] = target;
+    localStorage.setItem('users', JSON.stringify(Tools.allUsers))
 }
     //en metoder, der resseter systemet, men stadig lægger en none objekt op i active user
-    //dette gøres kun for synets skyld.
+    //dette gøres kun JSON.parse virker, selvom man trækker noget tomt ned. da ActiveUser er en global variable
     clearStorage(){
         localStorage.clear();
         let none = {none:'none'};

@@ -182,3 +182,7 @@ background-color: dimgrey;
     overflow: auto;
     background-color: rgba(29, 29, 29, 0.64); /* skal bruggge rgba når baggrunden skal være transparent */
 }
+
+#popup input{
+    margin: 5px;
+}

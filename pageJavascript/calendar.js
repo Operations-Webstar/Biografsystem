@@ -23,14 +23,15 @@ function previous() {
 
 function jump() {
     currentYear = parseInt(selectedYear.value);
-    currentMonth = parseInt(selectedMonth.value)
+    currentMonth = parseInt(selectedMonth.value);
+    showCalendar(currentYear,currentMonth);
 }
 
 
 
 
 function showCalendar(month, year) {
-    //ugen starter mandag.
+    //ugen starter mandag derfor skal der skrives minus -1 både i firstDay og i if statementet efter.
     let firstDay = (new Date(year, month)).getDay()-1;
     if (firstDay === -1) {
         firstDay = 6;
@@ -87,10 +88,7 @@ function showCalendar(month, year) {
                     sessionStorage.setItem('choosenDate', userChoiceDate);
                     window.location = "Seats.html";
                 });
-                // viser dags dato som en anden farve
-                if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    //cell.classList.add("bg-info");
-                }
+
                 //indsætter nu også med row til sidst
                 cell.appendChild(cellText);
                 row.appendChild(cell);
