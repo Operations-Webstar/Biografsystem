@@ -23,7 +23,8 @@ function previous() {
 
 function jump() {
     currentYear = parseInt(selectedYear.value);
-    currentMonth = parseInt(selectedMonth.value)
+    currentMonth = parseInt(selectedMonth.value);
+    showCalendar(currentYear,currentMonth);
 }
 
 
