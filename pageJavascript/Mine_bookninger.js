@@ -1,11 +1,10 @@
 //d
 //Malene
 function checkBooking(){
-    let displaySeats = JSON.parse(sessionStorage.getItem("seatsChosen"));
     if(Tools.activeUser == 'none'){
         document.getElementById('booking').innerHTML = 'Du er ikke logget ind'
     }
-    else if(displaySeats === null && JSON.parse(localStorage.getItem('activeUser'))._booking == undefined){
+    else if(JSON.parse(localStorage.getItem('activeUser'))._booking == undefined){
         document.getElementById('booking').innerHTML = 'Ingen sæder booket';
     } else {
         document.getElementById('booking').innerHTML = `Kig i tabellen under for at se dine bookinger.`
