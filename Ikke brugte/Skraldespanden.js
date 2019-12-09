@@ -207,6 +207,14 @@ static login(){
             window.location.href = 'index.html';
         }
     })
+    //Laver et alternativt manuelt multidimensiontelt array, da loop array'et ikke kan gøres multidimensionelt
+// Her er der lavet et 2x2 array
+
+var filmArrayEt = [filmEt, filmTo, filmTre];
+var filmArrayTo = [filmTo, filmTre];
+var datoArray = [[filmArrayEt, filmArrayTo]];
+
+console.log(filmEt);
 
 }
 //Thomas
@@ -235,7 +243,10 @@ function logIn() {
     }
 }
 
-
+// Daniel: Konstruerer novemberEt funktionen med start og slut som parametre
+Der er tre variable, en startdato og en slutdato som bruger den indbyggede Date metode og en variabel der bliver tildelt et
+tomt array. Herefter laves et for loop, som kører fra startDato's værdi til slutDato. Herefter skubbes værdien ind i array'et igen.
+L. 259 returnerer funktionen værdien af arrayet november
 function novemberEt(start, slut) {
     var startDato = new Date(start);
     var slutDato = new Date(slut);

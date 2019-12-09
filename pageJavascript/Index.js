@@ -1,13 +1,23 @@
+/* Daniel: Funktionen lavFilm konstrueres med filmNummer som parameter. I funktionens statement henter den seks HTML elementer.
+De fem elementer bliver erstattet med filmNummer's(Film objektet's) tilsvarende værdi.
+L. 10 ændre funktionen en i CSS'en så pop-up boksen bliver synlig, når funktionen køres.
+L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes med sessionStorage med 'film' som key.
+*/
+
 function lavFilm(filmNummer) {
     document.getElementById("filmName").innerHTML = filmNummer.filmName;
     document.getElementById("description").innerHTML = filmNummer.description;
     document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
     document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
     document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
-    document.getElementById("Book").value = filmNummer.filmName;
     bookup.style.display = "block";
     sessionStorage.setItem('film', JSON.stringify(filmNummer))
 }
+/* Daniel: Der konstrueres bookNu funktionen, som tildeler variablen chosenFilm, det filmobjekt der er gemt i sessionStore med 'film' som key.
+ Fra L. 20 bruges if/else statement og en nyttefunktion til at vise en alert, hvis brugeren ikke er logget ind.
+ L. 23 ageCheck funktionen bruges til tjekke om brugeren er gammel nok, til at se filmen og videredirigeres til calender.html
+ l. 26 Der vises en alert, hvis brugeren ikke er gammel nok. -Daniel
+ */
 
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
@@ -21,7 +31,7 @@ function bookNu(){
     }
 }
 
-// Laver 3 objekter udfra klassen Film -Daniel
+// Her konstrueres tre objekter ud fra Film klassen, med fem strings som bruges til at beskrive filmene til brugeren -Daniel
 var filmEt = new Film(
     "Iron man",
     "Thriller",
@@ -44,11 +54,14 @@ var filmTre = new Film(
     "16",
     "Denne film handler om Batman",
 );
-// Laver en funktion, hvor man bare sætter filmen ind i funktionen og derefter laver den et film objekt -Daniel
 
-bookup = document.getElementById('bookup');
-// Laver 3 knapper, for hver film og sætter filmEt ind -Daniel
 
+
+/* Daniel: Her hentes den første knap ned, og tildeles en funktion med lavFilm funktionen inde.
+lavFilm køres med den tilsvarende film som parameter
+L. 61-63 window.onclick tildeles en anonym funktion, med et if/else statement, som ændrer style.display til none hvis brugeren
+klikker andre steder end inden i pop-up boksen. Altså pop-up boksen lukker, hvis brugeren klikker andre steder end den.
+*/
 document.getElementById('buttonEt').onclick = function(){
     lavFilm(filmEt);
     window.onclick = function(event) {
@@ -58,7 +71,7 @@ document.getElementById('buttonEt').onclick = function(){
     }
 };
 
-
+// Daniel: Samme proces sker her, som i L. 65-72, bare med knap to, hvor film to bruges som parameter i lavFilm funktionen
 document.getElementById('buttonTo').onclick = function(){
     lavFilm(filmTo);
     window.onclick = function(event) {
@@ -67,7 +80,7 @@ document.getElementById('buttonTo').onclick = function(){
         }
     }
 };
-
+// Daniel: Det helt samme sker her, som i L. 65-72, bare med knap tre, hvor film tre bruges som parameter i lavFilm funktionen
 document.getElementById('buttonTre').onclick = function(){
     lavFilm(filmTre);
     window.onclick = function(event) {
@@ -77,23 +90,13 @@ document.getElementById('buttonTre').onclick = function(){
     }
 };
 
-// Fortryd knap
+// Daniel: Fortryd knappen kører en anonym funktion, som lukker pop-up boksen hvis brugeren trykker på fortryd.
 Fortryd.onclick = function() {
     bookup.style.display = "none";
 };
 
-// Hvis man clicker andre steder end popuppen, lukker den
 
 
 
-
-//Laver et alternativt manuelt multidimensiontelt array, da loop array'et ikke kan gøres multidimensionelt
-// Her er der lavet et 2x2 array
-/*
-var filmArrayEt = [filmEt, filmTo, filmTre];
-var filmArrayTo = [filmTo, filmTre];
-var datoArray = [[filmArrayEt, filmArrayTo]];
-
-console.log(filmEt);*/
 
 
