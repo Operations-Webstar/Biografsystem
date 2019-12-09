@@ -1,12 +1,12 @@
 class Tools{
-    //Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
+    //Thomas: Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
     //så vi kan arbejde med dem i andre metoder osv.
     //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
     //Variable, som man skal manipulerer med
     static allUsers = Tools.getAllUsers();
     static getAllUsers(){
         let storedUsers = [];
-        //Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
+        //Thomas: Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
         //ellers så henter man localstorage ned, også laver den til javascript array med objekter. Rasmus
         if (localStorage.getItem('users') === null) {
             storedUsers.push(new Admin('Thomas', 'Lindskov', '30110976', '19-02-1996', 'hejsa', 'true'))
@@ -18,7 +18,7 @@ class Tools{
 
 
 
-    //Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
+    //Thomas: Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
     //useren i systemet, baseret på userens inputtede telefonnummer, da det er vores unikke-ID til useren.
     static getUser() {
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -29,7 +29,7 @@ class Tools{
         }
     };
 
-    //Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
+    //Thomas: Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
     //f.eks. hvis man vil slette en specifik user eller gøre dem til admin
     static getUserIndex() {
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -40,7 +40,7 @@ class Tools{
         }
     };
 
-    //Man finder den user, som lige nu er Aktiv, dvs. den user som er logget ind (lægger i activeUser), og om den user
+    //Thomas: Man finder den user, som lige nu er Aktiv, dvs. den user som er logget ind (lægger i activeUser), og om den user
     //er admin eller user, derved også få tilgang til deres metoder, laver en instants af den klasse, som den aktive er
     // i pågældende situation.
         static activeUser = Tools.getActiveUser();
@@ -63,7 +63,7 @@ class Tools{
             return active
         };
 
-    //skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
+    //Thomas: skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
     //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
     static getActiveUserIndex() {
         let userNumber = this.activeUser._tlfNumber;
@@ -74,7 +74,7 @@ class Tools{
             }
         }
     };
-    //Bruges til at tjekke om man er Admin, denne bruges for at en ordinær User, kommer ind på Admin siden, vil de
+    //Thomas: Bruges til at tjekke om man er Admin, denne bruges for at en ordinær User, kommer ind på Admin siden, vil de
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
         if(this.activeUser._adminRights !== 'true'){
@@ -100,26 +100,26 @@ class Tools{
     }
     static getAge(Birthday){
 
-        //finder både idags dato, og finder userindsat date her
+        //Thomas: finder både idags dato, og finder userindsat date her
 
         let today = new Date();
         let dateOfBirth = Birthday;
         var pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
         var dt = new Date(dateOfBirth.replace(pattern,'$3-$2-$1'));
 
-        //Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
+        //Thomas: Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
 
 
-        //sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
+        //Thomas: sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
 
         let age = today.getFullYear() - dt.getFullYear();
 
 
-        //sætter m lig med nuværende måned - fødselsdags måned
+        //Thomas: sætter m lig med nuværende måned - fødselsdags måned
 
         let m = today.getMonth() - dt.getMonth();
 
-        //Hvis 0 er større end M, har personen allerede haft fødselsdag, så behøves der ikke trækkes 1 fra.
+        //Thomas: Hvis 0 er større end M, har personen allerede haft fødselsdag, så behøves der ikke trækkes 1 fra.
         //Dog hvis m === 0 eller at idag's dag ikke er større end fødselsdags dagen, så minusser man age med 1
         // da personen ikke har nået at have haft fødselsdag
 
@@ -132,8 +132,7 @@ class Tools{
         if (Tools.activeUser !== "none") {
             document.getElementById("logIn").style.display = "none";
             document.getElementById("signIn").style.display = "none";
-            //HJÆLP HJÆLP HJÆLP
-            //at alle elementer med Id logOut, får en click funktionen
+            //at alle elementer med Id logOut, får en click funktionen, nav baren er på alle sider undtagen
             document.getElementById('logOut').addEventListener('click', function(){Tools.activeUser.signOut()});
         } else if (Tools.activeUser === "none" || localStorage.getItem('activeUser') == null) {
             document.getElementById('logOut').style.display = "none";}
