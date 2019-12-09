@@ -164,16 +164,7 @@ fra booking.js, noget start kode.
 <br/> -->
 }
 // Laver et array, der skal bruges til kalenderen -Daniel
-var startDato = new Date("Nov, 2019");
-var slutDato = new Date("Nov 30, 2019");
-function novemberEt() {
-    var november = [];
-// Laver det gennem et loop, så koden fylder mindre og med dato funktionen -Daniel
-    for (var i=0; startDato <= slutDato; i++) {
-        november.push(new Date(startDato.setDate(startDato.getDate() +1)));
-    }
-    return november
-}
+
 static login(){
     let divLogin = document.createElement("div");
     divLogin.id = 'popup';
@@ -243,6 +234,18 @@ function logIn() {
         window.location.href = 'index.html';
     }
 }
+
+
+function novemberEt(start, slut) {
+    var startDato = new Date(start);
+    var slutDato = new Date(slut);
+    var november = [];
+
+    for (var i=0; startDato <= slutDato; i++) {
+        november.push(new Date(startDato.setDate(startDato.getDate() +1)));
+    }
+    return november
+}
+console.log(novemberEt("Nov 3", "Nov 10"))
+
 */
-
-

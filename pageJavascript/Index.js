@@ -4,7 +4,6 @@ function lavFilm(filmNummer) {
     document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
     document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
     document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
-    document.getElementById("description").innerHTML = filmNummer.description;
     document.getElementById("Book").value = filmNummer.filmName;
     bookup.style.display = "block";
     sessionStorage.setItem('film', JSON.stringify(filmNummer))
@@ -24,11 +23,11 @@ function bookNu(){
 
 // Laver 3 objekter udfra klassen Film -Daniel
 var filmEt = new Film(
-    "Joker",
+    "Iron man",
     "Thriller",
     "120",
     "16",
-    "Denne film handler om skurke",
+    "Denne film handler om Iron man",
 );
 
 var filmTo = new Film(
