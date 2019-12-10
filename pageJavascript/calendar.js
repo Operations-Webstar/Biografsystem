@@ -37,7 +37,7 @@ function showCalendar(month, year) {
         firstDay = 6;
     }
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
-
+    console.log(daysInMonth);
     //henter den indre krop af kalanderen
     let table = document.getElementById("calendar-body");
 
@@ -58,7 +58,7 @@ function showCalendar(month, year) {
 
         //laver de tilhørende celler og indsætter deres data
         for (let j = 0; j<7; j++){
-            //første tal
+            //hvis dagen er før den første dag i måneden indsættes der ikke clickability og tal på dagen
             if (i === 0 && j < firstDay){
                 let cell = document.createElement("td", );
                 let cellText = document.createTextNode("");
@@ -67,7 +67,7 @@ function showCalendar(month, year) {
                 row.appendChild(cell);
 
             }
-            //sidste tal
+            //stopper koden hvis date er over antal dage i måned
             else if (date > daysInMonth) {
 
                 break;

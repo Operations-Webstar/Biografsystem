@@ -100,14 +100,14 @@ class Tools{
     }
     static getAge(Birthday){
 
-        //Thomas: finder både idags dato, og finder userindsat date her
+        //Rasmus: finder både idags dato, og finder userindsat date her
 
         let today = new Date();
         let dateOfBirth = Birthday;
         var pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
         var dt = new Date(dateOfBirth.replace(pattern,'$3-$2-$1'));
 
-        //Thomas: Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
+        //Rasmus: Bruger new date, så at user.dateOfbirth kommer i Dato format, så vi kan bruge de næste funktioner
 
 
         //Thomas: sætter age i lige med idag årstal minus birthDate årstal og trækker dem fra hinanden
