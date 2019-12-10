@@ -1,5 +1,5 @@
-//d
-//Malene
+//Malene: funktion laves for at displaye forskellige beskeder alt efter om brugeren er logget ind og har booket sæder.
+
 function checkBooking(){
     if(Tools.activeUser == 'none'){
         document.getElementById('booking').innerHTML = 'Du er ikke logget ind'
@@ -12,6 +12,7 @@ function checkBooking(){
 }
 window.onload = checkBooking();
 
+//Malene: Der konstrueres en tabel med tre rows, hvori brugerens bookings vil blive displayet.
 
 function buildTable(data) {
     let table = document.createElement("table");
@@ -39,6 +40,9 @@ function buildTable(data) {
     });
     return table;
 }
+
+//Malene: For at bookingdataen bliver vist i ovenstående tabel skal systemet finde bookingen i user-arrayet der ligger i local storage.
+
 const bookingData = Tools.getActiveUser();
 if(bookingData === 'none'){
 } else {

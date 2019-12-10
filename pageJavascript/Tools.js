@@ -1,6 +1,7 @@
 class Tools{
     //Thomas: Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
     //så vi kan arbejde med dem i andre metoder osv.
+
     //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
     //Variable, som man skal manipulerer med
     static allUsers = Tools.getAllUsers();
