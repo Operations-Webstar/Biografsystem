@@ -90,7 +90,7 @@ og top til 0, så den ligger i toppen  */
     position: absolute;
     top: -2%;
     width: 0;
-/*bruger all keywordet, så CSS forstår det er alle properties, der skal have den her transition, og så sætter jeg
+/*bruger all keywordet, så css forstår det er alle properties, der skal have den her transition, og så sætter jeg
 en delay en på 250ms, og bruger ease-in-out effekten, som er en transition effekt*/
     transition: all ease-in-out 250ms;
 }
