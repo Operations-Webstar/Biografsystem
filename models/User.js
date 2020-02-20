@@ -96,7 +96,7 @@ class User {
                 // activeUser nøglen, vil være lig at en user er logget ind.
                 localStorage.setItem('activeUser', JSON.stringify(user));
                 //Sender en videre til bookingsiden
-                window.location.href = 'index.html';
+                window.location.href = 'index.ejs';
             }
         });
         //Thomas: gør at knappen lukker for diven.

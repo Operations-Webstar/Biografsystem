@@ -79,7 +79,7 @@ class Tools{
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
         if(this.activeUser._adminRights !== 'true'){
-            window.location.href = 'index.html';
+            window.location.href = 'index.ejs';
             alert('Adgang nægtet')
         }
     }

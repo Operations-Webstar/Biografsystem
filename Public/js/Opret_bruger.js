@@ -53,7 +53,7 @@ function createUser() {
     if (form_valid === true) {
         storedUsers.push(new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password));
         localStorage.setItem('users', JSON.stringify(storedUsers));
-        window.location.href = 'index.html'
+        window.location.href = 'index.ejs'
     } else {
         alert(validation_message);
     }
