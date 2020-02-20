@@ -79,7 +79,7 @@ class Tools{
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
         if(this.activeUser._adminRights !== 'true'){
-            window.location.href = 'Index.html';
+            window.location.href = 'index.html';
             alert('Adgang nægtet')
         }
     }
@@ -147,4 +147,4 @@ class Tools{
 //gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
 window.onload = Tools.hideButtons();
 
-console.log(Tools.activeUser)
+console.log(Tools.activeUser);

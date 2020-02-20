@@ -4,6 +4,7 @@ const app = new express();
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/database', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/database', {useUnifiedTopology: true});
+
 
 app.set('view engine', 'ejs');

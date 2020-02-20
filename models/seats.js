@@ -54,7 +54,7 @@ reserveSeatsButton.onclick = function(){
                 stored[act] = active;
                 localStorage.setItem('activeUser', JSON.stringify(active));
                 localStorage.setItem('users', JSON.stringify(stored));
-                document.location.href = 'Mine_bookninger.html';
+                document.location.href = 'bookninger.html';
                     alert(finalMessage)}
             }
 
