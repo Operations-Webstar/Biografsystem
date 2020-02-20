@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/Operations-Webstar/Biografsystem/issues"
   },
-  "homepage": "https://github.com/Operations-Webstar/Biografsystem#readme"
+  "homepage": "https://github.com/Operations-Webstar/Biografsystem#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.12"
+  }
 }
