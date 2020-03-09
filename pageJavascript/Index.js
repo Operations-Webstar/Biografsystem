@@ -1,6 +1,6 @@
 /* Daniel: Funktionen lavFilm konstrueres med filmNummer som parameter. I funktionens statement henter den seks HTML elementer.
 De fem elementer bliver erstattet med filmNummer's(Film objektet's) tilsvarende værdi.
-L. 10 ændre funktionen en i css'en så pop-up boksen bliver synlig, når funktionen køres.
+L. 10 ændre funktionen en i CSS'en så pop-up boksen bliver synlig, når funktionen køres.
 L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes med sessionStorage med 'film' som key.
 */
 

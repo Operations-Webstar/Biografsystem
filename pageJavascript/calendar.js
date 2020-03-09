@@ -86,7 +86,7 @@ function showCalendar(month, year) {
                     let userChoiceY = listY.options[listY.selectedIndex].innerHTML;
                     let userChoiceDate = `${listD} ${userChoiceM} ${userChoiceY}`;
                     sessionStorage.setItem('choosenDate', userChoiceDate);
-                    window.location = "seats.html";
+                    window.location = "Seats.html";
                 });
 
                 //indsætter nu også med row til sidst

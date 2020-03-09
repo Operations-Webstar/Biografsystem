@@ -204,7 +204,7 @@ static login(){
             // activeUser nøglen, vil være lig at en user er logget ind.
             localStorage.setItem('activeUser', JSON.stringify(user));
             //Sender en videre til bookingsiden
-            window.location.href = 'index.ejs';
+            window.location.href = 'index.html';
         }
     })
     //Laver et alternativt manuelt multidimensiontelt array, da loop array'et ikke kan gøres multidimensionelt
@@ -239,7 +239,7 @@ function logIn() {
         // activeUser nøglen, vil være lig at en user er logget ind.
         localStorage.setItem('activeUser', JSON.stringify(user));
         //Sender en videre til bookingsiden
-        window.location.href = 'index.ejs';
+        window.location.href = 'index.html';
     }
 }
 
