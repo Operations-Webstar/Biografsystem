@@ -1,3 +1,4 @@
+
 class Tools{
     //Thomas: Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
     //så vi kan arbejde med dem i andre metoder osv.
