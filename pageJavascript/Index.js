@@ -31,6 +31,7 @@ function bookNu(){
     }
 }
 
+
 // Her konstrueres tre objekter ud fra Film klassen, med fem strings som bruges til at beskrive filmene til brugeren -Daniel
 var filmEt = new Film(
     "Iron man",

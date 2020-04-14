@@ -1,4 +1,4 @@
-
+const axios = require('axios')
 //Rasmus
 //en static funktion der laver en instans af klassen User, som man så bruger JSON, til at lagre i localStorage
 //Bruger forskellige if statements, til at sørge for den indtastede info er korrekt
@@ -52,8 +52,7 @@ function createUser() {
     // arrayet, nu må den nye bruger ind i localstorage via stringify.
     // ellers så alerter den (validation_message) med tilhørende strings. Rasmus/Thomas
     if (form_valid === true) {
-        storedUsers.push(new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password));
-        localStorage.setItem('users', JSON.stringify(storedUsers));
+        const user = new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password);
         window.location.href = 'Index.html'
     } else {
         alert(validation_message);
