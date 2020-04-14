@@ -1,5 +1,5 @@
 // Daniel: Konstruerer klassen Film med en constructor, som indeholder fem properties.
-const axios = require('axios')
+
 
 class Film {
     constructor(filmName, genre, filmLength, ageRestriction, description) {

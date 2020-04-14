@@ -5,6 +5,7 @@
         this.row = row;
     }
 }*/
+
 // Malene:
 // Variablen reserveSeatsButton og seatCheckbox defineret i et globalt scope.
 // De bliver begge tildelt værdier der findes i Dommen via et .getElementBy... statementes

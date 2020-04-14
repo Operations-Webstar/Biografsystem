@@ -1,11 +1,11 @@
-const axios = require('axios')
+
+
 //Rasmus
 //en static funktion der laver en instans af klassen User, som man så bruger JSON, til at lagre i localStorage
 //Bruger forskellige if statements, til at sørge for den indtastede info er korrekt
 function createUser() {
     let form_valid = true;
     let validation_message = "";
-    let storedUsers = Tools.getAllUsers();
     this.firstName = document.getElementById('firstName').value;
     this.lastName = document.getElementById('lastName').value;
     this.tlfNumber = document.getElementById('phoneNumber').value;
@@ -53,6 +53,18 @@ function createUser() {
     // ellers så alerter den (validation_message) med tilhørende strings. Rasmus/Thomas
     if (form_valid === true) {
         const user = new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password);
+        axios.post('http://localhost:3000/users/signup', {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            tlfNumber:user.tlfNumber,
+            dateOfBirth: user.dateOfBirth,
+            password: user.password})
+            .then(result => {
+                console.log(result)
+        })
+            .catch(error => {
+                console.log(error)
+            })
         window.location.href = 'Index.html'
     } else {
         alert(validation_message);
