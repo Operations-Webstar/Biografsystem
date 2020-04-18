@@ -138,10 +138,18 @@ class Admin extends User {
 
 
     //Thomas: En metode som fjerner en user fra det gemte array, som ligger i localstorage
-    deleteUser(){
+   /* deleteUser(){
             Tools.allUsers.splice(Tools.getUserIndex(), 1);
             localStorage.setItem('users', JSON.stringify(Tools.allUsers))
+    }*/
+
+    // Sletning af bruger
+    deleteUser() {
+        axios.delete('http://localhost:3000/users/userId',{
+
+        })
     }
+
     //Thomas: En metode som giver en user fra det gemte array, admin rettigheder.
     makeAdmin(){
         let target = Tools.getUser();
@@ -151,10 +159,6 @@ class Admin extends User {
 }
     //Thomas: en metoder, der resseter systemet, men stadig lægger en none objekt op i active user
     //dette gøres kun sådan at JSON.parse virker, og ikke kaster en error
-    clearStorage(){
-        localStorage.clear();
-        let none = {none:'none'};
-        localStorage.setItem('activeUser', JSON.stringify(none));
-    };
+
 }
 

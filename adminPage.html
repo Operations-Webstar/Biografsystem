@@ -23,11 +23,10 @@
 </header>
 <section class="midt">
     <div class="container">
-        <input type="text" id="enteredNumber" value="" placeholder="User number" onmousedown="Tools.checkAdminStatus()"/>
+        <input type="text" id="enteredNumber" value="" placeholder="User number"/>
         <input type="submit" id="showUser" value="Show User" onclick="showUser()"/>
         <input type="reset" id="makeAdmin" value="Make admin" onclick= 'Tools.activeUser.makeAdmin()'/>
         <input type="submit" id="deleteUser" value="Delete user" onclick="Tools.activeUser.deleteUser()"/>
-        <input type="submit" id="showAllUser" value="Clear all" onclick="Tools.activeUser.clearStorage()" onmousedown="Tools.checkAdminStatus()"/>
         <br/>
         <p>Navn: <span id="navn"></span> <br/> Telefonnummer: <span id="number"></span> <br/> Alle Brugere <span id="allUsers"></span> </p>
     </div>
