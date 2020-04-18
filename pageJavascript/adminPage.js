@@ -15,3 +15,45 @@ function showUser(){
             console.log(error.result)
         })
 }
+
+function deleteUser(){
+    let d = document.getElementById('enteredNumber')
+    let target = axios.post('http://localhost:3000/users/findOne',{
+        tlfNumber:d.value
+    })
+        .then(result => {
+            axios.delete('http://localhost:3000/users/'+ result.data._id)
+                .then(result => {
+                console.log(result)
+                return result
+            })
+                .catch(error => {
+                    console.log(error.result)
+                })
+        })
+        .catch(error => {
+            console.log(error.result)
+        })
+}
+
+function updateUser(){
+    let d = document.getElementById('enteredNumber')
+    let target = axios.post('http://localhost:3000/users/findOne',{
+        tlfNumber:d.value
+    })
+        .then(result => {
+            axios.patch('http://localhost:3000/users/'+ result.data._id, {
+                admin: 'yes'
+            })
+                .then(result => {
+                    console.log(result)
+                    return result
+                })
+                .catch(error => {
+                    console.log(error.result)
+                })
+        })
+        .catch(error => {
+            console.log(error.result)
+        })
+}
