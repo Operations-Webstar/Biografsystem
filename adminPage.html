@@ -31,6 +31,16 @@
         <p>Navn: <span id="navn"></span> <br/> Telefonnummer: <span id="number"></span> <br/> Alle Brugere <span id="allUsers"></span> </p>
     </div>
 </section>
+<section class ="lavfilm">
+    <div class="container">
+        <input type="text" id="filmName" value="" placeholder="Filmens navn"/>
+        <input type="text" id="genre" value="" placeholder="Filmens genre"/>
+        <input type="text" id="filmLength" value="" placeholder="Filmens længde"/>
+        <input type="text" id="ageRestriction" value="" placeholder="Filmens alders begrænsning"/>
+        <input type="text" id="description" value="" placeholder="Filmens beskrivelse"/>
+        <input type="submit" id="addMovie" onclick="addMovie()"/>
+    </div>
+</section>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="Entities/User.js"></script>
 <script type="text/javascript" src="pageJavascript/tools.js"></script>

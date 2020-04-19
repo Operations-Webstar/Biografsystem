@@ -55,3 +55,16 @@ function updateUser(){
             console.log(error.result)
         })
 }
+function addMovie(){
+    axios.post('http://localhost:3000/films/', {
+        filmName: document.getElementById("filmName").value,
+        genre: document.getElementById("genre").value,
+        filmLength: document.getElementById("filmLength").value,
+        ageRestriction: document.getElementById("ageRestriction").value,
+        description: document.getElementById("description").value
+    })
+        .then(result=>{console.log(result)})
+        .catch(error => {
+            console.log(error.result)
+        })
+}

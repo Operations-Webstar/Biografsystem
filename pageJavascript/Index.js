@@ -21,6 +21,7 @@ function lavFilm(filmNummer) {
 
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
+
     if(Tools.activeUser === 'none'){
         alert('Du skal være logget ind for at vælge film')
     }
@@ -96,7 +97,22 @@ Fortryd.onclick = function() {
     bookup.style.display = "none";
 };
 
+function getAllFilms(){
+    axios.get('http://localhost:3000/films/')
+        .then(result=>{
+            var filmData = result.data.products
+            var filmNummer = filmData[1]
 
+            document.getElementById("filmName").innerHTML = filmNummer.filmName;
+            document.getElementById("description").innerHTML = filmNummer.description;
+            document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
+            document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
+            document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
+            bookup.style.display = "block";
+            sessionStorage.setItem('film', JSON.stringify(filmNummer))
+            })
+}
+getAllFilms()
 
 
 
