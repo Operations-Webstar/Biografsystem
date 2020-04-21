@@ -58,45 +58,6 @@ var filmTre = new Film(
 );
 
 
-
-/* Daniel: Her hentes den første knap ned, og tildeles en funktion med lavFilm funktionen inde.
-lavFilm køres med den tilsvarende film som parameter
-L. 61-63 window.onclick tildeles en anonym funktion, med et if/else statement, som ændrer style.display til none hvis brugeren
-klikker andre steder end inden i pop-up boksen. Altså pop-up boksen lukker, hvis brugeren klikker andre steder end den.
-*/
-document.getElementById('buttonEt').onclick = function(){
-    lavFilm(filmEt);
-    window.onclick = function(event) {
-        if(event.target === bookup) {
-            bookup.style.display = "none";
-        }
-    }
-};
-
-// Daniel: Samme proces sker her, som i L. 65-72, bare med knap to, hvor film to bruges som parameter i lavFilm funktionen
-document.getElementById('buttonTo').onclick = function(){
-    lavFilm(filmTo);
-    window.onclick = function(event) {
-        if(event.target === bookup) {
-            bookup.style.display = "none";
-        }
-    }
-};
-// Daniel: Det helt samme sker her, som i L. 65-72, bare med knap tre, hvor film tre bruges som parameter i lavFilm funktionen
-document.getElementById('buttonTre').onclick = function(){
-    lavFilm(filmTre);
-    window.onclick = function(event) {
-        if(event.target === bookup) {
-            bookup.style.display = "none";
-        }
-    }
-};
-
-// Daniel: Fortryd knappen kører en anonym funktion, som lukker pop-up boksen hvis brugeren trykker på fortryd.
-Fortryd.onclick = function() {
-    bookup.style.display = "none";
-};
-
 function getAllFilms(number){
     axios.get('http://localhost:3000/films/')
         .then(result=>{
@@ -110,8 +71,48 @@ function getAllFilms(number){
             document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
             bookup.style.display = "block";
             sessionStorage.setItem('film', JSON.stringify(filmNummer))
-            })
+        })
 }
+
+/* Daniel: Her hentes den første knap ned, og tildeles en funktion med lavFilm funktionen inde.
+lavFilm køres med den tilsvarende film som parameter
+L. 61-63 window.onclick tildeles en anonym funktion, med et if/else statement, som ændrer style.display til none hvis brugeren
+klikker andre steder end inden i pop-up boksen. Altså pop-up boksen lukker, hvis brugeren klikker andre steder end den.
+*/
+document.getElementById('buttonEt').onclick = function(){
+    getAllFilms(0);
+    window.onclick = function(event) {
+        if(event.target === bookup) {
+            bookup.style.display = "none";
+        }
+    }
+};
+
+// Daniel: Samme proces sker her, som i L. 65-72, bare med knap to, hvor film to bruges som parameter i lavFilm funktionen
+document.getElementById('buttonTo').onclick = function(){
+    getAllFilms(1);
+    window.onclick = function(event) {
+        if(event.target === bookup) {
+            bookup.style.display = "none";
+        }
+    }
+};
+// Daniel: Det helt samme sker her, som i L. 65-72, bare med knap tre, hvor film tre bruges som parameter i lavFilm funktionen
+document.getElementById('buttonTre').onclick = function(){
+    getAllFilms(0);
+    window.onclick = function(event) {
+        if(event.target === bookup) {
+            bookup.style.display = "none";
+        }
+    }
+};
+
+// Daniel: Fortryd knappen kører en anonym funktion, som lukker pop-up boksen hvis brugeren trykker på fortryd.
+Fortryd.onclick = function() {
+    bookup.style.display = "none";
+};
+
+
 
 
 
