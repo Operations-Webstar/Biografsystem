@@ -95,6 +95,12 @@ class User {
                 axios.post('http://localhost:3000/users/login',{tlfNumber: enteredNumber.value,password: enteredPassword.value})
                     .then(result => {
                         console.log(result)
+                        let sessionData = {
+                            userId: result.data.userId,
+                            userType: result.data.userType
+                        }
+                        sessionStorage.setItem('activeUser', JSON.stringify(sessionData))
+                        window.location.href = 'Index.html'
                 })
                 .catch(error => {
                     console.log(error.result)
@@ -117,9 +123,8 @@ class User {
    //Thomas: En funktion, der fjerner den nuværende bruger, også smider et none objekt op i localstorage
     //grunden til at none er et objekt, er at så virker JSON, bedre i andre metoder, når man parser.
     // Hvis vi bare have lavet en string 'none', vil der komme en fejl, når vi bruger JSON.parse.
-   signOut(){
-       let none = {none:'none'};
-       localStorage.setItem('activeUser', JSON.stringify(none));
+   static signOut(){
+       sessionStorage.removeItem('activeUser');
    };
 }
 

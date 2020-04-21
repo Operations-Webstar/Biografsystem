@@ -186,3 +186,7 @@ background-color: dimgrey;
 #popup input{
     margin: 5px;
 }
+
+#Admin{
+    display: none;
+}

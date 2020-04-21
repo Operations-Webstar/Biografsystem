@@ -3,7 +3,7 @@ const postbutton = document.getElementById('post_user')
 
 const getData = () => {
 axios.get('http://localhost:3000/users/').then(response => {
-    console.log(response)
+    console.log(response.data)
   });
 }
 

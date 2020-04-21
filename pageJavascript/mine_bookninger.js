@@ -16,7 +16,6 @@ window.onload = checkBooking();
 
 function buildTable(data) {
     let table = document.createElement("table");
-
     let fields = Object.keys(data[0]);
     let headRow = document.createElement("tr");
     fields.forEach(function(field) {

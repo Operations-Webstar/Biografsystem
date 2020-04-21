@@ -4,7 +4,7 @@ L. 10 ændre funktionen en i CSS'en så pop-up boksen bliver synlig, når funkti
 L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes med sessionStorage med 'film' som key.
 */
 
-function lavFilm(filmNummer) {
+/*function lavFilm(filmNummer) {
     document.getElementById("filmName").innerHTML = filmNummer.filmName;
     document.getElementById("description").innerHTML = filmNummer.description;
     document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
@@ -12,7 +12,7 @@ function lavFilm(filmNummer) {
     document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
     bookup.style.display = "block";
     sessionStorage.setItem('film', JSON.stringify(filmNummer))
-}
+}*/
 /* Daniel: Der konstrueres bookNu funktionen, som tildeler variablen chosenFilm, det filmobjekt der er gemt i sessionStore med 'film' som key.
  Fra L. 20 bruges if/else statement og en nyttefunktion til at vise en alert, hvis brugeren ikke er logget ind.
  L. 23 ageCheck funktionen bruges til tjekke om brugeren er gammel nok, til at se filmen og videredirigeres til calender.html
@@ -97,11 +97,11 @@ Fortryd.onclick = function() {
     bookup.style.display = "none";
 };
 
-function getAllFilms(){
+function getAllFilms(number){
     axios.get('http://localhost:3000/films/')
         .then(result=>{
-            var filmData = result.data.products
-            var filmNummer = filmData[1]
+            let filmData = result.data.products
+            let filmNummer = filmData[number]
 
             document.getElementById("filmName").innerHTML = filmNummer.filmName;
             document.getElementById("description").innerHTML = filmNummer.description;
@@ -112,7 +112,6 @@ function getAllFilms(){
             sessionStorage.setItem('film', JSON.stringify(filmNummer))
             })
 }
-getAllFilms()
 
 
 

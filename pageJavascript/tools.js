@@ -5,7 +5,7 @@ class Tools{
 
     //getAllUsers, bruges til at få fat i et Array med de users, som er gemt i localstorage
     //Variable, som man skal manipulerer med
-    static allUsers = Tools.getAllUsers();
+    /*static allUsers = Tools.getAllUsers();
     static getAllUsers(){
         let storedUsers = [];
         //Thomas: Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
@@ -16,38 +16,39 @@ class Tools{
             storedUsers = JSON.parse(localStorage.getItem('users'))
         }
         return storedUsers
-    };
+    };*/
 
 
 
     //Thomas: Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
     //useren i systemet, baseret på userens inputtede telefonnummer, da det er vores unikke-ID til useren.
-    static getUser() {
+    /*static getUser() {
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
         for(let i = 0; i < this.allUsers.length; i++) {
             if (enteredNumber === this.allUsers[i]._tlfNumber) {
                 return this.allUsers[i];
             }
         }
-    };
+    };*/
 
     //Thomas: Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
     //f.eks. hvis man vil slette en specifik user eller gøre dem til admin
-    static getUserIndex() {
+    /*static getUserIndex() {
         let enteredNumber = document.getElementById('enteredNumber').value.toString();
         for (let i = 0; i < this.allUsers.length; i++) {
             if (enteredNumber === this.allUsers[i]._tlfNumber) {
                 return i;
             }
         }
-    };
+    };*/
 
     //Thomas: Man finder den user, som lige nu er Aktiv, dvs. den user som er logget ind (lægger i activeUser), og om den user
     //er admin eller user, derved også få tilgang til deres metoder, laver en instants af den klasse, som den aktive er
     // i pågældende situation.
-        static activeUser = Tools.getActiveUser();
+        /*static activeUser = Tools.getActiveUser();
+
         static getActiveUser() {
-            let active = JSON.parse(localStorage.getItem('activeUser'));
+            let active = JSON.parse(sessionStorage.getItem('activeUser'));
             if(active == null){
                 active = 'none';
                 return active
@@ -63,11 +64,11 @@ class Tools{
                 active._booking = booking
             }
             return active
-        };
+        };*/
 
     //Thomas: skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
     //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
-    static getActiveUserIndex() {
+    /*static getActiveUserIndex() {
         let userNumber = this.activeUser._tlfNumber;
 
         for (let i = 0; i < this.allUsers.length; i++) {
@@ -75,7 +76,7 @@ class Tools{
                 return i;
             }
         }
-    };
+    };*/
     //Thomas: Bruges til at tjekke om man er Admin, denne bruges for at en ordinær User, kommer ind på Admin siden, vil de
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
@@ -131,15 +132,20 @@ class Tools{
         return age
     }
     static hideButtons(){
-        if (Tools.activeUser !== "none") {
+        let active = JSON.parse(sessionStorage.getItem('activeUser'))
+        if (active !== null) {
             document.getElementById("logIn").style.display = "none";
             document.getElementById("signIn").style.display = "none";
             //at alle elementer med Id logOut, får en click funktionen, nav baren er på alle sider undtagen
-            document.getElementById('logOut').addEventListener('click', function(){Tools.activeUser.signOut()});
-        } else if (Tools.activeUser === "none" || localStorage.getItem('activeUser') == null) {
-            document.getElementById('logOut').style.display = "none";}
-        document.getElementById('logIn').addEventListener('click', function () {User.login()});
-        if (Tools.activeUser._adminRights !== "true"){
+            document.getElementById('logOut').addEventListener('click', function(){User.signOut()});
+        } else {
+            document.getElementById('logOut').style.display = "none";
+            document.getElementById('logIn').addEventListener('click', function () {
+                User.login()
+            });
+            return
+        }
+        if (active.userType === "admin"){
             document.getElementById('Admin').style.display = "none";}
     };
 }
@@ -148,4 +154,4 @@ class Tools{
 //gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
 window.onload = Tools.hideButtons();
 
-console.log(Tools.activeUser)
+//console.log(Tools.activeUser)
