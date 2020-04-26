@@ -61,6 +61,7 @@ var filmTre = new Film(
 function getAllFilms(number){
     axios.get('http://localhost:3000/films/')
         .then(result=>{
+            console.log(result)
             let filmData = result.data.products
             let filmNummer = filmData[number]
 

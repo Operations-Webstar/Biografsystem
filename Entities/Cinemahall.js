@@ -1,11 +1,12 @@
 class Cinemahall {
-    constructor(hall_id,rows, columns ) {
-        this.hall_id = hall_ida
+    constructor(hall_id,hallName, rows, columns ) {
+        this.hall_id = hall_id
+        this.hallName = hallName
         this.rows = rows
         this.columns = columns
     }
 
-    static  hallArray(rows,columns) {
+    static hallArray(rows,columns) {
         const hallSeats = []
         for (let i = 0; i<rows;i++) {
             hallSeats[i] = []

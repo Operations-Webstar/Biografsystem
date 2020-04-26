@@ -8,12 +8,10 @@ axios.get('http://localhost:3000/users/').then(response => {
 }
 
 const sendData = () => {
-axios.post('http://localhost:3000/users/signup', {
-    firstName: 'Thomas',
-    lastName: 'Lindskov',
-    tlfNumber:'17898',
-    dateOfBirth: '1',
-    password: '123'
+axios.post('http://localhost:3000/cinemahalls', {
+    hallName: 'lille Sal',
+    rows: '10',
+    columns:'8'
 }).then(peterplys => {
     console.log(peterplys.data)
 })
@@ -22,5 +20,7 @@ axios.post('http://localhost:3000/users/signup', {
     });
 }
 
-getbutton.addEventListener("click", getData)
+const get = () => {axios.get('http://localhost:3000/cinemahalls').then(result => {console.log(result)})}
+
+getbutton.addEventListener("click", get)
 postbutton.addEventListener("click", sendData)
