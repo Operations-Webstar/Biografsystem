@@ -2,36 +2,14 @@
 //Classes
 class User {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password) {
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._tlfNumber = tlfNumber;
-        this._dateOfBirth = dateOfBirth;
-        this._password = password;
-        this._booking = [];
-    };
-   //Laver en get funktion til alle de forskellige parametre, så de kan bruges længere nede. -Thomas
-    get firstName() {
-        return this._firstName
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tlfNumber = tlfNumber;
+        this.dateOfBirth = dateOfBirth;
+        this.password = password;
+        this.booking = [];
     };
 
-    get lastName() {
-        return this._lastName
-    };
-
-    get tlfNumber() {
-        return this._tlfNumber
-    };
-
-    get dateOfBirth() {
-        return this._dateOfBirth
-    };
-
-    get password() {
-        return this._password
-    };
-    get booking(){
-        return this._booking
-    };
 
     //function bookSeat(){};
     //function cancelSeat(){};
@@ -133,13 +111,7 @@ class User {
 class Admin extends User {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password, adminRights){
         super(firstName, lastName, tlfNumber, dateOfBirth, password);
-        this._adminRights = adminRights
-    }
-    get adminRights(){
-        return this._adminRights
-    }
-    set adminRights(x){
-    this._adminRights = x;
+        this.adminRights = adminRights
     }
 
 

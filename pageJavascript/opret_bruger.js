@@ -53,12 +53,7 @@ function createUser() {
     // ellers så alerter den (validation_message) med tilhørende strings. Rasmus/Thomas
     if (form_valid === true) {
         const user = new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password);
-        axios.post('http://localhost:3000/users/signup', {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            tlfNumber:user.tlfNumber,
-            dateOfBirth: user.dateOfBirth,
-            password: user.password})
+        axios.post('http://localhost:3000/users/signup', user)
             .then(result => {
                 console.log(result)
         })

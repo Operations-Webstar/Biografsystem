@@ -1,4 +1,3 @@
-
 //Thomas: en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
 function showUser(){
     let d = document.getElementById('enteredNumber')
@@ -67,4 +66,57 @@ function addMovie(){
         .catch(error => {
             console.log(error.result)
         })
+}
+
+function makeShowing() {
+    let showingDiv = document.getElementById('makeShowing')
+    let showingForm =  document.createElement('form');
+    showingDiv.appendChild(showingForm)
+    axios.get('http://localhost:3000/films/').then(result => {
+        films = result.data.products
+        films.forEach(film => {
+            let filmName = document.createElement('p')
+            filmName.innerHTML = film.filmName
+            showingForm.appendChild(filmName)
+            let button = document.createElement('button').addEventListener('click', () => {
+                console.log(film.filmName)
+            })
+            filmName.appendChild(button)
+        })
+    }).catch(err => {
+        console.log(err)
+    });
+//Thomas: laver form elementet i HTML, så jeg kan gøre brug af dets egenskaber
+
+
+    //Thomas: laver en entered number med input Tag, som tager imod et userinput, og har en style.margin for udseendets skyld
+    let enteredNumber = document.createElement('input');
+    enteredNumber.value = '';
+    enteredNumber.placeholder= 'number';
+    enteredNumber.id = 'enteredNumber';
+
+    //Thomas: Laver en entered password med input tag, samme ide, som med userinputet
+    let enteredPassword = document.createElement('input');
+    enteredPassword.value = '';
+    enteredPassword.placeholder = 'password';
+
+    //Thomas: laver en knap, value Log in
+    let logInButton = document.createElement('input');
+    logInButton.type = 'button';
+    logInButton.value = 'Log in';
+
+    //Thomas: laver en knap, value Annuller
+    let cancelButton = document.createElement('input');
+    cancelButton.type = 'button';
+    cancelButton.value = 'Annuller';
+
+    //Thomas: Sætter det hele ind på siden
+    document.body.appendChild(divLogin);
+    divLogin.appendChild(divIn);
+    divIn.appendChild(showingForm);
+    loginForm.appendChild(enteredNumber);
+    loginForm.appendChild(enteredPassword);
+    loginForm.appendChild(logInButton);
+    loginForm.appendChild(cancelButton);
+
 }
