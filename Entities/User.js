@@ -104,7 +104,7 @@ class User {
                         window.location.href = 'Index.html'
                 })
                 .catch(error => {
-                    console.log(error.result)
+                    console.log(error)
                 })
                 //Sender en videre til bookingsiden
                 //window.location.href = 'index.html';

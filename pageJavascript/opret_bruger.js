@@ -65,7 +65,7 @@ function createUser() {
             .catch(error => {
                 console.log(error)
             })
-        window.location.href = 'Index.html'
+        //window.location.href = 'Index.html'
     } else {
         alert(validation_message);
     }
