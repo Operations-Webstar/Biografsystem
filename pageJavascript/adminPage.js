@@ -69,26 +69,77 @@ function addMovie(){
 }
 
 function makeShowing() {
+    let showingbutton = document.getElementById('showingbutton')
+    showingbutton.style.display = 'none'
+    showingbutton.style.si
     let showingDiv = document.getElementById('makeShowing')
     let showingForm =  document.createElement('form');
     showingDiv.appendChild(showingForm)
     axios.get('http://localhost:3000/films/').then(result => {
-        films = result.data.products
+        let films = result.data.products
         films.forEach(film => {
             let filmName = document.createElement('p')
             filmName.innerHTML = film.filmName
             showingForm.appendChild(filmName)
-            let button = document.createElement('button').addEventListener('click', () => {
-                console.log(film.filmName)
-            })
+            let button = document.createElement('button')
+            button.type = 'button'
+            button.id = film.filmName
+            button.innerHTML = 'Vælg film'
             filmName.appendChild(button)
+            document.getElementById(film.filmName).addEventListener('click', () => {
+                showingForm.innerHTML = ''
+                sessionStorage.setItem('filmId', film.filmId)
+                axios.get('http://localhost:3000/cinemahalls').then(result => {
+                    let cinemahalls = result.data
+                    cinemahalls.forEach(cinemahall => {
+                        let hallName = document.createElement('p')
+                        hallName.innerHTML = cinemahall.hallName
+                        showingForm.appendChild(hallName)
+                        let button = document.createElement('button')
+                        button.type = 'button'
+                        button.id = cinemahall.hallName
+                        button.innerHTML = 'Vælg sal'
+                        hallName.appendChild(button)
+                        document.getElementById(cinemahall.hallName).addEventListener('click', () => {
+                            sessionStorage.setItem('hallId', cinemahall._id)
+                            showingForm.innerHTML = ''
+                            let dato = document.createElement('input')
+                            dato.type = 'date'
+                            let time = document.createElement('input')
+                            time.type = 'time'
+                            showingForm.appendChild(dato)
+                            showingForm.appendChild(time)
+                            let button = document.createElement('button')
+                            button.type = 'button'
+                            button.id = 'date'
+                            button.innerHTML = 'vælg spilletidspunkt'
+                            showingForm.appendChild(button)
+                            document.getElementById('date').addEventListener('click', () => {
+                                let dateTime = dato.value + ' ' + time.value
+                                axios.post('http://localhost:3000/showings', {
+                                    film: sessionStorage.getItem('filmId'),
+                                    dateTime: dateTime,
+                                    hall: sessionStorage.getItem('hallId')
+                                }).then(result => {
+                                    console.log(result)
+                                }).catch(err => {
+                                    console.log(err)
+                                })
+                            })
+
+
+                        })
+                    })
+
+                })
+            })
         })
     }).catch(err => {
         console.log(err)
     });
 //Thomas: laver form elementet i HTML, så jeg kan gøre brug af dets egenskaber
 
-
+/*
     //Thomas: laver en entered number med input Tag, som tager imod et userinput, og har en style.margin for udseendets skyld
     let enteredNumber = document.createElement('input');
     enteredNumber.value = '';
@@ -118,5 +169,5 @@ function makeShowing() {
     loginForm.appendChild(enteredPassword);
     loginForm.appendChild(logInButton);
     loginForm.appendChild(cancelButton);
-
+*/
 }
