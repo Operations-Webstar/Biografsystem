@@ -1,3 +1,8 @@
+import {Showing} from './Entities/Showing.js'
+
+const data = new Showing('1','1','1','1')
+console.log(data)
+
 const getbutton = document.getElementById('all_users')
 const postbutton = document.getElementById('post_user')
 

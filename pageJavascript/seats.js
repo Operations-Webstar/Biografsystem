@@ -1,17 +1,11 @@
 const form = document.getElementById('seatSelector')
-let Storsal = ''
-
-
-function cinemahall() {axios.get('http://localhost:3000/cinemahalls').then(result => {
+function makecinemahall() {axios.get('http://localhost:3000/cinemahalls').then(result => {
     console.log(result)
-    Storsal = result
 }).catch(err => {
     console.log(err)
-}).then(()=> {
-    console.log(Storsal)
-})}
-
-cinemahall()
+})
+}
+makecinemahall();
 
 
 // Malene:
