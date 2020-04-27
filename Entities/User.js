@@ -97,7 +97,8 @@ class User {
                         console.log(result)
                         let sessionData = {
                             userId: result.data.userId,
-                            userType: result.data.userType
+                            userType: result.data.userType,
+                            dateOfBirth: result.data.dateOfBirth
                         }
                         sessionStorage.setItem('activeUser', JSON.stringify(sessionData))
                         window.location.href = 'Index.html'

@@ -21,11 +21,12 @@ L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes 
 
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
+    var dateOfBirth = JSON.parse(sessionStorage.getItem('activeUser')).dateOfBirth;
 
     if(Tools.activeUser === 'none'){
         alert('Du skal være logget ind for at vælge film')
     }
-    else if(Film.ageCheck(chosenFilm, Tools.activeUser.dateOfBirth)) {
+    else if(Film.ageCheck(chosenFilm, dateOfBirth)) {
     window.location = "calendar.html" }
     else {
         alert("Du er ikke gammel nok til at se denne film!")
