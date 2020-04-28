@@ -144,7 +144,19 @@ class Tools{
         if (active.userType === "admin"){
             document.getElementById('Admin').style.display = "none";}
     };
+
+    static retreiveShowings() {
+        axios.post('http://localhost:3000/showings/s', {filmName: JSON.parse(sessionStorage.getItem('film')).filmName}).then(result => {
+           sessionStorage.setItem('SelectedMovieShowings',JSON.stringify(result.data));
+           console.log(JSON.parse(sessionStorage.getItem('SelectedMovieShowings')))
+       })
+       .catch(error => 
+           {console.log(error)})
+   
+   }
+   
 }
+
 
 
 //gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.

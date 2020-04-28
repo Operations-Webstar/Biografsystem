@@ -5,8 +5,9 @@ let currentYear = today.getFullYear();
 let currentMonth = today.getMonth();
 let selectedYear = document.getElementById("year");
 let selectedMonth = document.getElementById("month");
-
 let months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"];
+let showingData = JSON.parse(sessionStorage.getItem('SelectedMovieShowings'));
+console.log(showingData)
 
 let monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
@@ -28,8 +29,45 @@ function jump() {
     currentMonth = parseInt(selectedMonth.value);
     showCalendar(currentYear,currentMonth);
 }
+ //console.log(JSON.parse(sessionStorage.getItem('film')).filmName)
+function presentShowingsOnDate(){
+           //Thomas: laver en div, som kommer til at fylde hele siden
+           let divMovieTimes = document.createElement("div");
+           divMovieTimes.id = 'popup';
+   
+           //Thomas: laver endnu en div, inden i som bliver en boks, som kommer til at ligge i midten af siden
+           let divIn = document.createElement("div");
+           divIn.style.backgroundColor ='grey'
 
+           divIn.className = 'bookupIndhold';
+            let sessChosenDate = new Date(sessionStorage.getItem('chosenDate'))
+           for(let i=0; i < showingData.length; i++){
+                let tempDate = new Date(showingData[i].dateTime)
+               if(sessChosenDate.getMonth() === tempDate.getMonth() && sessChosenDate.getDate() === tempDate.getDate() 
+               && sessChosenDate.getFullYear() && tempDate.getFullYear()){
+                   let timeSlotButton = document.createElement("button");
+                   
+                   let hours = tempDate.getHours()
+                   let minutes = tempDate.getMinutes()
+                   if(hours.length = 1){hours = "0"+tempDate.getHours()}
+                   if(minutes.length = 1){minutes = "0"+tempDate.getMinutes()}
+                   timeSlotButton.innerHTML = hours + "." + minutes
+                   timeSlotButton.addEventListener('click', () => {
+                        console.log('hejsa')
+                        sessionStorage.setItem('ChosenShowing', showingData[i]);
+                        window.location = 'seats.html'
+                    })
 
+                   divIn.appendChild(timeSlotButton) 
+                   
+               }
+           }
+           
+   
+           //Thomas: Sætter det hele ind på siden
+               document.body.appendChild(divMovieTimes);
+               divMovieTimes.appendChild(divIn);
+}
 
 
 function showCalendar(month, year) {
@@ -65,6 +103,7 @@ function showCalendar(month, year) {
                 let cell = document.createElement("td", );
                 let cellText = document.createTextNode("");
                 cell.class = 'cellText';
+                
                 cell.appendChild(cellText);
                 row.appendChild(cell);
 
@@ -78,19 +117,40 @@ function showCalendar(month, year) {
             else {
                 let cell = document.createElement("td");
                 let cellText = document.createTextNode(date.toString());
-                cell.addEventListener('click', function (){
-                    let listM = document.getElementById('month');
-                    let listY = document.getElementById('year');
-                    let listD = cellText.textContent;
+                let DateCheckM = document.getElementById('month');
+                let DateCheckY = document.getElementById('year');
+                let DateCheckD = cellText.textContent;
+                let userChoiceDateCheckM = DateCheckM.options[DateCheckM.selectedIndex].innerHTML;
+                let userChoiceDateCheckY = DateCheckY.options[DateCheckY.selectedIndex].innerHTML;
+                let ChosenDateCheck = new Date(`${DateCheckD} ${userChoiceDateCheckM} ${userChoiceDateCheckY}`);
 
-                    //let userChoiceD = listD.id[listD.selectedIndex].innerHTML;
-                    let userChoiceM = listM.options[listM.selectedIndex].innerHTML;
-                    let userChoiceY = listY.options[listY.selectedIndex].innerHTML;
-                    let userChoiceDate = `${listD} ${userChoiceM} ${userChoiceY}`;
-                    sessionStorage.setItem('chosenDate', userChoiceDate);
-                    window.location = "Seats.html";
-                });
-
+                for(let i=0; i< showingData.length;i++){
+                        let tempDate = new Date(showingData[i].dateTime)
+                        console.log(ChosenDateCheck.getMonth() === tempDate.getMonth() && ChosenDateCheck.getDate() === tempDate.getDate() 
+                        && ChosenDateCheck.getFullYear() && tempDate.getFullYear())
+                    if(ChosenDateCheck.getMonth() === tempDate.getMonth() && ChosenDateCheck.getDate() === tempDate.getDate() 
+                    && ChosenDateCheck.getFullYear() && tempDate.getFullYear()) {
+                        
+                            cell.style.color = "green"
+                            cell.addEventListener('click', function (){
+                                let listM = document.getElementById('month');
+                                let listY = document.getElementById('year');
+                                let listD = cellText.textContent;
+            
+                                //let userChoiceD = listD.id[listD.selectedIndex].innerHTML;
+                                let userChoiceM = listM.options[listM.selectedIndex].innerHTML;
+                                let userChoiceY = listY.options[listY.selectedIndex].innerHTML;
+                                let userChoiceDate = `${listD} ${userChoiceM} ${userChoiceY}`;
+                                sessionStorage.setItem('chosenDate', userChoiceDate);
+                                presentShowingsOnDate();
+                                console.log(sessionStorage.getItem('chosenDate'))
+                                })
+                    }else{
+                        if(cell.style.color != "green"){
+                        cell.style.color = "red"}
+                    }
+                }
+                
                 //indsætter nu også med row til sidst
                 cell.appendChild(cellText);
                 row.appendChild(cell);
