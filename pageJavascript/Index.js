@@ -58,7 +58,7 @@ var filmTre = new Film(
     "Denne film handler om Batman",
 );
 
-
+//TODO: fikse så den laver en knap for hver eneste film i databasen, dynamisk.
 function getAllFilms(number){
     axios.get('http://localhost:3000/films/')
         .then(result=>{

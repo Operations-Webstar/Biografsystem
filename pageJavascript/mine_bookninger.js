@@ -1,3 +1,5 @@
+
+//TODO: når bookinger er done, skal de smides ind i dette interface.
 //Malene: funktion laves for at displaye forskellige beskeder alt efter om brugeren er logget ind og har booket sæder.
 
 function checkBooking(){

@@ -1,4 +1,4 @@
-class Cinemahall {
+export class Cinemahall {
     constructor(hall_id,hallName, rows, columns ) {
         this.hall_id = hall_id
         this.hallName = hallName
@@ -15,5 +15,11 @@ class Cinemahall {
             }
         }
         return hallSeats;
+    }
+    static findCinemaHall(s) {axios.post('http://localhost:3000/cinemahalls/findOne', {hallName: s}).then(result => {
+        console.log(result)
+    }).catch(err => {
+        console.log(err)
+    })
     }
 }

@@ -1,4 +1,5 @@
 
+//TODO: kig igennem koden, og fjern de ikke brugte funktioner, måske lave dem om så de kan bruges
 class Tools{
     //Thomas: Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
     //så vi kan arbejde med dem i andre metoder osv.
@@ -46,25 +47,20 @@ class Tools{
     //er admin eller user, derved også få tilgang til deres metoder, laver en instants af den klasse, som den aktive er
     // i pågældende situation.
         /*static activeUser = Tools.getActiveUser();
-
+*/
         static getActiveUser() {
             let active = JSON.parse(sessionStorage.getItem('activeUser'));
             if(active == null){
                 active = 'none';
                 return active
             }
-            let booking = active._booking;
-            if(active.none === 'none' ){
-                active = 'none';
-            } else if (active._adminRights === 'true'){
-                active = new Admin(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password, active._adminRights);
-                active._booking = booking
+            if (active.userType === 'admin'){
+                active = new Admin(active.firstName, active.lastName, active.tlfNumber, active.dateOfBirth);
             } else {
-                active = new User(active._firstName, active._lastName, active._tlfNumber, active._dateOfBirth, active._password);
-                active._booking = booking
+                active = new User(active.firstName, active.lastName, active.tlfNumber, active.dateOfBirth);
             }
             return active
-        };*/
+        };
 
     //Thomas: skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
     //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
@@ -80,12 +76,12 @@ class Tools{
     //Thomas: Bruges til at tjekke om man er Admin, denne bruges for at en ordinær User, kommer ind på Admin siden, vil de
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
-        if(this.activeUser._adminRights !== 'true'){
+        if(this.getActiveUser()._adminRights !== 'true'){
             window.location.href = 'Index.html';
             alert('Adgang nægtet')
         }
     }
-    static getBookedSeats(){
+    /*static getBookedSeats(){
         let seatsBooked = [];
         let DateChosen = sessionStorage.getItem('choosenDate');
         let filmChosen = JSON.parse(sessionStorage.getItem('film'));
@@ -100,7 +96,7 @@ class Tools{
             }
         }
         return seatsBooked
-    }
+    }*/
     static getAge(Birthday){
 
         //Rasmus: finder både idags dato, og finder userindsat date her
@@ -153,5 +149,4 @@ class Tools{
 
 //gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.
 window.onload = Tools.hideButtons();
-
 //console.log(Tools.activeUser)

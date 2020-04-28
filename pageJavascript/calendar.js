@@ -1,3 +1,5 @@
+//TODO: udvikse de datoer, hvor der ikke er en showing, og vise de forskellige tidspunkter på dagen, så man kan vælge en showing og derved vælge sæder.
+
 let today = new Date();
 let currentYear = today.getFullYear();
 let currentMonth = today.getMonth();
@@ -85,7 +87,7 @@ function showCalendar(month, year) {
                     let userChoiceM = listM.options[listM.selectedIndex].innerHTML;
                     let userChoiceY = listY.options[listY.selectedIndex].innerHTML;
                     let userChoiceDate = `${listD} ${userChoiceM} ${userChoiceY}`;
-                    sessionStorage.setItem('choosenDate', userChoiceDate);
+                    sessionStorage.setItem('chosenDate', userChoiceDate);
                     window.location = "Seats.html";
                 });
 

@@ -1,5 +1,5 @@
 /* Giver div1, en width, så vi får side koloner*/
-button{
+.showingButtons{
     width: 150px;
     height: 20px;
 }

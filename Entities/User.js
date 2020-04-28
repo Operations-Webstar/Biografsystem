@@ -7,7 +7,7 @@ class User {
         this.tlfNumber = tlfNumber;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
-        this.booking = [];
+        //this.booking = [];
     };
 
 
@@ -76,7 +76,9 @@ class User {
                         let sessionData = {
                             userId: result.data.userId,
                             userType: result.data.userType,
-                            dateOfBirth: result.data.dateOfBirth
+                            dateOfBirth: result.data.dateOfBirth,
+                            firstName: result.data.firstName,
+                            lastName: result.data.lastName
                         }
                         sessionStorage.setItem('activeUser', JSON.stringify(sessionData))
                         window.location.href = 'Index.html'
@@ -109,9 +111,8 @@ class User {
 
 //Thomas
 class Admin extends User {
-    constructor(firstName, lastName, tlfNumber, dateOfBirth, password, adminRights){
+    constructor(firstName, lastName, tlfNumber, dateOfBirth, password){
         super(firstName, lastName, tlfNumber, dateOfBirth, password);
-        this.adminRights = adminRights
     }
 
 

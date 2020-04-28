@@ -21,21 +21,9 @@
         </nav>
     </div>
 </header>
-
-<div class = "divSeatCheckbox" >
-
-    <form id="seatSelector" name="seatSelector">
-
-    <!-- For at checkboxene er centreret skrives følgende kode -->
-    </form>
-
-
-</div>
-
-
     <div class = "divSeatCheckbox" >
 
-    <form name="seatSelector">
+    <form id="seatSelector">
     <!-- <p align="center"> -->
 
         <br>
@@ -52,10 +40,10 @@ ______________________
             let seatArray = document.getElementById("seatarray");
                 for (let i = 0; i<10;i++) {
             for(let j = 0; j<20;j++){
-                var checkbox = document.createElement('input'); 
-            checkbox.type = "checkbox"; 
-            checkbox.name = i+j; 
-            checkbox.value = "value"; 
+                let checkbox = document.createElement('input');
+            checkbox.type = "checkbox";
+            checkbox.name = i+j;
+            checkbox.value = "value";
             checkbox.id = i+j;
             checkbox.class = "Seat"
             seatArray.appendChild(checkbox)
@@ -75,7 +63,7 @@ ______________________
 
     </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src ="./pageJavascript/seats.js"></script>
+<script type="module" src ="./pageJavascript/seats.js"></script>
 <script type="text/javascript" src="Entities/User.js"></script>
 <script type="text/javascript" src="pageJavascript/tools.js"></script>
 <script src = "Entities/Booking.js" ></script>

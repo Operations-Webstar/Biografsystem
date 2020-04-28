@@ -70,8 +70,8 @@ function addMovie(){
 
 function makeShowing() {
     let showingbutton = document.getElementById('showingbutton')
+    showingbutton.className = 'showingButtons'
     showingbutton.style.display = 'none'
-    showingbutton.style.si
     let showingDiv = document.getElementById('makeShowing')
     let showingForm =  document.createElement('form');
     showingDiv.appendChild(showingForm)
@@ -85,6 +85,7 @@ function makeShowing() {
             button.type = 'button'
             button.id = film.filmName
             button.innerHTML = 'Vælg film'
+            button.className = 'showingButtons'
             filmName.appendChild(button)
             document.getElementById(film.filmName).addEventListener('click', () => {
                 showingForm.innerHTML = ''
@@ -99,6 +100,7 @@ function makeShowing() {
                         button.type = 'button'
                         button.id = cinemahall.hallName
                         button.innerHTML = 'Vælg sal'
+                        button.className = 'showingButtons'
                         hallName.appendChild(button)
                         document.getElementById(cinemahall.hallName).addEventListener('click', () => {
                             sessionStorage.setItem('hallId', cinemahall._id)
@@ -113,6 +115,7 @@ function makeShowing() {
                             button.type = 'button'
                             button.id = 'date'
                             button.innerHTML = 'vælg spilletidspunkt'
+                            button.className = 'showingButtons'
                             showingForm.appendChild(button)
                             document.getElementById('date').addEventListener('click', () => {
                                 let dateTime = dato.value + ' ' + time.value

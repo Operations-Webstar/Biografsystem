@@ -1,6 +1,5 @@
 // Daniel: Konstruerer klassen Film med en constructor, som indeholder fem properties.
 
-
 class Film {
     constructor(filmName, genre, filmLength, ageRestriction, description) {
         this.filmName = filmName;
@@ -14,10 +13,6 @@ class Film {
         let filmRes = Film.ageRestriction;
         let userAge = Tools.getAge(User);
         return filmRes <= userAge;
-    }
-
-    saveFilm(){
-
     }
 }
 

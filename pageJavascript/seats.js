@@ -1,11 +1,5 @@
-const form = document.getElementById('seatSelector')
-function makecinemahall(s) {axios.post('http://localhost:3000/cinemahalls/findOne', {hallName: s}).then(result => {
-    console.log(result)
-}).catch(err => {
-    console.log(err)
-})
-}
-makecinemahall('Stor Sal');
+import {Cinemahall} from "../Entities/Cinemahall.js";
+//TODO: måske flytte koden fra HTML ind i seats.js
 
 
 
