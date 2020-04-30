@@ -35,40 +35,26 @@ ______________________
 
         <br>
         <br>
-        <div id = "seatarray"></div>
-    <script>
-            let seatArray = document.getElementById("seatarray");
-                for (let i = 0; i<10;i++) {
-            for(let j = 0; j<20;j++){
-                let checkbox = document.createElement('input');
-            checkbox.type = "checkbox";
-            checkbox.name = i+j;
-            checkbox.value = "value";
-            checkbox.id = i+j;
-            checkbox.class = "Seat"
-            seatArray.appendChild(checkbox)
-            }
-            let lb = document.createElement("br")
-            let lb2 = document.createElement("br")
-            seatArray.appendChild(lb)
-            seatArray.appendChild(lb2)
-        }
-    </script>
+        <div id = "seatarray">
+
+
+        </div>
+
 
     <!--button type="button" onclick="document.location.href = Kurv >Reserver sæder nu</button-->
-        <button type="button" id="reserveSeats" > Reserver sæder nu </button>
+        <button type="button" id="reserveSeats"  onclick="g()"> Reserver sæder nu </button>
 
     </form>
 
 
     </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type= "module" src ="pageJavascript/seats.js"></script>
-<script type="module" src="Entities/User.js"></script>
-<script type="module" src="pageJavascript/tools.js"></script>
-<script type="module" src = "Entities/Booking.js" ></script>
+<script type="text/javascript" src="Entities/User.js"></script>
+<script type="text/javascript" src="pageJavascript/tools.js"></script>
+<script type= "text/javascript" src ="pageJavascript/seats.js"></script>
+<script type="text/javascript" src = "Entities/Booking.js" ></script>
 <!--<script src = "Entities/Film.js" ></script>-->
 </body>
-<script src="pageJavascript/seats.js"></script>
+
 
 </html>

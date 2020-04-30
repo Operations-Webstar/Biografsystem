@@ -53,9 +53,13 @@ function presentShowingsOnDate(){
                    if(minutes.length = 1){minutes = "0"+tempDate.getMinutes()}
                    timeSlotButton.innerHTML = hours + "." + minutes
                    timeSlotButton.addEventListener('click', () => {
-                        console.log('hejsa')
-                        sessionStorage.setItem('ChosenShowing', showingData[i]);
-                        window.location = 'seats.html'
+                        sessionStorage.setItem('ChosenShowing', JSON.stringify(showingData[i]));
+                        axios.get('http://localhost:3000/cinemahalls/' + showingData[i].hall).then(result => {
+                            sessionStorage.setItem('ChosenHall', JSON.stringify(result.data))
+                            window.location = 'seats.html'
+                        })
+                            .catch(err => console.log(err))
+
                     })
 
                    divIn.appendChild(timeSlotButton) 

@@ -1,4 +1,66 @@
 //TODO: måske flytte koden fra HTML ind i seats.js
+let Hall = JSON.parse(sessionStorage.getItem('ChosenHall'))
+let active = Tools.getActiveUser()
+
+let seatArray = document.getElementById("seatarray");
+for (let i = 1; i<=Hall.columns;i++) {
+    for(let j = 1; j<=Hall.rows;j++){
+        let checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.name = 'række ' + i.toString()+ ' ' + 'kolonne ' +  j.toString();
+        checkbox.value = "value";
+        checkbox.id = i+j;
+        checkbox.className = "Seat"
+        seatArray.appendChild(checkbox)
+    }
+    let lb = document.createElement("br")
+    let lb2 = document.createElement("br")
+    seatArray.appendChild(lb)
+    seatArray.appendChild(lb2)
+}
+
+    let seatCheckbox = document.getElementsByClassName("Seat");
+    let reserveSeatsButton = document.getElementById("seatSelector");
+
+    function g() {
+        let booking = {}
+        var counter = 0;
+        var finalMessage = "Du har nu reserveret: ";
+        var seatsArray = [];
+
+        for(let i = 0; i < seatCheckbox.length; i++){
+            if(seatCheckbox[i].checked === true){
+                finalMessage +=  seatCheckbox[i].name + ", ";
+                counter++;
+                seatsArray.push(seatCheckbox[i].name)
+            }
+        } console.log(seatsArray)
+        debugger
+
+        if (counter>0) {
+            booking = {
+                showing: JSON.parse(sessionStorage.getItem('ChosenShowing'))._id,
+                seats: 'en to tre',
+                user: JSON.parse(sessionStorage.getItem('activeUser')).userId
+            }
+            console.log(booking)
+            debugger
+
+            if(active === 'none'){
+                alert('Du skal være logget ind, for at booke sæder')
+            } else {
+                active._booking.push(booking);
+                stored[act] = active;
+                localStorage.setItem('activeUser', JSON.stringify(active));
+                localStorage.setItem('users', JSON.stringify(stored));
+                document.location.href = 'Mine_bookninger.html';
+                alert(finalMessage)}
+        }
+        if (counter===0) {
+            alert("Hov! Du mangler at markere de ønskede sæder.")
+        }
+    }
+
 
 
 
