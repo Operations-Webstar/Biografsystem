@@ -28,8 +28,7 @@ function bookNu(){
         alert('Du skal være logget ind for at vælge film')
     }
     else if(Film.ageCheck(chosenFilm, dateOfBirth)) {
-        Tools.retreiveShowings();
-        window.location = "calendar.html" 
+        window.location = "calendar.html"
     }
     else {
         alert("Du er ikke gammel nok til at se denne film!")
@@ -76,6 +75,7 @@ function getAllFilms(number){
             document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
             bookup.style.display = "block";
             sessionStorage.setItem('film', JSON.stringify(filmNummer))
+            Tools.retriveShowings()
         })
 }
 

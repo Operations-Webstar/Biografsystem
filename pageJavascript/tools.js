@@ -145,10 +145,9 @@ class Tools{
             document.getElementById('Admin').style.display = "none";}
     };
 
-    static retreiveShowings() {
+    static retriveShowings() {
         axios.post('http://localhost:3000/showings/s', {filmName: JSON.parse(sessionStorage.getItem('film')).filmName}).then(result => {
-           sessionStorage.setItem('SelectedMovieShowings',JSON.stringify(result.data));
-           console.log(JSON.parse(sessionStorage.getItem('SelectedMovieShowings')))
+           sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
        })
        .catch(error => 
            {console.log(error)})
