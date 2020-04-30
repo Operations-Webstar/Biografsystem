@@ -146,12 +146,12 @@ class Tools{
     };
 
     static retriveShowings() {
-        axios.post('http://localhost:3000/showings/s', {filmName: JSON.parse(sessionStorage.getItem('film')).filmName}).then(result => {
+        axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId}).then(result => {
            sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
        })
-       .catch(error => 
+       .catch(error =>
            {console.log(error)})
-   
+
    }
    
 }

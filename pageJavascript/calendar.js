@@ -1,4 +1,4 @@
-//TODO: udvikse de datoer, hvor der ikke er en showing, og vise de forskellige tidspunkter på dagen, så man kan vælge en showing og derved vælge sæder.
+//TODO: fikse, så hvis der ingen showings er på en måned, at alt er rødt.
 
 let today = new Date();
 let currentYear = today.getFullYear();

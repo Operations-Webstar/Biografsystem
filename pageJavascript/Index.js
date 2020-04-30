@@ -19,16 +19,23 @@ L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes 
  l. 26 Der vises en alert, hvis brugeren ikke er gammel nok. -Daniel
  */
 
+async function retriveShowings() {
+    await axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId}).then(result => {
+        sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
+    })
+        .catch(error =>
+        {console.log(error)})
+
+}
+
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
     var dateOfBirth = JSON.parse(sessionStorage.getItem('activeUser')).dateOfBirth;
-    console.log(dateOfBirth)
-    console.log(sessionStorage)
     if(Tools.activeUser === 'none'){
         alert('Du skal være logget ind for at vælge film')
     }
     else if(Film.ageCheck(chosenFilm, dateOfBirth)) {
-        window.location = "calendar.html"
+       retriveShowings().then(r => window.location = "calendar.html")
     }
     else {
         alert("Du er ikke gammel nok til at se denne film!")
@@ -75,7 +82,6 @@ function getAllFilms(number){
             document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
             bookup.style.display = "block";
             sessionStorage.setItem('film', JSON.stringify(filmNummer))
-            Tools.retriveShowings()
         })
 }
 

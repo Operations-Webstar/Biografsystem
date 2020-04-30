@@ -1,4 +1,3 @@
-import {Cinemahall} from "../Entities/Cinemahall.js";
 //TODO: måske flytte koden fra HTML ind i seats.js
 
 

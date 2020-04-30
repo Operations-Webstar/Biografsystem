@@ -1,4 +1,4 @@
-export class Cinemahall {
+class Cinemahall {
     constructor(hall_id,hallName, rows, columns ) {
         this.hall_id = hall_id
         this.hallName = hallName
