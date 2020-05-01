@@ -34,7 +34,7 @@ function presentShowingsOnDate(){
            //Thomas: laver en div, som kommer til at fylde hele siden
            let divMovieTimes = document.createElement("div");
            divMovieTimes.id = 'popup';
-   
+
            //Thomas: laver endnu en div, inden i som bliver en boks, som kommer til at ligge i midten af siden
            let divIn = document.createElement("div");
            divIn.style.backgroundColor ='grey'
@@ -165,9 +165,3 @@ function showCalendar(month, year) {
         }
     }
 }
-
-
-
-
-
-

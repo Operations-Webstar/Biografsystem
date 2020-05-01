@@ -54,6 +54,7 @@ function updateUser(){
             console.log(error.result)
         })
 }
+
 function addMovie(){
     axios.post('http://localhost:3000/films/', {
         filmName: document.getElementById("filmName").value,
@@ -75,7 +76,8 @@ function makeShowing() {
     let showingDiv = document.getElementById('makeShowing')
     let showingForm =  document.createElement('form');
     showingDiv.appendChild(showingForm)
-    axios.get('http://localhost:3000/films/').then(result => {
+    axios.get('http://localhost:3000/films/')
+        .then(result => {
         let films = result.data.products
         films.forEach(film => {
             let filmName = document.createElement('p')

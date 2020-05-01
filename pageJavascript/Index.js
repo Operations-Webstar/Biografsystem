@@ -122,9 +122,3 @@ document.getElementById('buttonTre').onclick = function(){
 Fortryd.onclick = function() {
     bookup.style.display = "none";
 };
-
-
-
-
-
-
