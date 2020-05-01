@@ -28,36 +28,32 @@ for (let i = 1; i<=Hall.columns;i++) {
         var finalMessage = "Du har nu reserveret: ";
         var seatsArray = [];
 
-        for(let i = 0; i < seatCheckbox.length; i++){
-            if(seatCheckbox[i].checked === true){
-                finalMessage +=  seatCheckbox[i].name + ", ";
+        for (let i = 0; i < seatCheckbox.length; i++) {
+            if (seatCheckbox[i].checked === true) {
+                finalMessage += seatCheckbox[i].name + ", ";
                 counter++;
                 seatsArray.push(seatCheckbox[i].name)
             }
-        } console.log(seatsArray)
+        }
+        console.log(seatsArray)
         debugger
 
-        if (counter>0) {
-            booking = {
-                showing: JSON.parse(sessionStorage.getItem('ChosenShowing'))._id,
-                seats: 'en to tre',
-                user: JSON.parse(sessionStorage.getItem('activeUser')).userId
-            }
+        if (counter > 0) {
+            booking = new Booking(JSON.parse(sessionStorage.getItem('ChosenShowing'))._id, seatsArray, JSON.parse(sessionStorage.getItem('activeUser')).userId
+            )
             console.log(booking)
             debugger
+            axios.post('http://localhost:3000/bookings', booking)
+                .then(result => {
+                    console.log(result)
+                    window.location = 'Mine_bookninger.html'
+                }).catch(err => {
+                    console.log(err)
+            })
 
-            if(active === 'none'){
-                alert('Du skal være logget ind, for at booke sæder')
-            } else {
-                active._booking.push(booking);
-                stored[act] = active;
-                localStorage.setItem('activeUser', JSON.stringify(active));
-                localStorage.setItem('users', JSON.stringify(stored));
-                document.location.href = 'Mine_bookninger.html';
-                alert(finalMessage)}
-        }
-        if (counter===0) {
-            alert("Hov! Du mangler at markere de ønskede sæder.")
+            if (counter === 0) {
+                alert("Hov! Du mangler at markere de ønskede sæder.")
+            }
         }
     }
 
