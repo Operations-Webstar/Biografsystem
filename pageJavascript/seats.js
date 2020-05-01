@@ -3,13 +3,13 @@ let Hall = JSON.parse(sessionStorage.getItem('ChosenHall'))
 let active = Tools.getActiveUser()
 
 let seatArray = document.getElementById("seatarray");
-for (let i = 1; i<=Hall.columns;i++) {
-    for(let j = 1; j<=Hall.rows;j++){
+for (let i = 0; i<Hall.columns;i++) {
+    for(let j = 0; j<Hall.rows;j++){
         let checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        checkbox.name = 'række ' + i.toString()+ ' ' + 'kolonne ' +  j.toString();
+        checkbox.name = 'række ' + (1+i).toString() + ' ' + 'kolonne ' + (1+j).toString();
         checkbox.value = "value";
-        checkbox.id = i+j;
+        checkbox.id = (1+i).toString()+(1+j).toString();
         checkbox.className = "Seat"
         seatArray.appendChild(checkbox)
     }
@@ -35,17 +35,13 @@ for (let i = 1; i<=Hall.columns;i++) {
                 seatsArray.push(seatCheckbox[i].name)
             }
         }
-        console.log(seatsArray)
-        debugger
 
         if (counter > 0) {
-            booking = new Booking(JSON.parse(sessionStorage.getItem('ChosenShowing'))._id, seatsArray, JSON.parse(sessionStorage.getItem('activeUser')).userId
-            )
-            console.log(booking)
-            debugger
+            booking = new Booking(JSON.parse(sessionStorage.getItem('ChosenShowing'))._id, seatsArray, JSON.parse(sessionStorage.getItem('activeUser')).userId)
             axios.post('http://localhost:3000/bookings', booking)
                 .then(result => {
                     console.log(result)
+                    alert(finalMessage)
                     window.location = 'Mine_bookninger.html'
                 }).catch(err => {
                     console.log(err)
@@ -57,8 +53,46 @@ for (let i = 1; i<=Hall.columns;i++) {
         }
     }
 
+function bookedSeats() {
+    var seats = document.getElementsByClassName('Seat');
+    axios.get('http://localhost:3000/bookings/' + JSON.parse(sessionStorage.getItem('ChosenShowing'))._id)
+        .then(result => {
+            console.log(result.data.booking.products)
+            for (let i = 0; i < result.data.booking.products.length; i++) {
+                let s = result.data.booking.products[i].seats
+                for (let j = 0; j < s.length; j++) {
+                    for(let e = 0; e< seats.length; e++)
+                    if(s[j] == seats[e].name){
+                        document.getElementById(seats[e].id).setAttribute('disabled', 'disabled')
+                    }
 
+                }
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+window.onload = bookedSeats()
+/*for (let l = 0; l <= manyArrayWithSeats.length; l++) {
+    for (let j = 0; j <= seats.length; j++) {
+        seats[j].name
+        if (seats[j].name) {
+            document.getElementById(seats[j].id).setAttribute('disabled', 'disabled')
+        }
+    }
+}*/
 
+/*if(seatsBooked === undefined){
+ } else {
+     for (let l = 0; l < seatsBooked.length; l++) {
+         for (let o = 0; o < seats.length; o++) {
+             if (seats[o].id === seatsBooked[l]) {
+                 document.getElementById(seats[o].id).setAttribute('disabled', 'disabled')
+             }
+         }
+     }
+ }*/
 
 // Malene:
 // Variablen reserveSeatsButton og seatCheckbox defineret i et globalt scope.
