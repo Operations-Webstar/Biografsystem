@@ -54,29 +54,33 @@ function buildTable(data) {
 
 async function myBooking () {
     axios.get('http://localhost:3000/bookings/find/'+ JSON.parse(sessionStorage.getItem("activeUser")).userId)
-        .then(async result => {
-            var x =[]
-            console.log(result)
+        .then(result => {
+            let x = []
             result.data.booking.forEach(allInfo => {
                 axios.get('http://localhost:3000/showings/' + allInfo.showing._id)
-                    .then( async result1 => {
-                       const newObject = {
-                            Film: result1.data.showing.film.filmName,
-                            Time: result1.data.showing.dateTime,
-                            Hall: result1.data.showing.hall.hallName,
-                            Seats: allInfo.seats
-                        }
-                            await x.push(newObject)
+                    .then(result1 => {
+
+                       x.push({
+                            Film: result1.data.showing.film.filmName+ ".",
+                            Tid: result1.data.showing.dateTime + ".",
+                            Sal: result1.data.showing.hall.hallName + ".",
+                            Sæder:allInfo.seats
                         })
-
+                        sessionStorage.setItem("info", JSON.stringify(x))
+                        })
                     })
-           await JSON.stringify(sessionStorage.setItem("info",x))
-
-            })
+        })
         }
-window.onload= myBooking().then(r =>{
-    let info = JSON.parse(sessionStorage.getItem("info"))
-    console.log(info)
-    document.querySelector("#displayOfMovies").appendChild(buildTable(info));
-})
+
+function f() {
+    let info = JSON.parse(sessionStorage.getItem('info'))
+        console.log(info)
+    document.getElementById('bookingButton').style.display = 'none'
+        document.querySelector("#displayOfMovies").appendChild(buildTable(info));
+}
+
+window.onload= myBooking()
+
+
+
 
