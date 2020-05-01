@@ -1,4 +1,3 @@
-//TODO: måske flytte koden fra HTML ind i seats.js
 let Hall = JSON.parse(sessionStorage.getItem('ChosenHall'))
 let active = Tools.getActiveUser()
 

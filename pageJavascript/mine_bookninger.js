@@ -3,7 +3,7 @@
 //Malene: funktion laves for at displaye forskellige beskeder alt efter om brugeren er logget ind og har booket sæder.
 
 function checkBooking(){
-    if(Tools.activeUser == 'none'){
+    if(Tools.getActiveUser == 'none'){
         document.getElementById('booking').innerHTML = 'Du er ikke logget ind'
     }
     else if(JSON.parse(localStorage.getItem('activeUser'))._booking == undefined){

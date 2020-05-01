@@ -1,5 +1,3 @@
-
-
 //Rasmus
 //en static funktion der laver en instans af klassen User, som man så bruger JSON, til at lagre i localStorage
 //Bruger forskellige if statements, til at sørge for den indtastede info er korrekt
