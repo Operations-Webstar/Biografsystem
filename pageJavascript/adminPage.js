@@ -41,7 +41,7 @@ function updateUser(){
         tlfNumber:d.value
     })
         .then(result => {
-            axios.patch('http://localhost:3000/users/'+ result.data._id, [{propName:'firstName',value: 'Ole'}])
+            axios.patch('http://localhost:3000/users/'+ result.data._id, [{propName:'userType',value: 'admin'}])
                 .then(result => {
                     console.log(result)
                     return result
