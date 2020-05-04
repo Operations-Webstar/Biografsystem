@@ -58,6 +58,8 @@ function presentShowingsOnDate(){
                         sessionStorage.setItem('ChosenShowing', JSON.stringify(showingData[i]));
                         axios.get('http://localhost:3000/cinemahalls/' + showingData[i].hall).then(result => {
                             sessionStorage.setItem('ChosenHall', JSON.stringify(result.data))
+                            sessionStorage.removeItem('chosenDate')
+                            sessionStorage.removeItem('SelectedMovieShowings')
                             window.location = 'seats.html'
                         })
                             .catch(err => console.log(err))

@@ -309,3 +309,23 @@ static getAllUsers(){
         }
     }
 };*/
+//const bookingData = Tools.getActiveUser();
+
+/*if(bookingData === 'none'){
+} else {
+    let booking = bookingData._booking;
+    document.querySelector("#displayOfMovies").appendChild(buildTable(booking));
+}*/
+
+/*function checkBooking(){
+    if(Tools.getActiveUser == 'none'){
+        document.getElementById('booking').innerHTML = 'Du er ikke logget ind'
+    }
+    else if(JSON.parse(localStorage.getItem('activeUser'))._booking == undefined){
+        document.getElementById('booking').innerHTML = 'Ingen sæder booket';
+    } else {
+        document.getElementById('booking').innerHTML = `Kig i tabellen under for at se dine bookinger.`
+    }
+}
+window.onload = checkBooking();*/
+

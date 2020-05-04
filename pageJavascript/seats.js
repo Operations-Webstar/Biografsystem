@@ -35,12 +35,13 @@ for (let i = 0; i<Hall.columns;i++) {
             }
         }
 console.log(counter)
-        debugger
         if (counter > 0) {
             booking = new Booking(JSON.parse(sessionStorage.getItem('ChosenShowing'))._id, seatsArray, JSON.parse(sessionStorage.getItem('activeUser')).userId)
             axios.post('http://localhost:3000/bookings', booking)
                 .then(result => {
                     console.log(result)
+                    sessionStorage.removeItem('ChosenShowing')
+                    sessionStorage.removeItem('ChosenHall')
                     alert(finalMessage)
                     window.location = 'Mine_bookninger.html'
                 }).catch(err => {

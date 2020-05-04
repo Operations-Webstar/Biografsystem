@@ -21,6 +21,7 @@ L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes 
 async function retriveShowings() {
     await axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId}).then(result => {
         sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
+        sessionStorage.removeItem('film')
     })
         .catch(error =>
         {console.log(error)})

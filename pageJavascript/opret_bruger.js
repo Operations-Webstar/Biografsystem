@@ -53,11 +53,11 @@ function createUser() {
         const user = new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password);
         axios.post('http://localhost:3000/users/signup', user)
             .then(result => {
-                console.log(result)
                 window.location.href = 'Index.html'
         })
             .catch(error => {
                 console.log(error)
+                alert('telefon nummer findes allerede')
             })
 
     } else {

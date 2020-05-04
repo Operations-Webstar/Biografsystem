@@ -1,4 +1,3 @@
-//TODO: kig igennem koden, og fjern de ikke brugte funktioner, måske lave dem om så de kan bruges
 class Tools{
     //Thomas: Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
     //så vi kan arbejde med dem i andre metoder osv.
