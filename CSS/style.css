@@ -165,17 +165,19 @@ h1{
 }
 .vinduebillede {
     position: relative;
-    padding: 20px;
-    width: 70%;
+    padding: 2px;
+    width: 30%;
 }
 #spillerNu{
     margin-left: 10px;
 }
 .Knap {
-background-color: dimgrey;
-    border-color: black;
+background-color: white;
+    border-color: white;
     position: center;
     margin-left: 40px;
+    width: 400px;
+    height: 1000px:
 }
 
 #popup {
