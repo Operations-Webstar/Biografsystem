@@ -1,5 +1,5 @@
 
-//TODO: når bookinger er done, skal de smides ind i dette interface.
+//TODO: NÅr man klikker på show my booking, give en besked hvis man ikke har nogle.
 //Malene: funktion laves for at displaye forskellige beskeder alt efter om brugeren er logget ind og har booket sæder.
 
 /*function checkBooking(){

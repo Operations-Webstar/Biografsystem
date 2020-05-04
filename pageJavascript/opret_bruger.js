@@ -54,11 +54,12 @@ function createUser() {
         axios.post('http://localhost:3000/users/signup', user)
             .then(result => {
                 console.log(result)
+                window.location.href = 'Index.html'
         })
             .catch(error => {
                 console.log(error)
             })
-        //window.location.href = 'Index.html'
+
     } else {
         alert(validation_message);
     }

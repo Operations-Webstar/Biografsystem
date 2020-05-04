@@ -1,4 +1,6 @@
 //TODO: fikse, så hvis der ingen showings er på en måned, at alt er rødt.
+//TODO: jump to virker slet ikke.
+//TODO: gør så man ikke kan booke gamle dage.
 
 let today = new Date();
 let currentYear = today.getFullYear();
