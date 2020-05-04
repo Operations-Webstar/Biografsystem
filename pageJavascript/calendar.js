@@ -1,6 +1,7 @@
 //TODO: fikse, så hvis der ingen showings er på en måned, at alt er rødt.
 //TODO: jump to virker slet ikke.
 //TODO: gør så man ikke kan booke gamle dage.
+//TODO: gør at man kan fortryde valg af dato.
 
 let today = new Date();
 let currentYear = today.getFullYear();
@@ -66,12 +67,13 @@ function presentShowingsOnDate(){
 
                     })
 
-                   divIn.appendChild(timeSlotButton) 
-                   
+                   divIn.appendChild(timeSlotButton)
+
                }
            }
-           
-   
+           divMovieTimes.addEventListener('click', () =>{
+                   document.body.removeChild(divMovieTimes)
+           })
            //Thomas: Sætter det hele ind på siden
                document.body.appendChild(divMovieTimes);
                divMovieTimes.appendChild(divIn);

@@ -180,6 +180,7 @@ background-color: white;
 }
 
 #popup {
+    display: none;
     position: fixed;
     left: 0;
     top: 0;

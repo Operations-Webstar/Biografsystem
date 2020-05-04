@@ -105,6 +105,7 @@ class User {
     //grunden til at none er et objekt, er at så virker JSON, bedre i andre metoder, når man parser.
     // Hvis vi bare have lavet en string 'none', vil der komme en fejl, når vi bruger JSON.parse.
    static signOut(){
+        sessionStorage.removeItem('info')
        sessionStorage.removeItem('activeUser');
    };
 }
@@ -123,11 +124,6 @@ class Admin extends User {
     }*/
 
     // Sletning af bruger
-    deleteUser() {
-        axios.delete('http://localhost:3000/users/userId',{
-
-        })
-    }
 
     //Thomas: En metode som giver en user fra det gemte array, admin rettigheder.
     makeAdmin(){
