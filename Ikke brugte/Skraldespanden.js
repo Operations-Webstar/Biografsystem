@@ -329,3 +329,13 @@ static getAllUsers(){
 }
 window.onload = checkBooking();*/
 
+/*function lavFilm(filmNummer) {
+    document.getElementById("filmName").innerHTML = filmNummer.filmName;
+    document.getElementById("description").innerHTML = filmNummer.description;
+    document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
+    document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
+    document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
+    bookup.style.display = "block";
+    sessionStorage.setItem('film', JSON.stringify(filmNummer))
+}*/
+

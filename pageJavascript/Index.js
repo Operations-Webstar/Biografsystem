@@ -3,15 +3,7 @@ De fem elementer bliver erstattet med filmNummer's(Film objektet's) tilsvarende 
 L. 10 ændre funktionen en i CSS'en så pop-up boksen bliver synlig, når funktionen køres.
 L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes med sessionStorage med 'film' som key.
 */
-/*function lavFilm(filmNummer) {
-    document.getElementById("filmName").innerHTML = filmNummer.filmName;
-    document.getElementById("description").innerHTML = filmNummer.description;
-    document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
-    document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
-    document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
-    bookup.style.display = "block";
-    sessionStorage.setItem('film', JSON.stringify(filmNummer))
-}*/
+
 /* Daniel: Der konstrueres bookNu funktionen, som tildeler variablen chosenFilm, det filmobjekt der er gemt i sessionStore med 'film' som key.
  Fra L. 20 bruges if/else statement og en nyttefunktion til at vise en alert, hvis brugeren ikke er logget ind.
  L. 23 ageCheck funktionen bruges til tjekke om brugeren er gammel nok, til at se filmen og videredirigeres til calender.html
@@ -42,31 +34,49 @@ function bookNu(){
     }
 }
 
-// Random number function
-function RandomNumber() {
-    var tal = Math.floor((Math.random() * 6) + 1);
-    console.log(tal)
-}
 
-
-//TODO: fikse så den laver en knap for hver eneste film i databasen, dynamisk.
-function getAllFilms(number){
+function createFilmButtons() {
     axios.get('http://localhost:3000/films/')
-        .then(result=>{
-            console.log(result)
+        .then(result => {
             let filmData = result.data.products
-            let filmNummer = filmData[number]
+            let div = document.getElementById('FilmDiv')
+            filmData.forEach((oneFilm, index) => {
+                let button = document.createElement('button')
+                button.className = "Knap"
+                let img = document.createElement("img")
+                img.className = "vinduebillede"
+                img.src = "https://previews.123rf.com/images/diawka/diawka1908/diawka190800018/128941916-cinema-concept-striped-boxes-with-popcorn-3d-glasses-light-box-with-coming-soon-text-and-copy-space-.jpg"
+                let nameForFilm = document.createElement('h1')
+                nameForFilm.id = index
+                nameForFilm.innerHTML = oneFilm.filmName
+                button.addEventListener('click', () => {
+                    let filmNummer = oneFilm
+                    document.getElementById("filmName").innerHTML = filmNummer.filmName;
+                    document.getElementById("description").innerHTML = filmNummer.description;
+                    document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
+                    document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
+                    document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
+                    bookup.style.display = "block";
+                    sessionStorage.setItem('film', JSON.stringify(filmNummer))
 
+                })
 
-            document.getElementById("filmName").innerHTML = filmNummer.filmName;
-            document.getElementById("description").innerHTML = filmNummer.description;
-            document.getElementById("genre").innerHTML = "Filmens genre: " + filmNummer.genre;
-            document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
-            document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
-            bookup.style.display = "block";
-            sessionStorage.setItem('film', JSON.stringify(filmNummer))
+                div.appendChild(button)
+                button.appendChild(img)
+                button.appendChild(nameForFilm)
+
+                window.onclick = function(event) {
+                    if(event.target === bookup) {
+                        bookup.style.display = "none";
+                    }
+                }
+
+            })
         })
 }
+window.onload = createFilmButtons()
+
+
 
 /* Daniel: Her hentes den første knap ned, og tildeles en funktion med lavFilm funktionen inde.
 lavFilm køres med den tilsvarende film som parameter
@@ -74,36 +84,7 @@ L. 61-63 window.onclick tildeles en anonym funktion, med et if/else statement, s
 klikker andre steder end inden i pop-up boksen. Altså pop-up boksen lukker, hvis brugeren klikker andre steder end den.
 */
 // Random number function
-var randomTalEt = Math.floor((Math.random() * 6) + 1);
-document.getElementById('buttonEt').onclick = function(){
-    getAllFilms(randomTalEt);
-    window.onclick = function(event) {
-        if(event.target === bookup) {
-            bookup.style.display = "none";
-        }
-    }
-};
-var randomTalTo = Math.floor((Math.random() * 6) + 1);
-// Daniel: Samme proces sker her, som i L. 65-72, bare med knap to, hvor film to bruges som parameter i lavFilm funktionen
-document.getElementById('buttonTo').onclick = function(){
-    var randomTal = Math.floor((Math.random() * 6) + 1);
-    getAllFilms(randomTalTo);
-    window.onclick = function(event) {
-        if(event.target === bookup) {
-            bookup.style.display = "none";
-        }
-    }
-};
-// Daniel: Det helt samme sker her, som i L. 65-72, bare med knap tre, hvor film tre bruges som parameter i lavFilm funktionen
-var randomTalTre = Math.floor((Math.random() * 6) + 1);
-document.getElementById('buttonTre').onclick = function(){
-    getAllFilms(randomTalTre);
-    window.onclick = function(event) {
-        if(event.target === bookup) {
-            bookup.style.display = "none";
-        }
-    }
-};
+
 
 // Daniel: Fortryd knappen kører en anonym funktion, som lukker pop-up boksen hvis brugeren trykker på fortryd.
 Fortryd.onclick = function() {
