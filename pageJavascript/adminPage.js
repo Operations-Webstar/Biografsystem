@@ -1,4 +1,5 @@
 //Thomas: en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
+//TODO: skriv om så, man kun finder User en gang
 function showUser(){
     let d = document.getElementById('enteredNumber')
     let target = axios.post('http://localhost:3000/users/findOne',{
@@ -35,7 +36,7 @@ function deleteUser(){
         })
 }
 
-function updateUser(){
+function makeAUserAdmin(){
     let d = document.getElementById('enteredNumber')
     let target = axios.post('http://localhost:3000/users/findOne',{
         tlfNumber:d.value
@@ -56,6 +57,7 @@ function updateUser(){
 }
 
 function addMovie(){
+    //TODO: post en instans af film klassen.
     axios.post('http://localhost:3000/films/', {
         filmName: document.getElementById("filmName").value,
         genre: document.getElementById("genre").value,
@@ -121,12 +123,15 @@ function makeShowing() {
                             showingForm.appendChild(button)
                             document.getElementById('date').addEventListener('click', () => {
                                 let dateTime = dato.value + ' ' + time.value
+                                //TODO: lav til en instans af Showing klassen
                                 axios.post('http://localhost:3000/showings', {
                                     film: sessionStorage.getItem('filmId'),
                                     dateTime: dateTime,
                                     hall: sessionStorage.getItem('hallId')
                                 }).then(result => {
                                     console.log(result)
+                                    sessionStorage.removeItem('filmId')
+                                    sessionStorage.removeItem('hallId')
                                 }).catch(err => {
                                     console.log(err)
                                 })

@@ -16,11 +16,5 @@ class Cinemahall {
         }
         return hallSeats;
     }
-    static findCinemaHall() {axios.get('http://localhost:3000/cinemahalls/' + JSON.parse(sessionStorage.getItem('ChosenShowing').hall))
-        .then(result => {
-        console.log(result)
-    }).catch(err => {
-        console.log(err)
-    })
-    }
+
 }

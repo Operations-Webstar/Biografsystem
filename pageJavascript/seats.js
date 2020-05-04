@@ -42,6 +42,8 @@ console.log(counter)
                     console.log(result)
                     sessionStorage.removeItem('ChosenShowing')
                     sessionStorage.removeItem('ChosenHall')
+                    sessionStorage.removeItem('chosenDate')
+                    sessionStorage.removeItem('SelectedMovieShowings')
                     alert(finalMessage)
                     window.location = 'Mine_bookninger.html'
                 }).catch(err => {

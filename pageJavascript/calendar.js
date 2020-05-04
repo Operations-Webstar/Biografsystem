@@ -1,7 +1,6 @@
 //TODO: fikse, så hvis der ingen showings er på en måned, at alt er rødt.
 //TODO: jump to virker slet ikke.
 //TODO: gør så man ikke kan booke gamle dage.
-//TODO: gør at man kan fortryde valg af dato.
 
 let today = new Date();
 let currentYear = today.getFullYear();
@@ -59,8 +58,6 @@ function presentShowingsOnDate(){
                         sessionStorage.setItem('ChosenShowing', JSON.stringify(showingData[i]));
                         axios.get('http://localhost:3000/cinemahalls/' + showingData[i].hall).then(result => {
                             sessionStorage.setItem('ChosenHall', JSON.stringify(result.data))
-                            sessionStorage.removeItem('chosenDate')
-                            sessionStorage.removeItem('SelectedMovieShowings')
                             window.location = 'seats.html'
                         })
                             .catch(err => console.log(err))
