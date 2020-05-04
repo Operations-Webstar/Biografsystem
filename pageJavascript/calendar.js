@@ -51,8 +51,8 @@ function presentShowingsOnDate(){
                    
                    let hours = tempDate.getHours()
                    let minutes = tempDate.getMinutes()
-                   if(hours.length = 1){hours = "0"+tempDate.getHours()}
-                   if(minutes.length = 1){minutes = "0"+tempDate.getMinutes()}
+                   if(hours.toString().length == 1){hours = "0"+tempDate.getHours()}
+                   if(minutes.toString().length == 1){minutes = "0"+tempDate.getMinutes()}
                    timeSlotButton.innerHTML = hours + "." + minutes
                    timeSlotButton.addEventListener('click', () => {
                         sessionStorage.setItem('ChosenShowing', JSON.stringify(showingData[i]));
@@ -130,10 +130,9 @@ function showCalendar(month, year) {
                 let userChoiceDateCheckY = DateCheckY.options[DateCheckY.selectedIndex].innerHTML;
                 let ChosenDateCheck = new Date(`${DateCheckD} ${userChoiceDateCheckM} ${userChoiceDateCheckY}`);
 
+
                 for(let i=0; i< showingData.length;i++){
                         let tempDate = new Date(showingData[i].dateTime)
-                        console.log(ChosenDateCheck.getMonth() === tempDate.getMonth() && ChosenDateCheck.getDate() === tempDate.getDate() 
-                        && ChosenDateCheck.getFullYear() && tempDate.getFullYear())
                     if(ChosenDateCheck.getMonth() === tempDate.getMonth() && ChosenDateCheck.getDate() === tempDate.getDate() 
                     && ChosenDateCheck.getFullYear() && tempDate.getFullYear()) {
                         

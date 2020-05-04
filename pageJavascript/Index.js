@@ -3,7 +3,6 @@ De fem elementer bliver erstattet med filmNummer's(Film objektet's) tilsvarende 
 L. 10 ændre funktionen en i CSS'en så pop-up boksen bliver synlig, når funktionen køres.
 L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes med sessionStorage med 'film' som key.
 */
-//TODO: lav fejlmeddelse, hvis man ikke er logget ind og prøver at vælg film.
 /*function lavFilm(filmNummer) {
     document.getElementById("filmName").innerHTML = filmNummer.filmName;
     document.getElementById("description").innerHTML = filmNummer.description;
@@ -30,11 +29,11 @@ async function retriveShowings() {
 
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
-    var dateOfBirth = JSON.parse(sessionStorage.getItem('activeUser')).dateOfBirth;
-    if(Tools.activeUser === 'none'){
+    var active = Tools.getActiveUser()
+    if(active == null){
         alert('Du skal være logget ind for at vælge film')
     }
-    else if(Film.ageCheck(chosenFilm, dateOfBirth)) {
+    else if(Film.ageCheck(chosenFilm, active.dateOfBirth)) {
        retriveShowings().then(r => window.location = "calendar.html")
     }
     else {
