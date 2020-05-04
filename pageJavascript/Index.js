@@ -42,30 +42,12 @@ function bookNu(){
     }
 }
 
+// Random number function
+function RandomNumber() {
+    var tal = Math.floor((Math.random() * 6) + 1);
+    console.log(tal)
+}
 
-// Her konstrueres tre objekter ud fra Film klassen, med fem strings som bruges til at beskrive filmene til brugeren -Daniel
-var filmEt = new Film(
-    "Iron man",
-    "Thriller",
-    "120",
-    "16",
-    "Denne film handler om Iron man",
-);
-
-var filmTo = new Film(
-    "Avengers",
-    "Action Thriller",
-    "150",
-    "12",
-    "Denne film handler om superhelte"
-);
-var filmTre = new Film(
-    "The Dark Knight",
-    "Action",
-    "100",
-    "16",
-    "Denne film handler om Batman",
-);
 
 //TODO: fikse så den laver en knap for hver eneste film i databasen, dynamisk.
 function getAllFilms(number){
@@ -74,6 +56,7 @@ function getAllFilms(number){
             console.log(result)
             let filmData = result.data.products
             let filmNummer = filmData[number]
+
 
             document.getElementById("filmName").innerHTML = filmNummer.filmName;
             document.getElementById("description").innerHTML = filmNummer.description;
@@ -90,18 +73,21 @@ lavFilm køres med den tilsvarende film som parameter
 L. 61-63 window.onclick tildeles en anonym funktion, med et if/else statement, som ændrer style.display til none hvis brugeren
 klikker andre steder end inden i pop-up boksen. Altså pop-up boksen lukker, hvis brugeren klikker andre steder end den.
 */
+// Random number function
+var randomTalEt = Math.floor((Math.random() * 6) + 1);
 document.getElementById('buttonEt').onclick = function(){
-    getAllFilms(0);
+    getAllFilms(randomTalEt);
     window.onclick = function(event) {
         if(event.target === bookup) {
             bookup.style.display = "none";
         }
     }
 };
-
+var randomTalTo = Math.floor((Math.random() * 6) + 1);
 // Daniel: Samme proces sker her, som i L. 65-72, bare med knap to, hvor film to bruges som parameter i lavFilm funktionen
 document.getElementById('buttonTo').onclick = function(){
-    getAllFilms(1);
+    var randomTal = Math.floor((Math.random() * 6) + 1);
+    getAllFilms(randomTalTo);
     window.onclick = function(event) {
         if(event.target === bookup) {
             bookup.style.display = "none";
@@ -109,8 +95,9 @@ document.getElementById('buttonTo').onclick = function(){
     }
 };
 // Daniel: Det helt samme sker her, som i L. 65-72, bare med knap tre, hvor film tre bruges som parameter i lavFilm funktionen
+var randomTalTre = Math.floor((Math.random() * 6) + 1);
 document.getElementById('buttonTre').onclick = function(){
-    getAllFilms(0);
+    getAllFilms(randomTalTre);
     window.onclick = function(event) {
         if(event.target === bookup) {
             bookup.style.display = "none";
