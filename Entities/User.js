@@ -95,6 +95,7 @@ class User {
         sessionStorage.removeItem('info')
        sessionStorage.removeItem('activeUser');
    };
+
 }
 
 // Adminklassen defineres som en inheritance af user-klassen.

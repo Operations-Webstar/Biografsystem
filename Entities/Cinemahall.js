@@ -7,15 +7,4 @@ class Cinemahall {
         this.rows = rows
         this.columns = columns
     }
-//TODO: benyt denne static metode
-    /*static hallArray(rows,columns) {
-        const hallSeats = []
-        for (let i = 0; i<rows;i++) {
-            hallSeats[i] = []
-            for(let j = 0; j<columns;j++){
-                hallSeats[i][j] = null
-            }
-        }
-        return hallSeats;
-    }*/
 }
