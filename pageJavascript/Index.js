@@ -1,5 +1,7 @@
 // Følgende funktion finder showings for den valgte film og tilføjer dem til session storage, som kalenderen kan trække ud.
+//async gør at funktionen returner et promise.
 async function retriveShowings() {
+    //await gør at Javascript venter til at det her promise er ordnet før den kører videre.
     await axios.post('http://localhost:3000/showings/findAllForOneFilm', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId})
         .then(result => {
         sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
@@ -18,6 +20,7 @@ function bookNu(){
         alert('Du skal være logget ind for at vælge film')
     }
     else if(Film.ageCheck(chosenFilm, active.dateOfBirth)) {
+        //gør at det først er efter et furfilled promise den går videre.
        retriveShowings().then(r => window.location = "calendar.html")
     }
     else {

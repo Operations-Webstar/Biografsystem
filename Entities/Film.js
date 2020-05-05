@@ -11,7 +11,7 @@ class Film {
      static ageCheck(Film, User){
         let filmRes = Film.ageRestriction;
         // getAge omdanner en date of birth til en alder, mere info findes i tools-klassen.
-        let userAge = Tools.getAge(User);
+        let userAge = Tools.getActiveUser().getAge();
         return filmRes <= userAge;
     }
 }
