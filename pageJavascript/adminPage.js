@@ -75,6 +75,7 @@ function makeShowing() {
         let films = result.data.products
             //For hver film kører nedenstående funktion
         films.forEach(film => {
+            film = new Film(film.filmName, film.genre, film.filmLength, film.ageRestriction, film.description)
             let filmName = document.createElement('p')
             filmName.innerHTML = film.filmName
             showingForm.appendChild(filmName)
@@ -94,8 +95,6 @@ function makeShowing() {
                     // Der foretages samme html manipulationer som med film
                     cinemahalls.forEach(cinemahall => {
                         cinemahall = new Cinemahall(cinemahall._id, cinemahall.hallName, cinemahall.rows, cinemahall.columns)
-                        console.log(cinemahall)
-                        debugger
                         let hallName = document.createElement('p')
                         hallName.innerHTML = cinemahall.hallName
                         showingForm.appendChild(hallName)

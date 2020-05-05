@@ -33,6 +33,9 @@ function createFilmButtons() {
             let filmData = result.data.products
             let div = document.getElementById('FilmDiv')
             filmData.forEach((oneFilm, index) => {
+                let id = oneFilm.filmId
+                oneFilm = new Film(oneFilm.filmName, oneFilm.genre, oneFilm.filmLength, oneFilm.ageRestriction, oneFilm.description)
+                oneFilm.filmId = id
                 let button = document.createElement('button')
                 button.className = "Knap"
                 let img = document.createElement("img")
