@@ -129,10 +129,12 @@ function makeShowing() {
                                 axios.post('http://localhost:3000/showings', showing)
                                     .then(result => {
                                     console.log(result)
+                                        alert("Showing blev posted successfuldt")
                                     sessionStorage.removeItem('filmId')
                                     sessionStorage.removeItem('hallId')
                                 }).catch(err => {
                                     console.log(err)
+                                    alert("Fejl i posting")
                                 })
                             })
                         })

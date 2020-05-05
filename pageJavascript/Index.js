@@ -1,14 +1,3 @@
-/*  Funktionen lavFilm konstrueres med filmNummer som parameter. I funktionens statement henter den seks HTML elementer.
-De fem elementer bliver erstattet med filmNummer's(Film objektet's) tilsvarende værdi.
-L. 10 ændre funktionen en i CSS'en så pop-up boksen bliver synlig, når funktionen køres.
-L. 11 konverteres værdien af funktionens parameter til JSON.string, som gemmes med sessionStorage med 'film' som key.
-*/
-
-/*  Der konstrueres bookNu funktionen, som tildeler variablen chosenFilm, det filmobjekt der er gemt i sessionStore med 'film' som key.
- Fra L. 20 bruges if/else statement og en nyttefunktion til at vise en alert, hvis brugeren ikke er logget ind.
- L. 23 ageCheck funktionen bruges til tjekke om brugeren er gammel nok, til at se filmen og videredirigeres til calender.html
- l. 26 Der vises en alert, hvis brugeren ikke er gammel nok.
- */
 
 async function retriveShowings() {
     await axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId}).then(result => {
