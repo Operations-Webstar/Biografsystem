@@ -1,4 +1,4 @@
-//Thomas: en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
+// en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
 //TODO: skriv om så, man kun finder User en gang
 function showUser(){
     let d = document.getElementById('enteredNumber')
@@ -147,31 +147,31 @@ function makeShowing() {
     }).catch(err => {
         console.log(err)
     });
-//Thomas: laver form elementet i HTML, så jeg kan gøre brug af dets egenskaber
+// laver form elementet i HTML, så jeg kan gøre brug af dets egenskaber
 
 /*
-    //Thomas: laver en entered number med input Tag, som tager imod et userinput, og har en style.margin for udseendets skyld
+    // laver en entered number med input Tag, som tager imod et userinput, og har en style.margin for udseendets skyld
     let enteredNumber = document.createElement('input');
     enteredNumber.value = '';
     enteredNumber.placeholder= 'number';
     enteredNumber.id = 'enteredNumber';
 
-    //Thomas: Laver en entered password med input tag, samme ide, som med userinputet
+    // Laver en entered password med input tag, samme ide, som med userinputet
     let enteredPassword = document.createElement('input');
     enteredPassword.value = '';
     enteredPassword.placeholder = 'password';
 
-    //Thomas: laver en knap, value Log in
+    // laver en knap, value Log in
     let logInButton = document.createElement('input');
     logInButton.type = 'button';
     logInButton.value = 'Log in';
 
-    //Thomas: laver en knap, value Annuller
+    // laver en knap, value Annuller
     let cancelButton = document.createElement('input');
     cancelButton.type = 'button';
     cancelButton.value = 'Annuller';
 
-    //Thomas: Sætter det hele ind på siden
+    // Sætter det hele ind på siden
     document.body.appendChild(divLogin);
     divLogin.appendChild(divIn);
     divIn.appendChild(showingForm);

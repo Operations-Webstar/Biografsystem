@@ -163,7 +163,7 @@ fra booking.js, noget start kode.
 </section>
 <br/> -->
 }
-// Laver et array, der skal bruges til kalenderen -Daniel
+// Laver et array, der skal bruges til kalenderen
 
 static login(){
     let divLogin = document.createElement("div");
@@ -217,7 +217,6 @@ var datoArray = [[filmArrayEt, filmArrayTo]];
 console.log(filmEt);
 
 }
-//Thomas
 //en static funktion der logger ind bruger ind, dette gøres ved at kalde den statisk. Den tjekker om telefonnummer og
 // password passer sammen. Hvis Ja, så sætter den localStorage keyen 'activeUser' til at være den User
 // der prøver at logge ind
@@ -243,7 +242,7 @@ function logIn() {
     }
 }
 
-// Daniel: Konstruerer novemberEt funktionen med start og slut som parametre
+//  Konstruerer novemberEt funktionen med start og slut som parametre
 Der er tre variable, en startdato og en slutdato som bruger den indbyggede Date metode og en variabel der bliver tildelt et
 tomt array. Herefter laves et for loop, som kører fra startDato's værdi til slutDato. Herefter skubbes værdien ind i array'et igen.
 L. 259 returnerer funktionen værdien af arrayet november
@@ -265,8 +264,8 @@ console.log(novemberEt("Nov 3", "Nov 10"))
 /*static allUsers = Tools.getAllUsers();
 static getAllUsers(){
     let storedUsers = [];
-    //Thomas: Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
-    //ellers så henter man localstorage ned, også laver den til javascript array med objekter. Rasmus
+    // Hvis users i localStorage er lig nul, så pusher man en new Admin(Thomas) ind i arrayet
+    //ellers så henter man localstorage ned, også laver den til javascript array med objekter.
     if (localStorage.getItem('users') === null) {
         storedUsers.push(new Admin('Thomas', 'Lindskov', '30110976', '19-02-1996', 'hejsa', 'true'))
     } else {
@@ -275,7 +274,7 @@ static getAllUsers(){
     return storedUsers
 };*/
 
-//Thomas: Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
+// Bruges til at få fat i en helt bestemt user, så man f.eks. kan logge den user ind, eller finde
 //useren i systemet, baseret på userens inputtede telefonnummer, da det er vores unikke-ID til useren.
 /*static getUser() {
     let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -286,7 +285,7 @@ static getAllUsers(){
     }
 };*/
 
-//Thomas: Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
+// Finder her hvad den indtastede users id er, så man kan manipulere Arrayet, i andre funktioner
 //f.eks. hvis man vil slette en specifik user eller gøre dem til admin
 /*static getUserIndex() {
     let enteredNumber = document.getElementById('enteredNumber').value.toString();
@@ -298,7 +297,7 @@ static getAllUsers(){
 };*/
 
 
-//Thomas: skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
+// skal bruges til at finde ud af, hvad den aktive users index er, så man kan manipulere arrayet
 //f.eks. hvis man booker et sæde, så skal den kunne smides op i Arrayet igen, så man beholder bookingen.
 /*static getActiveUserIndex() {
     let userNumber = this.activeUser._tlfNumber;
