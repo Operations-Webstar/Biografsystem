@@ -55,7 +55,7 @@ function makeAUserAdmin(){
             console.log(error.result)
         })
 }
-
+// Funktionen addMovie poster filmen til API'en som sørger for at lægge det i databasen.
 function addMovie(){
     //TODO: post en instans af film klassen.
     axios.post('http://localhost:3000/films/', {
@@ -71,6 +71,7 @@ function addMovie(){
         })
 }
 
+// Denne funktion laver en showing for en konkret film i en cinemahall som postes i databasen via API'en.
 function makeShowing() {
     let showingbutton = document.getElementById('showingbutton')
     showingbutton.className = 'showingButtons'
@@ -78,9 +79,11 @@ function makeShowing() {
     let showingDiv = document.getElementById('makeShowing')
     let showingForm =  document.createElement('form');
     showingDiv.appendChild(showingForm)
+    //Her hentes alle film fra databasen
     axios.get('http://localhost:3000/films/')
         .then(result => {
         let films = result.data.products
+            //For hver film kører nedenstående funktion
         films.forEach(film => {
             let filmName = document.createElement('p')
             filmName.innerHTML = film.filmName
@@ -91,11 +94,14 @@ function makeShowing() {
             button.innerHTML = 'Vælg film'
             button.className = 'showingButtons'
             filmName.appendChild(button)
+            // Når Vælg film kanppen trykkes, smides filmId'et i session storage og knappen forsvinder
             document.getElementById(film.filmName).addEventListener('click', () => {
                 showingForm.innerHTML = ''
                 sessionStorage.setItem('filmId', film.filmId)
+                // Nedenfor hentes alle sale i databasen
                 axios.get('http://localhost:3000/cinemahalls').then(result => {
                     let cinemahalls = result.data
+                    // Der foretages samme html manipulationer som med film
                     cinemahalls.forEach(cinemahall => {
                         let hallName = document.createElement('p')
                         hallName.innerHTML = cinemahall.hallName
@@ -122,8 +128,10 @@ function makeShowing() {
                             button.className = 'showingButtons'
                             showingForm.appendChild(button)
                             document.getElementById('date').addEventListener('click', () => {
+                                //Nedenfor sættes dato og time sammen
                                 let dateTime = dato.value + ' ' + time.value
                                 //TODO: lav til en instans af Showing klassen
+                                //Showingen postes nu til databasen
                                 axios.post('http://localhost:3000/showings', {
                                     film: sessionStorage.getItem('filmId'),
                                     dateTime: dateTime,
@@ -136,8 +144,6 @@ function makeShowing() {
                                     console.log(err)
                                 })
                             })
-
-
                         })
                     })
 
@@ -147,37 +153,4 @@ function makeShowing() {
     }).catch(err => {
         console.log(err)
     });
-// laver form elementet i HTML, så jeg kan gøre brug af dets egenskaber
-
-/*
-    // laver en entered number med input Tag, som tager imod et userinput, og har en style.margin for udseendets skyld
-    let enteredNumber = document.createElement('input');
-    enteredNumber.value = '';
-    enteredNumber.placeholder= 'number';
-    enteredNumber.id = 'enteredNumber';
-
-    // Laver en entered password med input tag, samme ide, som med userinputet
-    let enteredPassword = document.createElement('input');
-    enteredPassword.value = '';
-    enteredPassword.placeholder = 'password';
-
-    // laver en knap, value Log in
-    let logInButton = document.createElement('input');
-    logInButton.type = 'button';
-    logInButton.value = 'Log in';
-
-    // laver en knap, value Annuller
-    let cancelButton = document.createElement('input');
-    cancelButton.type = 'button';
-    cancelButton.value = 'Annuller';
-
-    // Sætter det hele ind på siden
-    document.body.appendChild(divLogin);
-    divLogin.appendChild(divIn);
-    divIn.appendChild(showingForm);
-    loginForm.appendChild(enteredNumber);
-    loginForm.appendChild(enteredPassword);
-    loginForm.appendChild(logInButton);
-    loginForm.appendChild(cancelButton);
-*/
 }

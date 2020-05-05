@@ -1,3 +1,5 @@
+// Klassen cinemahall oprettes til at kunne konstruere biografsale
+//TODO: Cinemahall klassen skal bruges
 class Cinemahall {
     constructor(hall_id,hallName, rows, columns ) {
         this.hall_id = hall_id
@@ -5,8 +7,8 @@ class Cinemahall {
         this.rows = rows
         this.columns = columns
     }
-
-    static hallArray(rows,columns) {
+//TODO: benyt denne static metode
+    /*static hallArray(rows,columns) {
         const hallSeats = []
         for (let i = 0; i<rows;i++) {
             hallSeats[i] = []
@@ -15,6 +17,5 @@ class Cinemahall {
             }
         }
         return hallSeats;
-    }
-
+    }*/
 }

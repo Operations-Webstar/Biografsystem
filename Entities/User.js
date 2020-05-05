@@ -1,5 +1,4 @@
-/*eslint-env browser*/
-//Classes
+//Klassen user oprettes med tilhørende metoder.
 class User {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password) {
         this.firstName = firstName;
@@ -7,14 +6,9 @@ class User {
         this.tlfNumber = tlfNumber;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
-        //this.booking = [];
     };
-    //function bookSeat(){};
-    //function cancelSeat(){};
-    //function logIn(){};
-    //function logOut(){};
-    //function checkMovies(){};
 
+    //loginfunktion der laver en popup boks, som kan sættes på html.
     static login(){
         // laver en div, som kommer til at fylde hele siden
         let divLogin = document.createElement("div");
@@ -57,20 +51,19 @@ class User {
             loginForm.appendChild(logInButton);
             loginForm.appendChild(cancelButton);
 
-            //sætter en eventlistener på Login knappen, så den den kan tjekke om en bruger, har rigtige login informationer
 
         // sætter en eventlistener på Login knappen, så den den kan tjekke om en bruger, har rigtige login informationer
         logInButton.addEventListener('click', function () {
-            // if statement, der bruges til at tjekke om informationen er korrekt, og giver alerts alt efter hvad fejlen er.
+            // if statement, der bruges til at tjekke om informationen er korrekt, og giver en alert, hvis der mangler info i formen.
             if (enteredNumber.value === '' || enteredPassword.value === ''){
                 alert('Missing information')
             }
                 else {
-                //Sætter keyen activeUser til at være lig den user, som lige er logget ind. Så den kan tilgås senere.
-                // activeUser nøglen, vil være lig at en user er logget ind.
+                    // Laver en axios.post som sender login data til serveren, som derved verificerer at det er de samme informationer der er i databasen.
                 axios.post('http://localhost:3000/users/login',{tlfNumber: enteredNumber.value,password: enteredPassword.value})
                     .then(result => {
                         console.log(result)
+                        // Laver sessionData så lægges op i session storage således at man ikke skal hente informationen fra databasen flere gange.
                         let sessionData = {
                             userId: result.data.userId,
                             userType: result.data.userType,
@@ -84,11 +77,9 @@ class User {
                 .catch(error => {
                     console.log(error)
                 })
-                //Sender en videre til bookingsiden
-                //window.location.href = 'index.html';
         }});
 
-        // gør at knappen lukker for diven.
+        // gør at cancelButton knappen lukker for diven.
         cancelButton.addEventListener('click',function () {
             divLogin.style.display = 'none'
         });
@@ -97,41 +88,18 @@ class User {
             if(event.target === divLogin)
                 divLogin.style.display = 'none'
         }
-
     }
-   // En funktion, der fjerner den nuværende bruger, også smider et none objekt op i localstorage
-    //grunden til at none er et objekt, er at så virker JSON, bedre i andre metoder, når man parser.
-    // Hvis vi bare have lavet en string 'none', vil der komme en fejl, når vi bruger JSON.parse.
+
+   // Fjerner infor og activeUser fra session storage
    static signOut(){
         sessionStorage.removeItem('info')
        sessionStorage.removeItem('activeUser');
    };
 }
 
-
+// Adminklassen defineres som en inheritance af user-klassen.
 class Admin extends User {
     constructor(firstName, lastName, tlfNumber, dateOfBirth, password){
         super(firstName, lastName, tlfNumber, dateOfBirth, password);
     }
-
-
-    // En metode som fjerner en user fra det gemte array, som ligger i localstorage
-   /* deleteUser(){
-            Tools.allUsers.splice(Tools.getUserIndex(), 1);
-            localStorage.setItem('users', JSON.stringify(Tools.allUsers))
-    }*/
-
-    // Sletning af bruger
-
-    // En metode som giver en user fra det gemte array, admin rettigheder.
-    makeAdmin(){
-        let target = Tools.getUser();
-        target._adminRights = 'true';
-        Tools.allUsers[Tools.getUserIndex()] = target;
-    localStorage.setItem('users', JSON.stringify(Tools.allUsers))
 }
-    // en metoder, der resseter systemet, men stadig lægger en none objekt op i active user
-    //dette gøres kun sådan at JSON.parse virker, og ikke kaster en error
-
-}
-
