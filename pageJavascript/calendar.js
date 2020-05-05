@@ -5,7 +5,6 @@ let selectedYear = document.getElementById("year");
 let selectedMonth = document.getElementById("month");
 let months = ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"];
 let showingData = JSON.parse(sessionStorage.getItem('SelectedMovieShowings'));
-console.log(showingData)
 
 let monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
@@ -90,7 +89,6 @@ function showCalendar(month, year) {
         firstDay = 6;
     }
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
-    console.log(daysInMonth);
     //henter den indre krop af kalanderen
     let table = document.getElementById("calendar-body");
 

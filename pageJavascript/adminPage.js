@@ -4,6 +4,7 @@
 
 function adminFunctions(){
     let d = document.getElementById('enteredNumber')
+    //finder user baseret på tlfnumber
     axios.post('http://localhost:3000/users/findOne',{
         tlfNumber:d.value
     })
@@ -13,6 +14,7 @@ function adminFunctions(){
                 document.getElementById('number').innerHTML = result.data.tlfNumber;
             })
             document.getElementById('makeAdmin').addEventListener('click', ()=>{
+                //sætter en users status til Admin via patch
                 axios.patch('http://localhost:3000/users/'+ result.data._id, [{propName:'userType',value: 'admin'}])
                     .then(result => {
                         console.log(result)
@@ -23,6 +25,7 @@ function adminFunctions(){
                     })
             })
             document.getElementById('deleteUser').addEventListener('click', ()=>{
+                //sletter en user fra databasen (hard delete)
                 axios.delete('http://localhost:3000/users/'+ result.data._id)
                     .then(result => {
                         console.log(result)
@@ -37,7 +40,6 @@ function adminFunctions(){
             console.log(error.result)
         })
 }
-
 
 
 // Funktionen addMovie poster filmen til API'en som sørger for at lægge det i databasen.

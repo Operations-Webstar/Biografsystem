@@ -1,6 +1,6 @@
 // Tager hall fra session storage
-let Hall = JSON.parse(sessionStorage.getItem('ChosenHall'))
-let active = Tools.getActiveUser()
+let hallInfo = JSON.parse(sessionStorage.getItem('ChosenHall'))
+let Hall = new Cinemahall(hallInfo._id, hallInfo.hallName, hallInfo.rows, hallInfo.columns)
 
 let seatArray = document.getElementById("seatarray");
 // Ud fra hall's rækker og kolonner oprettes et dobbelt array af checkboxes
