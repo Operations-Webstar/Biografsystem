@@ -1,6 +1,6 @@
 // Følgende funktion finder showings for den valgte film og tilføjer dem til session storage, som kalenderen kan trække ud.
 async function retriveShowings() {
-    await axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId})
+    await axios.post('http://localhost:3000/showings/findAllForOneFilm', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId})
         .then(result => {
         sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
         sessionStorage.removeItem('film')
