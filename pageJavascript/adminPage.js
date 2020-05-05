@@ -57,14 +57,8 @@ function makeAUserAdmin(){
 }
 // Funktionen addMovie poster filmen til API'en som sørger for at lægge det i databasen.
 function addMovie(){
-    //TODO: post en instans af film klassen.
-    axios.post('http://localhost:3000/films/', {
-        filmName: document.getElementById("filmName").value,
-        genre: document.getElementById("genre").value,
-        filmLength: document.getElementById("filmLength").value,
-        ageRestriction: document.getElementById("ageRestriction").value,
-        description: document.getElementById("description").value
-    })
+    let film = new Film(document.getElementById("filmName").value, document.getElementById("genre").value, document.getElementById("filmLength").value, document.getElementById("ageRestriction").value, document.getElementById("description").value)
+    axios.post('http://localhost:3000/films/', film)
         .then(result=>{console.log(result)})
         .catch(error => {
             console.log(error.result)
@@ -130,13 +124,10 @@ function makeShowing() {
                             document.getElementById('date').addEventListener('click', () => {
                                 //Nedenfor sættes dato og time sammen
                                 let dateTime = dato.value + ' ' + time.value
-                                //TODO: lav til en instans af Showing klassen
+                                let showing = new Showing(sessionStorage.getItem('filmId'),dateTime,sessionStorage.getItem('hallId') )
                                 //Showingen postes nu til databasen
-                                axios.post('http://localhost:3000/showings', {
-                                    film: sessionStorage.getItem('filmId'),
-                                    dateTime: dateTime,
-                                    hall: sessionStorage.getItem('hallId')
-                                }).then(result => {
+                                axios.post('http://localhost:3000/showings', showing)
+                                    .then(result => {
                                     console.log(result)
                                     sessionStorage.removeItem('filmId')
                                     sessionStorage.removeItem('hallId')
