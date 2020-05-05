@@ -1,60 +1,45 @@
 // en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
 //TODO: skriv om så, man kun finder User en gang
-function showUser(){
-    let d = document.getElementById('enteredNumber')
-    let target = axios.post('http://localhost:3000/users/findOne',{
-        tlfNumber:d.value
-    })
-        .then(result => {
-            document.getElementById('navn').innerHTML = result.data.firstName + ' ' + result.data.lastName;
-            document.getElementById('number').innerHTML = result.data.tlfNumber;
-            console.log(result)
-            return result
-        })
-        .catch(error => {
-            console.log(error.result)
-        })
-}
 
-function deleteUser(){
+
+function adminFunctions(){
     let d = document.getElementById('enteredNumber')
-    let target = axios.post('http://localhost:3000/users/findOne',{
+    axios.post('http://localhost:3000/users/findOne',{
         tlfNumber:d.value
     })
         .then(result => {
-            axios.delete('http://localhost:3000/users/'+ result.data._id)
-                .then(result => {
-                console.log(result)
-                return result
+            document.getElementById('showUser').addEventListener('click', ()=>{
+                document.getElementById('navn').innerHTML = result.data.firstName + ' ' + result.data.lastName;
+                document.getElementById('number').innerHTML = result.data.tlfNumber;
             })
-                .catch(error => {
-                    console.log(error.result)
-                })
+            document.getElementById('makeAdmin').addEventListener('click', ()=>{
+                axios.patch('http://localhost:3000/users/'+ result.data._id, [{propName:'userType',value: 'admin'}])
+                    .then(result => {
+                        console.log(result)
+                        return result
+                    })
+                    .catch(error => {
+                        console.log(error.result)
+                    })
+            })
+            document.getElementById('deleteUser').addEventListener('click', ()=>{
+                axios.delete('http://localhost:3000/users/'+ result.data._id)
+                    .then(result => {
+                        console.log(result)
+                        return result
+                    })
+                    .catch(error => {
+                        console.log(error.result)
+                    })
+            })
         })
         .catch(error => {
             console.log(error.result)
         })
 }
 
-function makeAUserAdmin(){
-    let d = document.getElementById('enteredNumber')
-    let target = axios.post('http://localhost:3000/users/findOne',{
-        tlfNumber:d.value
-    })
-        .then(result => {
-            axios.patch('http://localhost:3000/users/'+ result.data._id, [{propName:'userType',value: 'admin'}])
-                .then(result => {
-                    console.log(result)
-                    return result
-                })
-                .catch(error => {
-                    console.log(error.result)
-                })
-        })
-        .catch(error => {
-            console.log(error.result)
-        })
-}
+
+
 // Funktionen addMovie poster filmen til API'en som sørger for at lægge det i databasen.
 function addMovie(){
     let film = new Film(document.getElementById("filmName").value, document.getElementById("genre").value, document.getElementById("filmLength").value, document.getElementById("ageRestriction").value, document.getElementById("description").value)
@@ -97,6 +82,9 @@ function makeShowing() {
                     let cinemahalls = result.data
                     // Der foretages samme html manipulationer som med film
                     cinemahalls.forEach(cinemahall => {
+                        cinemahall = new Cinemahall(cinemahall._id, cinemahall.hallName, cinemahall.rows, cinemahall.columns)
+                        console.log(cinemahall)
+                        debugger
                         let hallName = document.createElement('p')
                         hallName.innerHTML = cinemahall.hallName
                         showingForm.appendChild(hallName)
