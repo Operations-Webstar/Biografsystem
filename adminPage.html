@@ -23,10 +23,10 @@
 </header>
 <section class="midt">
     <div class="container">
-        <input type="text" id="enteredNumber" value="" placeholder="User number"/>
-        <input type="submit" id="showUser" value="Show User" onclick="showUser()"/>
-        <input type="reset" id="makeAdmin" value="Make admin" onclick= 'makeAUserAdmin()'/>
-        <input type="submit" id="deleteUser" value="Delete user" onclick="deleteUser()"/>
+        <input type="text" id="enteredNumber" value="" placeholder="User number" onblur ="adminFunctions()"/>
+        <input type="button" id="showUser" value="Show User"/>
+        <input type="button" id="makeAdmin" value="Make admin"/>
+        <input type="button" id="deleteUser" value="Delete user"/>
         <br/>
         <p>Navn: <span id="navn"></span> <br/> Telefonnummer: <span id="number"></span> <br/> Alle Brugere <span id="allUsers"></span> </p>
     </div>
@@ -47,6 +47,7 @@
     </div>
 </section>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="Entities/Cinemahall.js"></script>
 <script type="text/javascript" src="Entities/Film.js"></script>
 <script type="text/javascript" src="Entities/Showing.js"></script>
 <script type="text/javascript" src="Entities/User.js"></script>
