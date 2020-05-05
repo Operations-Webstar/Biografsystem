@@ -49,7 +49,16 @@ function addMovie(){
             console.log(error.result)
         })
 }
-
+// Funktion som nægter adgang til admin page hvis du ikke er logget ind som admin og sender dig til index
+function adminCheck(){
+    let active = JSON.parse(sessionStorage.getItem('activeUser'));
+    if(active == null) {
+        return active
+    }
+if (active.userType === 'standard' || active.userType === 'null') {
+    window.location.href = 'Index.html';
+}}
+adminCheck()
 // Denne funktion laver en showing for en konkret film i en cinemahall som postes i databasen via API'en.
 function makeShowing() {
     let showingbutton = document.getElementById('showingbutton')
