@@ -55,12 +55,19 @@ function presentShowingsOnDate(){
                    if(minutes.toString().length == 1){minutes = "0"+tempDate.getMinutes()}
                    timeSlotButton.innerHTML = hours + "." + minutes
                    timeSlotButton.addEventListener('click', () => {
-                        sessionStorage.setItem('ChosenShowing', JSON.stringify(showingData[i]));
-                        axios.get('http://localhost:3000/cinemahalls/' + showingData[i].hall).then(result => {
-                            sessionStorage.setItem('ChosenHall', JSON.stringify(result.data))
-                            window.location = 'seats.html'
-                        })
-                            .catch(err => console.log(err))
+                       if(sessChosenDate > new Date()){
+                           sessionStorage.setItem('ChosenShowing', JSON.stringify(showingData[i]));
+                           axios.get('http://localhost:3000/cinemahalls/' + showingData[i].hall).then(result => {
+                           sessionStorage.setItem('ChosenHall', JSON.stringify(result.data))
+                           window.location = 'seats.html'
+                       })
+                           .catch(err => console.log(err))
+                        } else {
+                            console.log(sessChosenDate)
+                            console.log(new Date())
+                            console.log(sessChosenDate > new Date())
+                            alert("du skal vælge en visning der ligger i fremtiden!")
+                        }
 
                     })
 
@@ -131,7 +138,9 @@ function showCalendar(month, year) {
                 let userChoiceDateCheckY = DateCheckY.options[DateCheckY.selectedIndex].innerHTML;
                 let ChosenDateCheck = new Date(`${DateCheckD} ${userChoiceDateCheckM} ${userChoiceDateCheckY}`);
 
-
+                if (showingData.length == 0) {
+                    cell.style.color = "red"
+                } else {
                 for(let i=0; i< showingData.length;i++){
                         let tempDate = new Date(showingData[i].dateTime)
                     if(ChosenDateCheck.getMonth() === tempDate.getMonth() && ChosenDateCheck.getDate() === tempDate.getDate() 
@@ -155,7 +164,7 @@ function showCalendar(month, year) {
                         if(cell.style.color != "green"){
                         cell.style.color = "red"}
                     }
-                }
+                }}
                 
                 //indsætter nu også med row til sidst
                 cell.appendChild(cellText);

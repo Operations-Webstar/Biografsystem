@@ -11,8 +11,8 @@
     <div>
         <h3 id="monthAndYear"></h3>
         <form class="MonthYearPicker">
-            <label  for="month">Jump To: </label>
-            <select  name="month" id="month" onchange="jump()">
+            
+            <select  name="month" id="month" onchange="jump()" disabled>
                 <option value=0>January</option>
                 <option value=1>February</option>
                 <option value=2>March</option>
@@ -28,7 +28,7 @@
             </select>
 
 
-            <label for="year"></label><select  name="year" id="year" onchange="jump()">
+            <label for="year"></label><select  name="year" id="year" onchange="jump()" disabled>
             <option value=2019>2019</option>
             <option value=2020>2020</option>
             <option value=2021>2021</option>
