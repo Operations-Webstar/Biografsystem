@@ -1,6 +1,7 @@
-
+// Følgende funktion finder showings for den valgte film og tilføjer dem til session storage, som kalenderen kan trække ud.
 async function retriveShowings() {
-    await axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId}).then(result => {
+    await axios.post('http://localhost:3000/showings/s', {filmId: JSON.parse(sessionStorage.getItem('film')).filmId})
+        .then(result => {
         sessionStorage.setItem('SelectedMovieShowings', JSON.stringify(result.data));
         sessionStorage.removeItem('film')
     })
@@ -8,7 +9,8 @@ async function retriveShowings() {
         {console.log(error)})
 
 }
-
+// funktion i pop uppen som tjekker om man er logget ind og er gammel nok til at se den valgte film.
+// Gør begge dele sig gældende, sendes man som bruger videre til kalenderen.
 function bookNu(){
     var chosenFilm = JSON.parse(sessionStorage.getItem('film'));
     var active = Tools.getActiveUser()
@@ -23,8 +25,9 @@ function bookNu(){
     }
 }
 
-
+// Følgende er en funktion der laver alle filmknapperne.
 function createFilmButtons() {
+    // Alle film fra databasen hentes og laves til en knap som ved klik åbner en pop up
     axios.get('http://localhost:3000/films/')
         .then(result => {
             let filmData = result.data.products
@@ -38,6 +41,7 @@ function createFilmButtons() {
                 let nameForFilm = document.createElement('h1')
                 nameForFilm.id = index
                 nameForFilm.innerHTML = oneFilm.filmName
+                //Pop-uppen åbner op og viser mere information om den valgte film.
                 button.addEventListener('click', () => {
                     let filmNummer = oneFilm
                     document.getElementById("filmName").innerHTML = filmNummer.filmName;
@@ -46,6 +50,7 @@ function createFilmButtons() {
                     document.getElementById("filmLength").innerHTML = "Filmens længde: " + filmNummer.filmLength + " minutter";
                     document.getElementById("ageRestriction").innerHTML = "Aldersgrænse: " + filmNummer.ageRestriction;
                     bookup.style.display = "block";
+                    // Filmdataen bliver lageret i session storage
                     sessionStorage.setItem('film', JSON.stringify(filmNummer))
 
                 })
@@ -53,7 +58,7 @@ function createFilmButtons() {
                 div.appendChild(button)
                 button.appendChild(img)
                 button.appendChild(nameForFilm)
-
+            // Trykker man uden for pop-uppen lukker den
                 window.onclick = function(event) {
                     if(event.target === bookup) {
                         bookup.style.display = "none";
@@ -64,15 +69,6 @@ function createFilmButtons() {
         })
 }
 window.onload = createFilmButtons()
-
-
-
-/*  Her hentes den første knap ned, og tildeles en funktion med lavFilm funktionen inde.
-lavFilm køres med den tilsvarende film som parameter
-L. 61-63 window.onclick tildeles en anonym funktion, med et if/else statement, som ændrer style.display til none hvis brugeren
-klikker andre steder end inden i pop-up boksen. Altså pop-up boksen lukker, hvis brugeren klikker andre steder end den.
-*/
-// Random number function
 
 
 //  Fortryd knappen kører en anonym funktion, som lukker pop-up boksen hvis brugeren trykker på fortryd.

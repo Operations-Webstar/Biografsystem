@@ -1,11 +1,10 @@
+// Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af serveren
+//så vi kan arbejde med dem i andre metoder osv.
+
 class Tools{
-    // Utility functions, har lavet nogle forskellige metoder, som skal bruges til at få noget info ud af localstorage
-    //så vi kan arbejde med dem i andre metoder osv.
     // Man finder den user, som lige nu er Aktiv, dvs. den user som er logget ind (lægger i activeUser), og om den user
     //er admin eller user, derved også få tilgang til deres metoder, laver en instants af den klasse, som den aktive er
     // i pågældende situation.
-        /*static activeUser = Tools.getActiveUser();
-*/
         static getActiveUser() {
             let active = JSON.parse(sessionStorage.getItem('activeUser'));
             if(active == null){
@@ -49,10 +48,9 @@ class Tools{
 
 
         // sætter m lig med nuværende måned - fødselsdags måned
-
         let m = today.getMonth() - dt.getMonth();
 
-        // Hvis 0 er større end M, har personen allerede haft fødselsdag, så behøves der ikke trækkes 1 fra.
+        // Hvis 0 er større end m, har personen allerede haft fødselsdag, så behøves der ikke trækkes 1 fra.
         //Dog hvis m === 0 eller at idag's dag ikke er større end fødselsdags dagen, så minusser man age med 1
         // da personen ikke har nået at have haft fødselsdag
 
@@ -61,6 +59,7 @@ class Tools{
         }
         return age
     }
+    // Følgende funktion viser knapper alt efter om amn er logget ind eller ej og alt efter usertype.
     static hideButtons(){
         let active = this.getActiveUser()
         if (active !== null) {
@@ -80,7 +79,6 @@ class Tools{
     };
    
 }
-
 
 
 //gør at hide buttons metoden kaldes når en side loader, så længe scriptet er tilknyttet. I vores tilfælde er det næsten alle sider.

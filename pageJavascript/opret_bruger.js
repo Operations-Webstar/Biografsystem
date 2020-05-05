@@ -1,5 +1,4 @@
-//
-//en static funktion der laver en instans af klassen User, som man så bruger JSON, til at lagre i localStorage
+//en funktion der laver en instans af klassen User, som man så bruger JSON, til at lagre i serveren
 //Bruger forskellige if statements, til at sørge for den indtastede info er korrekt
 function createUser() {
     let form_valid = true;
@@ -51,6 +50,7 @@ function createUser() {
     // ellers så alerter den (validation_message) med tilhørende strings.
     if (form_valid === true) {
         const user = new User(this.firstName, this.lastName, this.tlfNumber, this.dateOfBirth, this.password);
+        // Sender informationen om useren til databasen hvor den gemmes.
         axios.post('http://localhost:3000/users/signup', user)
             .then(result => {
                 window.location.href = 'Index.html'

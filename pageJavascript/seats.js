@@ -1,7 +1,9 @@
+// Tager hall fra session storage
 let Hall = JSON.parse(sessionStorage.getItem('ChosenHall'))
 let active = Tools.getActiveUser()
 
 let seatArray = document.getElementById("seatarray");
+// Ud fra hall's rækker og kolonner oprettes et dobbelt array af checkboxes
 for (let i = 0; i<Hall.columns;i++) {
     for(let j = 0; j<Hall.rows;j++){
         let checkbox = document.createElement('input');
@@ -53,7 +55,7 @@ console.log(counter)
             alert("Hov! Du mangler at markere de ønskede sæder.")
         }
     }
-
+// En funktion der kigger alle bookinger på denne showing igennem, for at gøre bookede sæder uncklickable
 function bookedSeats() {
     var seats = document.getElementsByClassName('Seat');
     axios.get('http://localhost:3000/bookings/' + JSON.parse(sessionStorage.getItem('ChosenShowing'))._id)
@@ -66,7 +68,6 @@ function bookedSeats() {
                     if(s[j] == seats[e].name){
                         document.getElementById(seats[e].id).setAttribute('disabled', 'disabled')
                     }
-
                 }
             }
         })
