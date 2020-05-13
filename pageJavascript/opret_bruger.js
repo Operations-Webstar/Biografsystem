@@ -57,7 +57,7 @@ function createUser() {
         })
             .catch(error => {
                 console.log(error)
-                alert('telefon nummer findes allerede')
+                alert('Telefonnummer er allerede brugt')
             })
 
     } else {

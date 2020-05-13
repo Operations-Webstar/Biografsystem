@@ -1,6 +1,4 @@
 // en metode der gør at admin, kan se hvilket telefon nummer, der hører til hvilket navn. og som så viser navnet på Useren nedeunder.
-//TODO: skriv om så, man kun finder User en gang
-
 
 function adminFunctions(){
     let d = document.getElementById('enteredNumber')

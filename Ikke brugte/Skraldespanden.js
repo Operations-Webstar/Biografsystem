@@ -337,7 +337,16 @@ window.onload = checkBooking();*/
     bookup.style.display = "block";
     sessionStorage.setItem('film', JSON.stringify(filmNummer))
 }*/
-
+/*static hallArray(rows,columns) {
+        const hallSeats = []
+        for (let i = 0; i<rows;i++) {
+            hallSeats[i] = []
+            for(let j = 0; j<columns;j++){
+                hallSeats[i][j] = null
+            }
+        }
+        return hallSeats;
+    }*/
 /*for (let l = 0; l <= manyArrayWithSeats.length; l++) {
     for (let j = 0; j <= seats.length; j++) {
         seats[j].name
