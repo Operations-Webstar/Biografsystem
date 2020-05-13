@@ -5,7 +5,7 @@
     <title>Title</title>
     <link type="text/css" rel="stylesheet" href="CSS/style.css">
 </head>
-<body id ="adminPage" onload="Tools.checkAdminStatus()">
+<body id ="adminPage">
 <header>
     <img src="Billeder/Logo.png" alt="logo" id="logo">
     <div id="container">
@@ -23,8 +23,8 @@
 </header>
 <section class="midt">
     <div class="container">
-        <input type="text" id="enteredNumber" value="" placeholder="User number" onblur ="adminFunctions()"/>
-        <input type="button" id="showUser" value="Show User"/>
+        <input type="text" id="enteredNumber" value="" placeholder="User number" onblur ="Tools.checkAdminStatus()"  />
+        <input type="button" id="showUser" value="Show User" onclick="adminFunctions()"/>
         <input type="button" id="makeAdmin" value="Make admin"/>
         <input type="button" id="deleteUser" value="Delete user"/>
         <br/>

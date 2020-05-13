@@ -24,9 +24,10 @@ class Tools{
     // Bruges til at tjekke om man er Admin, denne bruges for at en ordinær User, kommer ind på Admin siden, vil de
     // blive sendt ud, hvis de prøver at bruge nogle funktioner.
     static checkAdminStatus(){
-        if(this.getActiveUser().userType !== 'admin'){
-            window.location.href = 'Index.html';
+        const active = this.getActiveUser()
+        if( active == null|| active.userType !== 'admin' ){
             alert('Adgang nægtet')
+            window.location.href = 'Index.html';
         }
     }
 
